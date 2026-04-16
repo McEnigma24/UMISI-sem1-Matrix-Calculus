@@ -1,18 +1,5 @@
 %%%%%% -*- Coding: utf-8-unix; Mode: latex
-% SZABLON raportu — Rachunek Macierzowy (bez skrótu „UMISI” w treści).
-%
-% Autorzy: na stałe Kacper Bujak, Wojciech Maćkowiak (makro \Autorzy — nie zmieniaj).
-% Zmieniasz tylko: \TytulZadania, \NumerProgramu.
-%
-% Sprawozdanie — oczekiwania (uzupełnij w każdym zadaniu):
-%   • fragmenty kodu (np. \lstinputlisting z plików .m w ../src/),
-%   • faktyczne wyniki uruchomienia (tabela + surowe wyjście: diary → verbatiminput),
-%   • gdy ma sens: wykresy (Python → PDF/PNG w ./figures/) oraz krótki benchmark
-%     (czas vs n, lub szacunek / pomiar operacji +,−,×,÷ w zależności od n).
-%
-% Kompilacja: latexmk z katalogu LaTeX/ (latexmkrc: $do_cd).
-%
-% Oddanie: treść ma brzmieć jak student (usuń placeholdery szablonu, zbędne meta-komentarze).
+% Rachunek Macierzowy — sprawozdanie, program 2.
 
 \documentclass[polish]{template/projectreport}
 
@@ -33,8 +20,8 @@
 
 \usepackage{xcolor}
 \usepackage{listings}
-\usepackage{verbatim}
 \usepackage{booktabs}
+\usepackage{amsmath}
 
 \definecolor{codegreen}{rgb}{0,0.5,0}
 \lstdefinestyle{matlab}{
@@ -61,10 +48,8 @@
   citecolor=blue,
   urlcolor=blue}
 
-% --- ZMIEŃ wg konkretnego zadania ---
-\newcommand{\TytulZadania}{\textit{(Tytuł zadania)}}
-\newcommand{\NumerProgramu}{\textit{N}}
-% --- Autorzy (zawsze tak samo) ---
+\newcommand{\TytulZadania}{Eliminacja Gaussa i faktoryzacja LU (warianty z~pivotingiem i~bez)}
+\newcommand{\NumerProgramu}{2}
 \newcommand{\Autorzy}{Kacper Bujak, Wojciech Maćkowiak}
 
 \title{\TytulZadania\\{\large Rachunek Macierzowy --- program \NumerProgramu}}
@@ -75,48 +60,91 @@
 \maketitle
 
 \section{Cel ćwiczenia}
-\textit{(Tu: cel wg \texttt{task} / polecenia; parametry wejścia, np.\ $n$, macierz testowa.)}
+Zaimplementować dla macierzy kwadratowej stopnia $n$ (w kodzie: $n = \text{miesiąc} + \text{dzień}$ urodzenia, tutaj $8+24=32$) cztery procedury z~wykładu:
+\begin{enumerate}
+  \item eliminację Gaussa bez pivotingu z~normalizacją wiersza pivotowego tak, by na przekątnej powstały jedynki;
+  \item eliminację Gaussa z~częściowym pivotingiem wierszowym i~tą samą normalizacją;
+  \item faktoryzację LU bez pivotingu (postaci Doolittle'a: $L$~--- dolnotrójkątna z~jedynkami na przekątnej, $U$~--- górnotrójkątna);
+  \item faktoryzację LU z~pivotingiem w postaci $PA = LU$.
+\end{enumerate}
+Jako danych testowych użyto losowej macierzy $n\times n$ o~rozsądnym wskaźniku uwarunkowania (funkcja \texttt{rcond} w~skrypcie).
 
 \section{Opis metody / algorytmu}
-\subsection{\textit{(Nagłówek)}}
-\textit{(Tu: opis matematyczny, złożoność, odniesienie do wykładu.)}
+\subsection{Eliminacja Gaussa}
+W~kolejnych kolumnach $k$ wybieramy wiersz pivotowy (bez pivotingu: $k$-ty; z~pivotingiem: ten z~największą co do modułu wartością w~kolumnie $k$ w~wierszach $k,\ldots,n$), zamieniamy go z~wierszem $k$, dzielimy cały wiersz $k$ przez element diagonalny, by uzyskać~$1$ na przekątnej, a~następnie odejmujemy odpowiednią wielokrotność tego wiersza od wierszy poniżej, zerując elementy pod przekątną. Wynikiem jest macierz górnotrójkątna z~jedynkami na przekątnej (dla macierzy nieosobliwej i~przy pivotingu --- stabilniej).
+
+\subsection{Faktoryzacja LU}
+Bez pivotingu stosujemy schemat Doolittle'a: dla każdego $k$ obliczamy mnożniki
+$L_{ik} = U_{ik}/U_{kk}$ i~aktualizujemy wiersze $i>k$ macierzy $U$.
+Przy pivotingu przed krokiem $k$ zamieniamy wiersze $U$ (oraz $P$ i~odpowiedni fragment $L$), co prowadzi do $PA = LU$.
+
+Złożoność obu rodzin algorytmów to $\mathcal{O}(n^3)$ operacji zmiennoprzecinkowych.
 
 \section{Implementacja}
-\textit{(Tu: struktura \texttt{src/}, pliki \texttt{.m}, ewentualnie skrypty w \texttt{analysis/}.)}
+W~katalogu \texttt{src/} znajdują się cztery funkcje z~algorytmami (sekcja~\ref{sec:snippety}) oraz skrypt \texttt{solution.m} uruchamiający testy.
+Do wykresu w~sprawozdaniu służą dodatkowo (bez cytowania pełnego kodu w~raporcie) \texttt{benchmark\_prog2.m}, \texttt{bench\_ms.m} oraz \texttt{analysis/plot\_template.py}.
 
-\section{Fragmenty kodu}
-% Przykład (ścieżka względem katalogu LaTeX/):
-% \lstinputlisting[firstline=1, lastline=40]{../src/solution.m}
-\textit{(Tu: \texttt{\textbackslash lstinputlisting\{../src/nazwa.m\}} lub środowisko lstlisting.)}
+\section{Fragmenty kodu (logika algorytmów)}
+\label{sec:snippety}
+
+\subsection{\texttt{gauss\_elim\_diag1.m}}
+Eliminacja w przód bez zamiany wierszy: po wybraniu pivota w~kolumnie $k$ skalujemy wiersz $k$, by $U_{kk}=1$, a~następnie zerujemy elementy poniżej przekątnej. Przy zerowym pivocie zgłaszany jest błąd (brak stabilizacji pivotingiem).
+
+\lstinputlisting{../src/gauss_elim_diag1.m}
+
+\subsection{\texttt{gauss\_elim\_pivot\_diag1.m}}
+Jak wyżej, lecz przed skalowaniem wybieramy wiersz z~największą co do modułu wartością w~aktualnej kolumnie (częściowy pivoting wierszowy), co zmniejsza ryzyko dużych błędów przy małych pivotach.
+
+\lstinputlisting{../src/gauss_elim_pivot_diag1.m}
+
+\subsection{\texttt{lu\_doolittle\_nopivot.m}}
+Klasyczna faktoryzacja Doolittle'a na kopii macierzy $A$: mnożniki zapisujemy w~$L$ (jedynki na przekątnej), zaktualizowany blok w~$U$. Wynik spełnia $A=LU$ (z dokładnością numeryczną), o ile nie napotkamy zerowego pivota.
+
+\lstinputlisting{../src/lu_doolittle_nopivot.m}
+
+\subsection{\texttt{lu\_doolittle\_pivot.m}}
+Wariant z~permutacją $P$: przed każdym krokiem $k$ wykonujemy ten sam wybór pivota co w~Gaussie, zamieniamy wiersze $U$, $P$ oraz już obliczoną lewą część $L$, po czym aktualizujemy $U$ i~kolumnę $L$ jak w~wersji bez pivotingu. Wynik: $PA=LU$.
+
+\lstinputlisting{../src/lu_doolittle_pivot.m}
 
 \section{Wyniki numeryczne}
 
 \subsection{Podsumowanie liczbowe}
-% \begin{table}[htbp]\centering
-% \caption{Przykład — uzupełnij po uruchomieniu Octave.}
-% \begin{tabular}{@{}ll@{}}\toprule Metryka & Wartość \\ \midrule
-% $\|A-LU\|_F$ & \ldots \\ \bottomrule \end{tabular}\end{table}
-\textit{(Tu: tabele z normami / błędami z \texttt{solution.m}.)}
+Tabela~\ref{tab:metryki} dotyczy \textbf{tej samej} losowej macierzy $A$ co w~skrypcie (\texttt{rng(7)}, rozmiar $32\times 32$).
+Pierwsze dwa wiersze sprawdzają postać macierzy po eliminacji Gaussa: $\|\operatorname{tril}(U,-1)\|_F$ powinno być zerem (ścisła macierz górnotrójkątna); w~skrypcie dodatkowo drukowane jest $\max_k|U_{kk}-1|$ (tu w~tabeli widać tylko normę dolną trójkątną).
+Kolejne wiersze dotyczą \textbf{rozkładu LU}: błąd odtworzenia macierzy z~iloczynu $LU$ (lub $PA$ po permutacji) w~normie Frobeniusa --- im mniejsza wartość, tym lepiej zgadza się rozkład z~oryginałem.
+Ostatni wiersz to referencja: wbudowana funkcja \texttt{lu} w~Octave (ten sam typ błędu co dla naszej LU z~pivotem).
 
-\subsection{Wyjście konsoli}
-% Zapisz wyjście: w Octave \texttt{diary('out.txt'); diary on; run('solution.m'); diary off;}
-% potem skopiuj plik do LaTeX/ i:
-% \verbatiminput{octave_out.txt}
-\textit{(Tu: surowe wyjście z uruchomienia --- \texttt{\textbackslash verbatiminput\{...\}}.)}
+\begin{table}[htbp]\centering
+\caption{Losowa macierz $32\times 32$ (\texttt{rng(7)}): znaczenie wierszy opisano w~akapicie przed tabelą.}
+\label{tab:metryki}
+\begin{tabular}{@{}l l@{}}\toprule
+  Metryka & Wartość \\ \midrule
+  $\|\operatorname{tril}(U_1,-1)\|_F$ (Gauss bez pivotu) & $0$ \\
+  $\|\operatorname{tril}(U_2,-1)\|_F$ (Gauss z pivotem) & $0$ \\
+  $\|A - LU\|_F$ (LU bez pivotu) & $4{,}66\cdot 10^{-13}$ \\
+  $\|PA - LU\|_F$ (LU z pivotem, nasza implementacja) & $4{,}32\cdot 10^{-15}$ \\
+  $\|P_0 A - L_0 U_0\|_F$ (\texttt{lu} w~Octave) & $2{,}63\cdot 10^{-15}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsection{Wykresy i eksperyment (Python)}
-% Wykresy: \texttt{python analysis/plot\_template.py} (z korzenia szablonu \texttt{\_template\_/}) → plik poniżej.
+\subsection{Porównanie na wykresie (precyzja, czas, operacje)}
+Rysunek~\ref{fig:porownanie} powstał na podstawie pliku \texttt{LaTeX/data/prog2\_benchmark.csv} wygenerowanego przez \texttt{benchmark\_prog2.m} oraz skryptu \texttt{analysis/plot\_template.py}.
+\begin{itemize}
+  \item \textbf{Lewy panel:} miara błędu w~normie Frobeniusa (skala logarytmiczna). Dla Gaussa suma normy dolnego trójkąta (powinna być $0$) oraz odchylenia jedynek na przekątnej; dla LU --- błąd odtworzenia $A$ z~rozkładu.
+  \item \textbf{Środek:} średni czas jednego wywołania na tej samej macierzy $A$ (50 powtórzeń dla naszych funkcji, 2000 dla \texttt{lu}, bo procedura wbudowana jest znacznie szybsza). Oś $x$ jest logarytmiczna: \texttt{lu} ma rząd $10^{-1}\,$ms, a~np.\ nasza LU z~pivotem --- dziesiątki ms, więc przy skali liniowej słupek \texttt{lu} byłby niewidoczny.
+  \item \textbf{Prawy panel:} różnica szacunku operacji względem minimalnego wariantu ($\approx \frac{2}{3}n^3$): widoczny jest dopiero \emph{narzut pivotingu} rzędu $n^2/2$ (dla $n=32$ ok.\ $496$), a~nie prawie identyczna suma $\sim 2\cdot 10^4$.
+\end{itemize}
+
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.72\linewidth]{szablon_flopy.pdf}
-  \caption{Przykład z szablonu: model liczby operacji $\propto n^3$ w funkcji $n$ (zamień na własne pomiary).}
+  \includegraphics[width=\linewidth]{prog2_algorytmy.pdf}
+  \caption{Porównanie pięciu wariantów (cztery nasze + \texttt{lu} Octave) dla $n=32$.}
+  \label{fig:porownanie}
 \end{figure}
-\textit{(W zadaniach bez wykresów usuń powyższe \texttt{figure} oraz wygenerowany PDF z \texttt{figures/}.)}
-
-\subsection{Benchmark (opcjonalnie)}
-\textit{(Tu: czas vs.\ $n$, licznik operacji arytmetycznych, porównanie wariantów --- jeśli ma sens w zadaniu.)}
 
 \section{Wnioski}
-\textit{(Tu: synteza wyników, stabilność numeryczna, zgodność z teorią.)}
+Dla dobrze uwarunkowanej losowej macierzy $32\times 32$ oba warianty eliminacji dają macierz górnotrójkątną z~dokładnymi jedynkami na przekątnej (w normie Frobeniusa dolny trójkąt jest zerowy). LU bez pivotingu ma większy błąd odtworzenia niż warianty z~pivotingiem; nasza LU z~pivotem jest bliska wbudowanej \texttt{lu}. Wykres zbiorczy pokazuje, że pivoting poprawia precyzję rozkładu kosztem niewielkiego narzutu czasowego i~dodatkowych operacji (porównania, zamiany wierszy). Macierz $B=[\varepsilon,1;\,1,1]$ ilustruje sens pivotingu przy złym doborze pivota bez zamiany wierszy.
 
 \end{document}

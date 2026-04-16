@@ -1,19 +1,10 @@
-Rachunek Macierzowy — katalog analysis/ (wykresy, proste benchmarki)
-====================================================================
+Rachunek Macierzowy — katalog analysis/ (prog_2)
+================================================
 
-Zalecenie do sprawozdania (patrz SZABLON_CZYTAJ.txt w _template_/):
-  - wykresy zapisuj do ../LaTeX/figures/ (PDF lub PNG),
-  - w raporcie: \includegraphics{...} oraz opis osi / co mierzono.
+plot_template.py
+  Wczytuje ../LaTeX/data/prog2_benchmark.csv (generuje go Octave: src/benchmark_prog2.m).
+  Zapis: ../LaTeX/figures/prog2_algorytmy.pdf (precyzja log; czas log; operacje = nadmiar nad min. szacunkiem ~ (2/3)n^3).
 
-Szablon: plot_template.py
-  Uruchom z tego katalogu:
-    python plot_template.py
-  Powstanie m.in. LaTeX/figures/szablon_flopy.pdf (modelowy wykres n vs. n^3).
-
-Oddawany kod i figury mają wyglądać jak praca własna (spójnie z raportem i Octave),
-bez oczywistych śladów po generatorach — patrz sekcja w SZABLON_CZYTAJ.txt.
-
-Dalsze pomysły (gdy ma to sens w zadaniu):
-  - czas wykonania vs. rozmiar macierzy n,
-  - szacowana liczba operacji (+, -, *, /) w zależności od n,
-  - porównanie wariantu z/bez pivotingu itd.
+Kolejnosc (albo .\generate_ALL.ps1 z korzenia prog_2/):
+  1) octave w src/: run('benchmark_prog2.m')
+  2) python analysis/plot_template.py

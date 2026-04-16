@@ -51,7 +51,24 @@ Struktura
       figures/             — PDF/PNG z Pythona
       template/            — klasa AGH (projectreport.cls)
       latexmkrc
+    generate_ALL.ps1       — jednym poleceniem: Octave (diary) → Python (wykresy) → LaTeX (pdf)
     SZABLON_CZYTAJ.txt      — ten plik
+
+
+Skrypt `generate_ALL.ps1` (obowiązkowo w każdej kopii zadania)
+---------------------------------------------------------------
+Przy tworzeniu **prog_1**, **prog_2**, … **zawsze** dołącz w korzeniu paczki zadania skrypt PowerShell
+o nazwie **`generate_ALL.ps1`**, który w jednej sekwencji:
+
+  1) uruchamia Octave z katalogu `src/` (`solution.m`), zapisując wyjście do `LaTeX/octave_out.txt`
+     (`diary` jak w przykładzie niżej);
+  2) odpala Pythona na `analysis/plot_template.py`, jeśli plik istnieje (wykresy do `LaTeX/figures/`);
+  3) buduje PDF z `LaTeX/raport.tex` przez `latexmk -pdf`.
+
+Wzorzec leży w tym szablonie: `generate_ALL.ps1`. Po skopiowaniu do `prog_N/` uruchom z katalogu zadania:
+`.\generate_ALL.ps1` (PowerShell; bez osobnego pliku `.bat`).
+
+Uwaga: w starszych katalogach może być nazwa `regeneruj.ps1` — nowe zadania ujednolicaj pod **`generate_ALL.ps1`**.
 
 
 GNU Octave (PATH)
