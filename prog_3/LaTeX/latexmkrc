@@ -1,0 +1,5 @@
+# $do_cd: przed kompilacją przejście do folderu z głównym .tex — ścieżka
+# \documentclass{template/projectreport} działa w MiKTeX. (Na części systemów
+# latexmk wczytuje ten plik tylko gdy cwd to katalog zawierający latexmkrc;
+# wtedy pomocny jest dodatkowy latexmkrc w korzeniu workspace.)
+$do_cd = 1;

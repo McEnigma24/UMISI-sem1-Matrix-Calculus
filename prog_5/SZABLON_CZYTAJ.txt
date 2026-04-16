@@ -1,0 +1,87 @@
+SZABLON STARTOWY — Rachunek Macierzowy, katalog _template_/
+==========================================================
+
+Konwencja nazewnictwa
+---------------------
+W sprawozdaniu, komentarzach w kodzie i na końcówkach plików **nie piszemy „UMISI”** —
+tylko pełna nazwa przedmiotu: **Rachunek Macierzowy** (np. w tytule sprawozdania,
+nagłówku skryptu, opisach wykresów).
+
+Autorzy (zawsze ci sami)
+-------------------------
+**Kacper Bujak**, **Wojciech Maćkowiak** — ustawione na stałe w `LaTeX/raport.tex`
+(`\Autorzy`). Zmienia się tylko tytuł zadania i numer programu.
+
+
+Finał oddawany (bez „śladów” generatorów / szablonu AI)
+-------------------------------------------------------
+Wersja do oddania ma wyglądać jak **praca studenta**: spójny styl, naturalne sformułowania,
+bez charakterystycznych dopisków, meta-komentarzy ani nadmiernie „szlifowanej” polszczyzny
+typowej dla tekstu z modeli językowych.
+
+Dotyczy to **wszystkich plików** w paczce zadania, m.in.:
+  • **raport LaTeX** — usuń placeholdery typu „(Tu: …)”, zbędne instrukcje ze szablonu,
+    ujednolić ton z resztą pracy;
+  • **skrypty Octave** — komentarze i nazwy zmiennych jak w zwykłym kodzie laboratoryjnym,
+    bez ogólników i „tutorialowych” akapitów z narzędzi AI;
+  • **Python (wykresy)** — proste tytuły osi, czytelna legenda, bez przesadnej estetyki
+    „z gotowca”; kod bez przesadnie rozbudowanych docstringów i ogólników;
+  • **pozostałe** — brak śmieciowych plików, brak śladów po czacie w nazwach / komentarzach.
+
+Zanim wyślesz ZIP / repo: przejrzyj diff jak recenzent — czy cokolwiek **krzyczy**, że nie pisałeś
+tego samodzielnie w tym stylu.
+
+
+Cel
+---
+Katalog `_template_/` jest wzorcem na każde nowe zadanie (prog_1, prog_2, ...):
+skopiuj go w całości (albo minimum: `src/`, `LaTeX/`, opcjonalnie `analysis/`).
+
+
+Struktura
+---------
+  _template_/
+    src/
+      solution.m           — główny skrypt Octave/MATLAB
+    analysis/
+      plot_template.py     — szablon wykresu (matplotlib → LaTeX/figures/)
+      README.txt
+    LaTeX/
+      raport.tex           — sprawozdanie (snippety, wyniki, wykresy)
+      figures/             — PDF/PNG z Pythona
+      template/            — klasa AGH (projectreport.cls)
+      latexmkrc
+    SZABLON_CZYTAJ.txt      — ten plik
+
+
+GNU Octave (PATH)
+-----------------
+W PATH: `...\GNU Octave\...\mingw64\bin` (`octave-cli` / `octave`).
+
+Uruchomienie:
+  octave-cli --eval "cd('C:/pelna/sciezka/do/prog_N/src'); run('solution.m');"
+
+Albo: `cd` do `src/`, potem w Octave: `run("solution.m")`.
+
+Wyniki do sprawka: `diary('plik.txt'); diary on; run('solution.m'); diary off;`
+→ plik do `LaTeX/`, w `raport.tex`: `\verbatiminput{...}`.
+
+
+Wymagania do sprawozdania (raport.tex)
+--------------------------------------
+  1) Fragmenty kodu — `listings`, np. `\lstinputlisting{../src/...}`.
+  2) Wyniki — tabele + surowe wyjście (`verbatiminput`).
+  3) Wykresy — Python / matplotlib → `LaTeX/figures/*.pdf`; w tekście `\includegraphics`.
+     Szablon: `python analysis/plot_template.py` (uruchom z katalogu `_template_/`).
+  4) Opcjonalnie benchmark (czas vs. $n$, liczba operacji $+,-,\times,\div$, …).
+
+
+LaTeX
+-----
+- W `raport.tex` uzupełnij wyłącznie `\TytulZadania` oraz `\NumerProgramu` (autorzy są stałe).
+- Buduj z katalogu `LaTeX/` (latexmk).
+
+
+Po skopiowaniu szablonu
+----------------------
+Możesz usunąć lub nadpisać `SZABLON_CZYTAJ.txt` w kopii zadania przed oddaniem.
