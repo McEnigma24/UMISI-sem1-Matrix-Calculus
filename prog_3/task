@@ -1,0 +1,17 @@
+Program trzeci (dla par dwuosobowych)
+Proszę w wybranym języku programowania napisać program który
+• Oblicza normę macierzową ||M||1
+• Oblicza współczynnik uwarunkowania macierzowy ||M||1
+• Oblicza normę macierzową ||M||2
+• Oblicza współczynnik uwarunkowania macierzowy ||M||2
+• Oblicza normę macierzową ||M||p
+• Oblicza współczynnik uwarunkowania macierzowy ||M||p
+• Oblicza normę macierzową ||M||∞
+• Oblicza współczynnik uwarunkowania macierzowy ||M||∞
+• Oblicza SVD macierzy M
+Proszę do obliczania wektorów i wartości własnych macierzy M użyć biblioteki numerycznej ze swojego języka programowania
+
+Proszę przygotować raport który dla każdego punktu zawiera następujące elementy
+• Przedstawia algorytm (np. sposób obliczania normy macierzowej ||M||1)
+• Przedstawia istotne fragmenty kodu (np. obliczania normy macierzowej ||M||1)
+• Przedstawia wynik dla macierzy M (ewentualnie z obliczeniami pośrednimi)

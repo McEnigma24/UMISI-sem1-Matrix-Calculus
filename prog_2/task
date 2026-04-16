@@ -1,0 +1,4 @@
+Proszę zaimplementować dla macierzy o rozmiarze = ( Państwa miesiąc urodzenia + dzień urodzenia)
+1) Algorytm eliminacji Gaussa bez pivotingu generujący jedynki na przekątnej (slajd 14)
+2) Algorytm eliminacji Gaussa z pivotingiem (slajd 26)
+4) Algorytm LU faktoryzacji bez pivotingu (slajd 33) 5) Algorytm LU faktoryzacji z pivotingiem (slajd 36)

@@ -1,0 +1,54 @@
+%%%%%% -*- Coding: utf-8-unix; Mode: latex
+
+\documentclass[polish]{template/projectreport}
+
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{indentfirst}
+\usepackage{csquotes}
+\usepackage{amsmath,amssymb}
+\DeclareQuoteStyle[quotes]{polish}
+  {\quotedblbase}
+  {\textquotedblright}
+  [0.05em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteright}
+\DeclareQuoteAlias[quotes]{polish}{polish}
+
+\captionsetup[figure]{skip=5pt,position=bottom}
+\captionsetup[table]{skip=5pt,position=top}
+
+\usepackage[bookmarks=false]{hyperref}
+\hypersetup{colorlinks,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue}
+
+\title{Tytuł raportu\\{\large Podtytuł (np.\ laboratorium)}}
+\author{Imię Nazwisko}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Cel ćwiczenia}
+% Treść sekcji.
+
+\section{Opis algorytmów}
+
+\subsection{Nagłówek podrozdziału}
+% Treść podrozdziału.
+
+\section{Implementacja}
+% Treść sekcji.
+
+\section{Wyniki numeryczne}
+% Treść sekcji (tabele, rysunki, opis wyników).
+
+\section{Wnioski}
+% Treść sekcji.
+
+\end{document}

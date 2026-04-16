@@ -1,0 +1,81 @@
+%%%%%% -*- Coding: utf-8-unix; Mode: latex
+
+\documentclass[polish]{template/projectreport}
+
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{indentfirst}
+\usepackage{csquotes}
+\usepackage{amsmath,amssymb}
+\DeclareQuoteStyle[quotes]{polish}
+  {\quotedblbase}
+  {\textquotedblright}
+  [0.05em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteright}
+\DeclareQuoteAlias[quotes]{polish}{polish}
+
+\captionsetup[figure]{skip=5pt,position=bottom}
+\captionsetup[table]{skip=5pt,position=top}
+
+\usepackage[bookmarks=false]{hyperref}
+\hypersetup{colorlinks,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue}
+
+\title{Eliminacja Gaussa i faktoryzacja LU\\{\large Laboratorium 3 (rachunek macierzowy)}}
+\author{Wojciech Maćkowiak}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Cel ćwiczenia}
+Celem jest implementacja wybranych algorytmów numerycznych dla macierzy kwadratowej rozmiaru
+\[
+  n = m + d,
+\]
+gdzie $m$ oznacza miesiąc urodzenia, a $d$ --- dzień urodzenia (wartości ustawiane w pliku \texttt{solution.m}). W raporcie przyjęto przykładowo $m=4$, $d=16$, stąd $n=20$.
+
+\section{Opis algorytmów}
+
+\subsection{Eliminacja Gaussa bez pivotingu (slajd~14)}
+Dla każdej kolumny $k=1,\ldots,n$:
+\begin{enumerate}
+  \item dzielimy $k$-ty wiersz przez element diagonalny $u_{kk}$ (pivot), aby na przekątnej uzyskać jedynkę;
+  \item odejmujemy wielokrotność $k$-tego wiersza od wierszy $i>k$, tak by wyzerować elementy poniżej przekątnej w kolumnie $k$.
+\end{enumerate}
+Wynikiem jest macierz górnotrójkątna $U$ z jedynkami na przekątnej. Przy zerowym pivoicie algorytm bez zamiany wierszy się nie domyka --- wymaga wtedy pivotingu lub innej macierzy wejściowej.
+
+\subsection{Eliminacja Gaussa z pivotingiem częściowym (slajd~26)}
+Przed krokiem dla kolumny $k$ zamieniamy miejscami wiersze tak, aby pivot $u_{kk}$ miał największą wartość bezwzględną spośród $u_{kk},\ldots,u_{nk}$. Następnie stosujemy ten sam schemat normalizacji wiersza $k$ i eliminacji poniżej przekątnej jak w~punkcie poprzednim.
+
+\subsection{Faktoryzacja LU bez pivotingu (slajd~33)}
+Rozkład Doolittle'a: $A=LU$, gdzie $L$ jest dolnotrójkątna z jedynkami na przekątnej, a $U$ górnotrójkątna. Mnożniki eliminacji zapisujemy w~kolumnach $L$ pod przekątną; na $U$ wykonujemy klasyczną eliminację w~przód bez zamiany wierszy. Rozkład istnieje, gdy wszystkie minory główne są nieosobliwe.
+
+\subsection{Faktoryzacja LU z pivotingiem (slajd~36)}
+Wprowadzamy macierz permutacji $P$ (iloczyn transpozycji sąsiednich wierszy). Otrzymujemy
+\[
+  PA = LU,
+\]
+przy czym w trakcie eliminacji te same permutacje stosujemy do częściowo zbudowanych $L$ i~$U$, zgodnie ze standardowym schematem z wykładu.
+
+\section{Implementacja}
+Kod źródłowy znajduje się w pliku \texttt{solution.m} w katalogu laboratorium. Na początku skryptu należy ustawić \texttt{miesiac\_ur} oraz \texttt{dzien\_ur}. Generowana jest macierz $A$ o elementach losowych z dodatkiem $nI$, co daje silną dominację przekątniową i pozwala bezpiecznie uruchomić warianty bez pivotingu dla testów numerycznych.
+
+\section{Wyniki numeryczne}
+Po uruchomieniu \texttt{solution.m} w MATLAB-ie program wypisuje m.in.:
+\begin{itemize}
+  \item dla eliminacji bez pivotingu i z pivotingiem: normę Frobeniusa różnicy $U-\mathrm{triu}(U)$ (powinna być rzędu błędu maszynowego) oraz maksimum $|u_{ii}-1|$;
+  \item dla LU: normę $\|A-LU\|_F$ (wariant bez $P$) oraz $\|PA-LU\|_F$ (wariant z permutacją), wraz z porównaniem do wbudowanej funkcji \texttt{lu}.
+\end{itemize}
+Dla testowej macierzy z dominacją przekątniową wszystkie rezydualne normy są bardzo małe, co potwierdza poprawność implementacji.
+
+\section{Wnioski}
+Eliminacja i LU bez pivotingu są prostsze obliczeniowo, lecz mogą się wyłożyć przy małych pivotach lub osobliwych minorach. Pivoting częściowy poprawia stabilność i pozwala na faktoryzację dla szerokiej klasy macierzy nieosobliwych. Jedynki na przekątnej w eliminacji Gaussa upraszczają interpretację kroków i późniejsze podstawianie wstecz przy rozwiązywaniu układów równań.
+
+\end{document}

@@ -1,0 +1,19 @@
+1. Proszę w wybranym języku programowania zaimplementować metodę potęgową dla macierzy 3x3
+Algorytm powinien spełniać następujące założenia:
+a) losujemy wektor początkowy z° o współrzędnych z przedziału otwartego (0,1)
+b) obliczamy wo-Az° i liczymy error = ||Az° - maxi(w)z || Jeśli error <10-8
+wówczas wracamy do punktu b) (czyli nie startujemy z wektora który spełnia warunek stopu)
+c) ustalamy epsilon oraz normę ||.|| i iterujemy
+2. Proszę wylosować macierz A o rozmiarze 3x3 oraz policzyć SVD = UDV w następujący sposób: a) proszę obliczyć wektory i wartości własne macierzy AAT
+Z tego obliczenia dostaniemy U oraz D
+V obliczamy ze wzoru V=A+Uinv(D)
+pamiętając że inverse D to jest macierz diagonalna taka że inv(D) = 1/Di
+3. Proszę porównać wykresy zbieżności algorytmu metody potęgowej dla 3 wektorów i wartości własnych, dla różnych norm ||-||, gdzie p=1,2,3,4 oraz dla normy nieskończoność, używając dokładności epsilon = 0.0001
+Proszę wygenerować 5*3=15 wykresów. Na każdym wykresie narysować: oś pozioma - iteracje, oś pionowa - błąd (error policzony jak w punkcie b)
+4. Proszę policzyć SVD macierzy A używając biblioteki numerycznej i porównać dokładność oszacowaną jako ||UDV - SVD(A)||p
+5. Raport powienien zawierać następujące punkty
+a) Pseudokod algorytmu
+b) Wybrane fragmenty kodu
+c) Wylosowaną macierz A (każdy student powinien mieć wylosowaną inną macierz) d) Macierze U, D, V
+e) 15 wykresów wspomnianych w punkcie 3
+f) Informacje o 5 błędach opisanych w punkcie 4 dla p=1,2,3,4 oraz nieskończoność

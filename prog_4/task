@@ -1,0 +1,14 @@
+Program 4
+Proszę napisać w swoim ulubionym języku programowania program który dla macierzy prostokątnej A o rozmiarze n wierszy i m kolumn
+oblicza SVD [A=USV^T] w następujący sposób:
+1. Proszę wypisać/narysować (np. spy(A) w MATLAB) macierz A
+2. Proszę obliczyć i wypisać/narysować macierz AA^T (nxn)
+3. Proszę (używając stosownej biblioteki) policzyć wartości wektory własne U; macierzy AAT.
+4. Proszę wypisać/narysować macierz wektorów własnych [U1U2...Un-1Un] oraz diagonalną S taką że S1- pierwiastek z Ai,
+5. Proszę obliczy macierz V korzystając z własności V=ATUS11,
+6. Proszę wypisać/narysować macierz [V1V2...V-m-1Vm] (wierszami)
+7. Proszę obliczyć i wypisać/narysować macierz ATA(mxm)
+8. Proszę (używając stosownej biblioteki) policzyć wartości A, i wektory własne Vi macierzy ATA.
+9. Proszę wypisać/narysować macierz wektorów własnych [V1V2...Vm-1Vm] (wierszami) oraz diagonalną S taką że Si= pierwiastek z Ai,
+10. Proszę obliczy macierz U korzystając z własności U=AVS-1, (pamiętając że S1=1/S)
+11. Proszę wypisac/narysować macierz [U1U2...U-m-1Um] 12. Proszę porównać uzyskane w ten sposób dwie dekompozucje 13. Ile wynosi dim R(A), oraz dim N(A) gdzie R(A) to range A (obraz operatora A) oraz N(A) to null space A (jądro operatora A)
