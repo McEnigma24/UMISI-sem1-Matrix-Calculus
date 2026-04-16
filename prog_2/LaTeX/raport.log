@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.9)  16 APR 2026 23:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.9)  16 APR 2026 23:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -692,11 +692,11 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<figures/prog2_algorytmy.pdf, id=119, 800.12169pt x 298.2662pt>
+<figures/prog2_algorytmy.pdf, id=119, 813.30136pt x 298.2662pt>
 File: figures/prog2_algorytmy.pdf Graphic file (type pdf)
 <use figures/prog2_algorytmy.pdf>
 Package pdftex.def Info: figures/prog2_algorytmy.pdf  used on input line 142.
-(pdftex.def)             Requested size: 455.24413pt x 169.70856pt.
+(pdftex.def)             Requested size: 455.24413pt x 166.95511pt.
 
 [4] [5 <./figures/prog2_algorytmy.pdf>] (raport.aux)
  ***********
@@ -726,9 +726,9 @@ C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb
 pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr
 8a.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmri8a.pfb>
-Output written on raport.pdf (5 pages, 164086 bytes).
+Output written on raport.pdf (5 pages, 164167 bytes).
 PDF statistics:
- 373 PDF objects out of 1000 (max. 8388607)
+ 372 PDF objects out of 1000 (max. 8388607)
  107 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

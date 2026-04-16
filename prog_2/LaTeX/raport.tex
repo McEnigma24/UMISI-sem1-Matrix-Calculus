@@ -134,7 +134,7 @@ Rysunek~\ref{fig:porownanie} powstał na podstawie pliku \texttt{LaTeX/data/prog
 \begin{itemize}
   \item \textbf{Lewy panel:} miara błędu w~normie Frobeniusa (skala logarytmiczna). Dla Gaussa suma normy dolnego trójkąta (powinna być $0$) oraz odchylenia jedynek na przekątnej; dla LU --- błąd odtworzenia $A$ z~rozkładu.
   \item \textbf{Środek:} średni czas jednego wywołania na tej samej macierzy $A$ (50 powtórzeń dla naszych funkcji, 2000 dla \texttt{lu}, bo procedura wbudowana jest znacznie szybsza). Oś $x$ jest logarytmiczna: \texttt{lu} ma rząd $10^{-1}\,$ms, a~np.\ nasza LU z~pivotem --- dziesiątki ms, więc przy skali liniowej słupek \texttt{lu} byłby niewidoczny.
-  \item \textbf{Prawy panel:} różnica szacunku operacji względem minimalnego wariantu ($\approx \frac{2}{3}n^3$): widoczny jest dopiero \emph{narzut pivotingu} rzędu $n^2/2$ (dla $n=32$ ok.\ $496$), a~nie prawie identyczna suma $\sim 2\cdot 10^4$.
+  \item \textbf{Prawy panel:} \emph{wykres liniowy} szacunku całkowitej liczby operacji (teoria) w~funkcji kolejności wariantów z~CSV; oś~$x$ jest \textbf{przybliżona} (wąski zakres wokół $\approx 2,1\cdot 10^4$--$2,3\cdot 10^4$), żeby widać było skok między wariantem bez pivotingu a~z~pivotingiem (ok.\ $+\frac{n(n-1)}{2}$). Kropkowana pionowa linia: minimum $\approx \frac{2}{3}n^3$.
 \end{itemize}
 
 \begin{figure}[htbp]

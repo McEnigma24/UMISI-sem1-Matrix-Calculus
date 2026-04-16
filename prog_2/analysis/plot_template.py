@@ -26,10 +26,6 @@ prec = np.array([float(r["precision"]) for r in rows], dtype=float)
 ops = np.array([float(r["ops_theory"]) for r in rows], dtype=float)
 prec_plot = np.maximum(prec, 1e-20)
 
-# Nadmiar operacji wzgledem min. szacunku (2/3)n^3 — widoczny narzut pivotingu
-ops_base = float(np.min(ops))
-ops_extra = np.maximum(ops - ops_base, 0.0)
-
 y = np.arange(len(labels))
 
 fig, axes = plt.subplots(1, 3, figsize=(11.2, 4.2))
@@ -44,7 +40,6 @@ ax0.set_title("Precyzja")
 ax0.grid(True, axis="x", alpha=0.35)
 
 ax1 = axes[1]
-# lu() w Octave jest na tyle szybkie, ze przy skali liniowej słupek znika — skala log
 t_plot = np.maximum(time_ms, 1e-4)
 ax1.barh(y, t_plot, color="#CC6677", height=0.55)
 ax1.set_xscale("log")
@@ -54,13 +49,19 @@ ax1.set_xlabel("czas [ms], skala log")
 ax1.set_title("Czas (50x / 2000x lu)")
 ax1.grid(True, axis="x", which="both", alpha=0.35)
 
+# Prawy panel: wykres liniowy x = szacunek operacji, y = kolejnosc w CSV — przyblizona oś x
+# pokazuje dwa poziomy (~(2/3)n^3 vs + narzut pivotu), bez „potrójnych” identycznych slupkow
 ax2 = axes[2]
-ax2.barh(y, ops_extra, color="#228833", height=0.55)
+ax2.plot(ops, y, "o-", color="#228833", lw=2.0, ms=8, zorder=3)
+ops_rng = float(np.ptp(ops))
+pad = max(350.0, ops_rng * 0.55 + 50.0) if ops_rng > 0 else 400.0
+ax2.set_xlim(float(ops.min()) - pad, float(ops.max()) + pad)
 ax2.set_yticks(y)
 ax2.set_yticklabels(labels, fontsize=9)
-ax2.set_xlabel("nadmiar nad min. kosztem (teoria)")
-ax2.set_title("Narzut pivotingu (~ n^2/2)")
-ax2.grid(True, axis="x", alpha=0.35)
+ax2.set_xlabel("szac. operacji (teoria)")
+ax2.set_title("Koszt — linia miedzy wariantami")
+ax2.axvline(float(np.min(ops)), color="#666666", ls=":", lw=1.2, zorder=1)
+ax2.grid(True, axis="both", alpha=0.35)
 
 fig.suptitle(
     "Porownanie algorytmow (macierz losowa 32x32, rng(7))",
