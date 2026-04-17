@@ -1,18 +1,5 @@
 %%%%%% -*- Coding: utf-8-unix; Mode: latex
-% SZABLON raportu — Rachunek Macierzowy (bez skrótu „UMISI” w treści).
-%
-% Autorzy: na stałe Kacper Bujak, Wojciech Maćkowiak (makro \Autorzy — nie zmieniaj).
-% Zmieniasz tylko: \TytulZadania, \NumerProgramu.
-%
-% Sprawozdanie — oczekiwania (uzupełnij w każdym zadaniu):
-%   • fragmenty kodu (np. \lstinputlisting z plików .m w ../src/),
-%   • faktyczne wyniki uruchomienia (tabela + surowe wyjście: diary → verbatiminput),
-%   • gdy ma sens: wykresy (Python → PDF/PNG w ./figures/) oraz krótki benchmark
-%     (czas vs n, lub szacunek / pomiar operacji +,−,×,÷ w zależności od n).
-%
-% Kompilacja: latexmk z katalogu LaTeX/ (latexmkrc: $do_cd).
-%
-% Oddanie: treść ma brzmieć jak student (usuń placeholdery szablonu, zbędne meta-komentarze).
+% Rachunek Macierzowy — sprawozdanie, program 3.
 
 \documentclass[polish]{template/projectreport}
 
@@ -33,8 +20,8 @@
 
 \usepackage{xcolor}
 \usepackage{listings}
-\usepackage{verbatim}
 \usepackage{booktabs}
+\usepackage{amsmath}
 
 \definecolor{codegreen}{rgb}{0,0.5,0}
 \lstdefinestyle{matlab}{
@@ -61,10 +48,8 @@
   citecolor=blue,
   urlcolor=blue}
 
-% --- ZMIEŃ wg konkretnego zadania ---
-\newcommand{\TytulZadania}{\textit{(Tytuł zadania)}}
-\newcommand{\NumerProgramu}{\textit{N}}
-% --- Autorzy (zawsze tak samo) ---
+\newcommand{\TytulZadania}{Normy macierzowe, uwarunkowanie i~rozkład SVD}
+\newcommand{\NumerProgramu}{3}
 \newcommand{\Autorzy}{Kacper Bujak, Wojciech Maćkowiak}
 
 \title{\TytulZadania\\{\large Rachunek Macierzowy --- program \NumerProgramu}}
@@ -72,51 +57,135 @@
 \date{\today}
 
 \begin{document}
+\input{wyniki_auto.tex}
+
 \maketitle
 
 \section{Cel ćwiczenia}
-\textit{(Tu: cel wg \texttt{task} / polecenia; parametry wejścia, np.\ $n$, macierz testowa.)}
+Dla kwadratowej macierzy rzeczywistej $M$ obliczyć normy macierzowe $\|M\|_1$, $\|M\|_2$, $\|M\|_\infty$, normę z~klasy norm Schattena dla ustalonego rzędu~$p$ (wartości osobliwe z~SVD), odpowiadające współczynniki uwarunkowania, pełny rozkład SVD oraz wartości i~wektory własne przy użyciu procedur numerycznych Octave (\texttt{norm}, \texttt{cond}, \texttt{svd}, \texttt{eig}).
+
+Macierz testowa: losowa $n\times n$ przy $n = 8 + 24 = 32$ (jak w~programie~2), ziarno generatora \texttt{rng(11)}, odrzucenie macierzy z~$\texttt{rcond}(M)$ zbyt małym.
 
 \section{Opis metody / algorytmu}
-\subsection{\textit{(Nagłówek)}}
-\textit{(Tu: opis matematyczny, złożoność, odniesienie do wykładu.)}
+
+\subsection{Norma $\|M\|_1$ i~$\|M\|_\infty$}
+Norma indukowana z~normy wektorowej ``suma modułów'': $\|M\|_1 = \max_j \sum_i |M_{ij}|$ (największa suma modułów po kolumnach). Norma $\|M\|_\infty = \max_i \sum_j |M_{ij}|$ --- po wierszach.
+
+\subsection{Norma $\|M\|_2$}
+$\|M\|_2 = \sigma_{\max}(M)$ --- największa wartość osobliwa (spektralna norma operatora liniowego w~parze norm euklidesowych na $\mathbb{R}^n$).
+
+\subsection{Norma Schattena $\|M\|_{S,p}$ dla ustalonego $p$}
+Niech $\sigma_1 \ge \cdots \ge \sigma_n \ge 0$ będą wartościami osobliwymi $M$. Norma Schattena rzędu~$p$ (dla macierzy rzeczywistej): $\|M\|_{S,p} = \bigl(\sum_i \sigma_i^p\bigr)^{1/p}$. Dla $p=2$ pokrywa się z~normą Frobeniusa $\|M\|_F$, a~nie z~$\|M\|_2$; w~niniejszym zadaniu przyjęto $p=4$, by wypełnić punkt ``$\|M\|_p$'' w~sposób jednoznaczny i~powiązany z~SVD.
+
+\subsection{Współczynnik uwarunkowania}
+Dla norm indukowanych $1$, $2$, $\infty$: $\kappa(M) = \|M\|\,\|M^{-1}\|$. Octave zwraca to przez \texttt{cond(M,1)}, \texttt{cond(M)} (dla~$2$), \texttt{cond(M,inf)}. Dla normy Schattena przyjmujemy analogicznie $\kappa_{S,p} = \|M\|_{S,p}\,\|M^{-1}\|_{S,p}$; wartości osobliwe $M^{-1}$ to $1/\sigma_i$, stąd $\|M^{-1}\|_{S,p} = \bigl(\sum_i \sigma_i^{-p}\bigr)^{1/p}$.
+
+\subsection{SVD i~wartości własne}
+Rozkład $M = U \Sigma V^{\mathsf T}$ z~$\Sigma$ diagonalną nieujemną. Rozkład spektralny (wartości własne, wektory w~kolumnach macierzy $V$) daje \texttt{eig(M)} dla macierzy rzeczywistej (wartości własne mogą być zespolone).
 
 \section{Implementacja}
-\textit{(Tu: struktura \texttt{src/}, pliki \texttt{.m}, ewentualnie skrypty w \texttt{analysis/}.)}
+W~katalogu \texttt{src/}: skrypt \texttt{solution.m} ustala $M$, wywołuje \texttt{norm}, \texttt{cond}, \texttt{inv} do weryfikacji definicji, \texttt{svd}, \texttt{eig}, oraz funkcję \texttt{schatten\_norm\_cond.m} liczącą normę Schattena i~$\kappa_{S,p}$ z~wektora~$\sigma$. Wyniki liczbowe do tabel zapisuje się do \texttt{wyniki\_auto.tex}; do wykresów w~Pythonie: \texttt{singular\_values.txt}, \texttt{norms\_bar.txt}, \texttt{cond\_samples.txt} (ostatni z~proby $250$ losowych macierzy $n\times n$ o~rozsądnym \texttt{rcond}). Skrypt \texttt{analysis/plot\_template.py} generuje kilka plików PDF w~\texttt{LaTeX/figures/}.
 
 \section{Fragmenty kodu}
-% Przykład (ścieżka względem katalogu LaTeX/):
-% \lstinputlisting[firstline=1, lastline=40]{../src/solution.m}
-\textit{(Tu: \texttt{\textbackslash lstinputlisting\{../src/nazwa.m\}} lub środowisko lstlisting.)}
+
+\subsection{Norma Schattena i~$\kappa_{S,p}$ z~wartości osobliwych}
+\lstinputlisting{../src/schatten_norm_cond.m}
+
+\subsection{Główny skrypt: normy, \texttt{cond}, przygotowanie danych}
+\lstinputlisting[firstline=1, lastline=42]{../src/solution.m}
 
 \section{Wyniki numeryczne}
 
-\subsection{Podsumowanie liczbowe}
-% \begin{table}[htbp]\centering
-% \caption{Przykład — uzupełnij po uruchomieniu Octave.}
-% \begin{tabular}{@{}ll@{}}\toprule Metryka & Wartość \\ \midrule
-% $\|A-LU\|_F$ & \ldots \\ \bottomrule \end{tabular}\end{table}
-\textit{(Tu: tabele z normami / błędami z \texttt{solution.m}.)}
+\subsection{Normy i~uwarunkowanie}
+\begin{table}[htbp]
+  \centering
+  \caption{Normy macierzy $M$ i~współczynniki uwarunkowania (wartości z~uruchomienia \texttt{solution.m}).}
+  \begin{tabular}{@{}l r@{}}
+    \toprule
+    Wielkość & Wartość \\
+    \midrule
+    $\|M\|_1$ & \ValNOne \\
+    $\|M\|_2$ & \ValNTwo \\
+    $\|M\|_\infty$ & \ValNInf \\
+    $\|M\|_{S,4}$ (Schatten) & \ValNSchat \\
+    \midrule
+    $\texttt{cond}(M,1)$ & \ValCOne \\
+    $\|M\|_1 \|M^{-1}\|_1$ & \ValCOneDef \\
+    $\texttt{cond}(M,2)$ & \ValCTwo \\
+    $\|M\|_2 \|M^{-1}\|_2$ & \ValCTwoDef \\
+    $\texttt{cond}(M,\infty)$ & \ValCInf \\
+    $\|M\|_\infty \|M^{-1}\|_\infty$ & \ValCInfDef \\
+    $\kappa_{S,4}$ & \ValCSchat \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-\subsection{Wyjście konsoli}
-% Zapisz wyjście: w Octave \texttt{diary('out.txt'); diary on; run('solution.m'); diary off;}
-% potem skopiuj plik do LaTeX/ i:
-% \verbatiminput{octave_out.txt}
-\textit{(Tu: surowe wyjście z uruchomienia --- \texttt{\textbackslash verbatiminput\{...\}}.)}
+Wiersze z~definicją $\|M\|\,\|M^{-1}\|$ pokrywają się z~wyjściem \texttt{cond} --- zgodnie z~teorią dla norm indukowanych.
 
-\subsection{Wykresy i eksperyment (Python)}
-% Wykresy: \texttt{python analysis/plot\_template.py} (z korzenia szablonu \texttt{\_template\_/}) → plik poniżej.
+\subsection{SVD i~spektrum}
+\begin{table}[htbp]
+  \centering
+  \caption{Podsumowanie SVD i~ diagnostyka.}
+  \begin{tabular}{@{}l r@{}}
+    \toprule
+    Wielkość & Wartość \\
+    \midrule
+    $\sigma_{\min}$ & \ValSigmaMin \\
+    $\sigma_{\max}$ & \ValSigmaMax \\
+    $\|M - U \Sigma V^{\mathsf T}\|_F$ & \ValSVDRes \\
+    $\texttt{rcond}(M)$ & \ValRcond \\
+    $\|M V_{\mathrm{eig}} - V_{\mathrm{eig}} D\|_F$ & \ValEigRes \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Małe residuum rozkładu SVD oraz residuum $M V = V D$ potwierdzają poprawność obliczeń bibliotecznych.
+
+\subsection{Wykresy}
+
+Spektrum wartości osobliwych (rys.~\ref{fig:sigma}) pokazuje szybki spadek $\sigma_i$: typowe dla losowej macierzy pełnej --- energia Frobeniusa koncentruje się na kilku dominujących kierunkach. Rysunek~\ref{fig:energia} formalizuje to jako skumulowany udział $\sum_{i\le k}\sigma_i^2 / \|M\|_F^2$: często wystarczy niewiele składowych, by przekroczyć np.\ $90\%$ tej energii.
+
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.72\linewidth]{szablon_flopy.pdf}
-  \caption{Przykład z szablonu: model liczby operacji $\propto n^3$ w funkcji $n$ (zamień na własne pomiary).}
+  \includegraphics[width=0.72\linewidth]{wartosci_osobliwe.pdf}
+  \caption{Wartości osobliwe $\sigma_i$ macierzy $M$ (oś $y$ w~skali logarytmicznej).}
+  \label{fig:sigma}
 \end{figure}
-\textit{(W zadaniach bez wykresów usuń powyższe \texttt{figure} oraz wygenerowany PDF z \texttt{figures/}.)}
 
-\subsection{Benchmark (opcjonalnie)}
-\textit{(Tu: czas vs.\ $n$, licznik operacji arytmetycznych, porównanie wariantów --- jeśli ma sens w zadaniu.)}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.72\linewidth]{energia_frobeniusa_skumulowana.pdf}
+  \caption{Skumulowany udział $\|M\|_F^2$ w~największych wartościach osobliwych (rank-$k$ przybliżenie w~normie Frobeniusa).}
+  \label{fig:energia}
+\end{figure}
+
+Na rys.~\ref{fig:normy} widać, że dla tej samej macierzy $M$ normy indukowane $1$, $2$, $\infty$ oraz norma Schattena $S{,}4$ nie muszą być równe: są to różne sposoby mierzenia ``rozmiaru'' operatora; nierówności teoretyczne (np.\ $\|M\|_2 \le \|M\|_F$) można sprawdzić liczbowo na tabeli z~sekcji wcześniejszej.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.65\linewidth]{normy_porownanie.pdf}
+  \caption{Porównanie czterech norm dla jednej macierzy testowej $M$.}
+  \label{fig:normy}
+\end{figure}
+
+Rysunek~\ref{fig:cond} przedstawia empiryczny rozkład $\texttt{cond}(A,2)$ dla wielu losowych $A$ o~tym samym $n$ co $M$. Rozkład jest silnie prawoskośny w~skali logarytmicznej: większość macierzy ma umiarkowane uwarunkowanie, a~``ogony'' odpowiadają rzadkim, trudniejszym numerycznie realizacjom --- stąd sens sprawdzania \texttt{rcond} przed obliczeniami na odwróconej macierzy.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.72\linewidth]{rozklad_cond2_losowe.pdf}
+  \caption{Histogram $\log_{10}(\texttt{cond}(A,2))$ dla losowych macierzy $A\in\mathbb{R}^{n\times n}$ ($n=32$, odfiltrowane osobliwe / złe \texttt{rcond}).}
+  \label{fig:cond}
+\end{figure}
 
 \section{Wnioski}
-\textit{(Tu: synteza wyników, stabilność numeryczna, zgodność z teorią.)}
+
+\begin{itemize}
+  \item \textbf{Zgodność definicji.} Wartości \texttt{cond} w~normach $1$, $2$ i~$\infty$ pokrywają się z~iloczynem $\|M\|\,\|M^{-1}\|$ w~tej samej normie, co potwierdza poprawne użycie biblioteki i~spójność definicji współczynnika uwarunkowania.
+  \item \textbf{Różne normy, różna geometria.} Normy indukowane mierzą maksymalne wzmocnienie wektora w~innych normach wektorowych; norma Schattena $S{,}4$ zależy od całego spektrum singularnego i~dla $p\neq 2$ nie pokrywa się z~$\|M\|_2$. W~raporcie przyjęto $p=4$ świadomie, by powiązać punkt ``$\|M\|_p$'' z~SVD i~uniknąć niejednoznaczności ogólnej normy indukowanej $\|\cdot\|_p$ dla macierzy.
+  \item \textbf{SVD a stabilność.} Bardzo małe residuum $\|M-U\Sigma V^{\mathsf T}\|_F$ pokazuje, że numeryczny SVD jest stabilny dla naszej macierzy; stosunek $\sigma_{\max}/\sigma_{\min}$ kontroluje $\texttt{cond}(M,2)$ i~wrażliwość na błędy zaokrągleń przy rozwiązywaniu układów z~$M$.
+  \item \textbf{Wartości własne vs osobliwe.} Dla macierzy niesymetrycznej moduły wartości własnych nie muszą pokrywać się z~$\sigma_i$; widoczna zespoloność $\lambda$ przy rzeczywistym $M$ jest normalna. Małe residuum spektralne $\|MV-VD\|_F$ świadczy o~poprawnym zestawieniu par własnych z~\texttt{eig}.
+  \item \textbf{Losowe macierze a typowe uwarunkowanie.} Histogram $\texttt{cond}(A,2)$ sugeruje, że ``typowa'' losowa macierz ma uwarunkowanie znacznie mniejsze niż pesymistyczne szacunki teoretyczne dla najgorszego przypadku; jednocześnie ogon rozkładu przypomina, że przy wielu losowaniach warto odrzucać patologiczne $A$ (tutaj przez próg na \texttt{rcond}).
+  \item \textbf{Energia w~SVD.} Krzywa skumulowanej energii Frobeniusa wskazuje, że niskorzędowe przybliżenie $M$ może być dokładne w~normie Frobeniusa nawet przy małym $k$ --- intuicja przydatna przy PCA / kompresji danych i~analizie skutecznego wymiaru operatora.
+\end{itemize}
 
 \end{document}

@@ -8,14 +8,30 @@
 \babel@aux{polish}{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Cel ćwiczenia}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Opis metody / algorytmu}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}\textit  {(Nagłówek)}}{1}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Implementacja}{1}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Fragmenty kodu}{1}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Wyniki numeryczne}{1}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Podsumowanie liczbowe}{1}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Wyjście konsoli}{1}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Wykresy i eksperyment (Python)}{1}{subsection.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Przykład z szablonu: model liczby operacji $\propto n^3$ w funkcji $n$ (zamień na własne pomiary).}}{2}{figure.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Benchmark (opcjonalnie)}{2}{subsection.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Wnioski}{2}{section.6}\protected@file@percent }
-\gdef \@abspage@last{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Norma $\|M\|_1$ i~$\|M\|_\infty $}{1}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Norma $\|M\|_2$}{1}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Norma Schattena $\|M\|_{S,p}$ dla ustalonego $p$}{1}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Współczynnik uwarunkowania}{1}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}SVD i~wartości własne}{2}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Implementacja}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Fragmenty kodu}{2}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Norma Schattena i~$\kappa _{S,p}$ z~wartości osobliwych}{2}{subsection.4.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/schatten\textunderscore norm\textunderscore cond.m}{2}{lstlisting.-1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Główny skrypt: normy, \texttt  {cond}, przygotowanie danych}{2}{subsection.4.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{2}{lstlisting.-2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Wyniki numeryczne}{3}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Normy i~uwarunkowanie}{3}{subsection.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Normy macierzy $M$ i~współczynniki uwarunkowania (wartości z~uruchomienia \texttt  {solution.m}).}}{3}{table.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}SVD i~spektrum}{4}{subsection.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Podsumowanie SVD i~ diagnostyka.}}{4}{table.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Wykresy}{4}{subsection.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Wartości osobliwe $\sigma _i$ macierzy $M$ (oś $y$ w~skali logarytmicznej).}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:sigma}{{1}{4}{Wartości osobliwe $\sigma _i$ macierzy $M$ (oś $y$ w~skali logarytmicznej)}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Skumulowany udział $\|M\|_F^2$ w~największych wartościach osobliwych (rank-$k$ przybliżenie w~normie Frobeniusa).}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:energia}{{2}{5}{Skumulowany udział $\|M\|_F^2$ w~największych wartościach osobliwych (rank-$k$ przybliżenie w~normie Frobeniusa)}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Porównanie czterech norm dla jednej macierzy testowej $M$.}}{5}{figure.3}\protected@file@percent }
+\newlabel{fig:normy}{{3}{5}{Porównanie czterech norm dla jednej macierzy testowej $M$}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Histogram $\log _{10}(\texttt  {cond}(A,2))$ dla losowych macierzy $A\in \mathbb  {R}^{n\times n}$ ($n=32$, odfiltrowane osobliwe / złe \texttt  {rcond}).}}{6}{figure.4}\protected@file@percent }
+\newlabel{fig:cond}{{4}{6}{Histogram $\log _{10}(\texttt {cond}(A,2))$ dla losowych macierzy $A\in \mathbb {R}^{n\times n}$ ($n=32$, odfiltrowane osobliwe / złe \texttt {rcond})}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Wnioski}{6}{section.6}\protected@file@percent }
+\gdef \@abspage@last{6}

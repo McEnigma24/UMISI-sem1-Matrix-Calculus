@@ -80,14 +80,17 @@ Uruchomienie:
 
 Albo: `cd` do `src/`, potem w Octave: `run("solution.m")`.
 
-Wyniki do sprawka: `diary('plik.txt'); diary on; run('solution.m'); diary off;`
-→ plik do `LaTeX/`, w `raport.tex`: `\verbatiminput{...}`.
+Wyniki do sprawka: `diary(...)` możesz używać lokalnie do weryfikacji, ale w PDF nie wklejamy
+pełnego zrzutu z terminala (ani promptów, ani śladu wywołań, ani całego `diary` od początku do końca).
+W `raport.tex` dawaj tabele z liczbami i — jeśli trzeba — krótki, zredagowany fragment tekstu
+(np. osobny plik z samymi wierszami wyników albo `\verbatiminput` tylko z takiego wycinka).
 
 
 Wymagania do sprawozdania (raport.tex)
 --------------------------------------
   1) Fragmenty kodu — `listings`, np. `\lstinputlisting{../src/...}`.
-  2) Wyniki — tabele + surowe wyjście (`verbatiminput`).
+  2) Wyniki — tabele (priorytet); ewentualnie krótki fragment wyjścia (`verbatiminput` z osobnego,
+     oczyszczonego pliku), bez pełnego RAW z konsoli i bez linii z wywołaniami.
   3) Wykresy — Python / matplotlib → `LaTeX/figures/*.pdf`; w tekście `\includegraphics`.
      Szablon: `python analysis/plot_template.py` (uruchom z katalogu `_template_/`).
   4) Opcjonalnie benchmark (czas vs. $n$, liczba operacji $+,-,\times,\div$, …).

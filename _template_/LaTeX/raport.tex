@@ -6,7 +6,8 @@
 %
 % Sprawozdanie — oczekiwania (uzupełnij w każdym zadaniu):
 %   • fragmenty kodu (np. \lstinputlisting z plików .m w ../src/),
-%   • faktyczne wyniki uruchomienia (tabela + surowe wyjście: diary → verbatiminput),
+%   • faktyczne wyniki uruchomienia (przede wszystkim tabele; ewentualnie krótki, zredagowany
+%     fragment tekstu — nie pełny zrzut konsoli ani ślad wywołań),
 %   • gdy ma sens: wykresy (Python → PDF/PNG w ./figures/) oraz krótki benchmark
 %     (czas vs n, lub szacunek / pomiar operacji +,−,×,÷ w zależności od n).
 %
@@ -98,11 +99,11 @@
 % $\|A-LU\|_F$ & \ldots \\ \bottomrule \end{tabular}\end{table}
 \textit{(Tu: tabele z normami / błędami z \texttt{solution.m}.)}
 
-\subsection{Wyjście konsoli}
-% Zapisz wyjście: w Octave \texttt{diary('out.txt'); diary on; run('solution.m'); diary off;}
-% potem skopiuj plik do LaTeX/ i:
-% \verbatiminput{octave_out.txt}
-\textit{(Tu: surowe wyjście z uruchomienia --- \texttt{\textbackslash verbatiminput\{...\}}.)}
+\subsection{Wyjście konsoli (opcjonalnie, skrót)}
+% Pełny plik z \texttt{diary} służy raczej do pracy lokalnej. Do sprawka: wycinamy tylko istotne
+% wiersze (bez promptów i bez linii z wywołaniami) do np.\ \texttt{wyniki\_skrot.txt}, potem:
+% \verbatiminput{wyniki_skrot.txt}
+\textit{(Tu: tylko jeśli potrzeba --- krótki fragment wyników, nie cały RAW z terminala.)}
 
 \subsection{Wykresy i eksperyment (Python)}
 % Wykresy: \texttt{python analysis/plot\_template.py} (z korzenia szablonu \texttt{\_template\_/}) → plik poniżej.

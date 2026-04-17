@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.9)  16 APR 2026 21:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.9)  17 APR 2026 16:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -364,12 +364,7 @@ Package: listings 2025/11/14 1.11b (Carsten Heinz)
     but found:
         2025/11/14 1.11b (Carsten Heinz)
     so I'm assuming it got fixed.
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
-Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks30
-\verbatim@line=\toks31
-\verbatim@in@stream=\read3
-)
+
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.st
 y
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -527,12 +522,12 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip68
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 57.
+Package hyperref Info: Option `colorlinks' set `true' on input line 49.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'polish'.
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 69
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 59
 .
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
@@ -548,24 +543,24 @@ Package babel Info: 'polish' activates 'polish' shorthands.
 )
 \openout1 = `raport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf
 .mkii
@@ -575,12 +570,12 @@ LaTeX Font Info:    ... okay on input line 69.
 \scratchbox=\box57
 \nofMPsegments=\count332
 \nofMParguments=\count333
-\everyMPshowfont=\toks32
+\everyMPshowfont=\toks30
 \MPscratchCnt=\count334
 \MPscratchDim=\dimen191
 \MPnumerator=\count335
 \makeMPintoPDFobject=\count336
-\everyMPtoPDFconversion=\toks33
+\everyMPtoPDFconversion=\toks31
 )
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopd
 f-base.sty
@@ -628,82 +623,148 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count337
-Package hyperref Info: Link coloring ON on input line 69.
+Package hyperref Info: Link coloring ON on input line 59.
+(wyniki_auto.tex)
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 71.
+ 63.
+
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 71.
+ 63.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 71.
+ 63.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 71.
+ 63.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 7
-1.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 6
+3.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
-<figures/szablon_flopy.pdf, id=3, 399.9356pt x 220.81058pt>
-File: figures/szablon_flopy.pdf Graphic file (type pdf)
-<use figures/szablon_flopy.pdf>
-Package pdftex.def Info: figures/szablon_flopy.pdf  used on input line 106.
-(pdftex.def)             Requested size: 327.77632pt x 180.9816pt.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
+
+Overfull \hbox (1.5029pt too wide) in paragraph at lines 65--66
+[]\T1/ptm/m/n/12 Dla kwa-dra-to-wej ma-cie-rzy rze-czy-wi-stej $\OML/ztmcm/m/it
+/12 M$ \T1/ptm/m/n/12 ob-li-czy¢ normy ma-cie-rzowe $\OMS/ztmcm/m/n/12 k\OML/zt
+mcm/m/it/12 M\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 , $\OMS/ztmcm/m/n/12 k\OML/zt
+mcm/m/it/12 M\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 , $\OMS/ztmcm/m/n/12 k\OML/zt
+mcm/m/it/12 M\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 ,
+ []
+
+
+Overfull \hbox (50.76166pt too wide) in paragraph at lines 81--82
+\T1/cmtt/m/n/12 cond(M) \T1/ptm/m/n/12 (dla $\OT1/ztmcm/m/n/12 2$\T1/ptm/m/n/12
+ ), \T1/cmtt/m/n/12 cond(M,inf)\T1/ptm/m/n/12 . Dla normy Schat-tena przyj-mu-j
+emy ana-lo-gicz-nie $\OML/ztmcm/m/it/12 ^^T[] \OT1/ztmcm/m/n/12 = \OMS/ztmcm/m/
+n/12 k\OML/ztmcm/m/it/12 M\OMS/ztmcm/m/n/12 k[] k\OML/ztmcm/m/it/12 M[]\OMS/ztm
+cm/m/n/12 k[]$\T1/ptm/m/n/12 ;
+ []
 
 [1
 
 {C:/Users/womackow/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/w
-omackow/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2 <./figur
-es/szablon_flopy.pdf>] (raport.aux)
+omackow/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 92.
+
+(../src/schatten_norm_cond.m
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1.
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 94.
+ (../src/solution.m [2]) [3]
+<figures/wartosci_osobliwe.pdf, id=101, 367.98662pt x 235.42328pt>
+File: figures/wartosci_osobliwe.pdf Graphic file (type pdf)
+<use figures/wartosci_osobliwe.pdf>
+Package pdftex.def Info: figures/wartosci_osobliwe.pdf  used on input line 150.
+
+(pdftex.def)             Requested size: 327.77632pt x 209.70566pt.
+<figures/energia_frobeniusa_skumulowana.pdf, id=102, 367.78848pt x 235.15541pt>
+
+File: figures/energia_frobeniusa_skumulowana.pdf Graphic file (type pdf)
+<use figures/energia_frobeniusa_skumulowana.pdf>
+Package pdftex.def Info: figures/energia_frobeniusa_skumulowana.pdf  used on in
+put line 157.
+(pdftex.def)             Requested size: 327.77632pt x 209.57469pt.
+<figures/normy_porownanie.pdf, id=104, 353.83943pt x 242.22496pt>
+File: figures/normy_porownanie.pdf Graphic file (type pdf)
+<use figures/normy_porownanie.pdf>
+Package pdftex.def Info: figures/normy_porownanie.pdf  used on input line 166.
+(pdftex.def)             Requested size: 295.9059pt x 202.5805pt.
+<figures/rozklad_cond2_losowe.pdf, id=106, 381.82619pt x 234.0824pt>
+File: figures/rozklad_cond2_losowe.pdf Graphic file (type pdf)
+<use figures/rozklad_cond2_losowe.pdf>
+Package pdftex.def Info: figures/rozklad_cond2_losowe.pdf  used on input line 1
+75.
+(pdftex.def)             Requested size: 327.77632pt x 200.94975pt.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+83.
+
+(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+[4 <./figures/wartosci_osobliwe.pdf>] [5 <./figures/energia_frobeniusa_skumulow
+ana.pdf> <./figures/normy_porownanie.pdf>] [6 <./figures/rozklad_cond2_losowe.p
+df>] (raport.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14633 strings out of 467867
- 228877 string characters out of 5416883
- 747032 words of memory out of 5000000
- 43292 multiletter control sequences out of 15000+600000
- 679447 words of font info for 119 fonts, out of 8000000 for 9000
+ 15648 strings out of 467867
+ 240452 string characters out of 5416883
+ 964329 words of memory out of 5000000
+ 44197 multiletter control sequences out of 15000+600000
+ 691047 words of font info for 152 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,373b,525s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,681b,2075s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\e
-cit1200.pk><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/sym
-bol/usyr.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
-imes/utmb8a.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/ur
-w/times/utmbi8a.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type
-1/urw/times/utmr8a.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on raport.pdf (2 pages, 87776 bytes).
+ctt1440.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ectt1000.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jk
+nappen/ec/dpi450\ecss0800.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/womackow/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/womackow/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/womacko
+w/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
+ers/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9
+.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/symbols/msbm10.pfb><C:/Users/womackow/AppData/Local/Programs/MiK
+TeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/womackow/AppData/Local/Programs/M
+iKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/womackow/AppData/Local/Programs
+/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/womackow/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/womackow/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on raport.pdf (6 pages, 237057 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 502 PDF objects out of 1000 (max. 8388607)
+ 83 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

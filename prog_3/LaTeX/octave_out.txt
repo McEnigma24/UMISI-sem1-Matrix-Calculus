@@ -1,0 +1,110 @@
+Rachunek Macierzowy, prog. 3: macierz 32x32, n = miesiac+dzien = 8+24
+rcond(M) = 4.354e-04
+
+--- Normy macierzowe ---
+||M||_1     = 2.061568069432e+01
+||M||_2     = 1.645829204697e+01
+||M||_inf   = 2.052299975952e+01
+||M||_{S,4} (Schatten, z SVD) = 1.648237762890e+01
+
+--- Wspolczynniki uwarunkowania ---
+cond(M,1)   = 2.296702329974e+03  (def.: ||M||_1||M^{-1}||_1 = 2.296702329974e+03)
+cond(M,2)   = 9.052937522092e+02  (def.: ||M||_2||M^{-1}||_2 = 9.052937522092e+02)
+cond(M,inf) = 2.205519795513e+03  (def.: ||M||_inf||M^{-1}||_inf = 2.205519795513e+03)
+kappa_{S,4} = ||M||_{S,4}||M^{-1}||_{S,4} = 9.069104746008e+02
+
+--- SVD: M = U*S*V' ---
+wymiary U: 32 x 32, S: 32 x 32, V: 32 x 32
+sigma_min = 1.818006e-02, sigma_max = 1.645829e+01
+||M - U*S*V'||_F = 5.533e-14
+
+--- Wartosci i wektory wlasne (eig) ---
+wymiary V (wektory w kolumnach): 32 x 32
+min Re(lambda) = -1.595223e+00, max Re(lambda) = 1.626199e+01
+max |Im(lambda)| = 1.448719e+00
+||M*V - V*D||_F = 3.626e-14 (residuum spektralne)
+
+Zapisano fragment tabeli: ../LaTeX/wyniki_auto.tex
+Rachunek Macierzowy, prog. 3: macierz 32x32, n = miesiac+dzien = 8+24
+rcond(M) = 4.354e-04
+
+--- Normy macierzowe ---
+||M||_1     = 2.061568069432e+01
+||M||_2     = 1.645829204697e+01
+||M||_inf   = 2.052299975952e+01
+||M||_{S,4} (Schatten, z SVD) = 1.648237762890e+01
+
+--- Wspolczynniki uwarunkowania ---
+cond(M,1)   = 2.296702329974e+03  (def.: ||M||_1||M^{-1}||_1 = 2.296702329974e+03)
+cond(M,2)   = 9.052937522092e+02  (def.: ||M||_2||M^{-1}||_2 = 9.052937522092e+02)
+cond(M,inf) = 2.205519795513e+03  (def.: ||M||_inf||M^{-1}||_inf = 2.205519795513e+03)
+kappa_{S,4} = ||M||_{S,4}||M^{-1}||_{S,4} = 9.069104746008e+02
+
+--- SVD: M = U*S*V' ---
+wymiary U: 32 x 32, S: 32 x 32, V: 32 x 32
+sigma_min = 1.818006e-02, sigma_max = 1.645829e+01
+||M - U*S*V'||_F = 5.533e-14
+
+--- Wartosci i wektory wlasne (eig) ---
+wymiary V (wektory w kolumnach): 32 x 32
+min Re(lambda) = -1.595223e+00, max Re(lambda) = 1.626199e+01
+max |Im(lambda)| = 1.448719e+00
+||M*V - V*D||_F = 3.626e-14 (residuum spektralne)
+
+Zapisano fragment tabeli: ../LaTeX/wyniki_auto.tex
+Rachunek Macierzowy, prog. 3: macierz 32x32, n = miesiac+dzien = 8+24
+rcond(M) = 4.354e-04
+
+--- Normy macierzowe ---
+||M||_1     = 2.061568069432e+01
+||M||_2     = 1.645829204697e+01
+||M||_inf   = 2.052299975952e+01
+||M||_{S,4} (Schatten, z SVD) = 1.648237762890e+01
+
+--- Wspolczynniki uwarunkowania ---
+cond(M,1)   = 2.296702329974e+03  (def.: ||M||_1||M^{-1}||_1 = 2.296702329974e+03)
+cond(M,2)   = 9.052937522092e+02  (def.: ||M||_2||M^{-1}||_2 = 9.052937522092e+02)
+cond(M,inf) = 2.205519795513e+03  (def.: ||M||_inf||M^{-1}||_inf = 2.205519795513e+03)
+kappa_{S,4} = ||M||_{S,4}||M^{-1}||_{S,4} = 9.069104746008e+02
+
+--- SVD: M = U*S*V' ---
+wymiary U: 32 x 32, S: 32 x 32, V: 32 x 32
+sigma_min = 1.818006e-02, sigma_max = 1.645829e+01
+||M - U*S*V'||_F = 5.533e-14
+
+--- Wartosci i wektory wlasne (eig) ---
+wymiary V (wektory w kolumnach): 32 x 32
+min Re(lambda) = -1.595223e+00, max Re(lambda) = 1.626199e+01
+max |Im(lambda)| = 1.448719e+00
+||M*V - V*D||_F = 3.626e-14 (residuum spektralne)
+
+Zapisano fragment tabeli: ../LaTeX/wyniki_auto.tex
+Zapisano norms_bar.txt, cond_samples.txt (250 prob)
+Rachunek Macierzowy, prog. 3: macierz 32x32, n = miesiac+dzien = 8+24
+rcond(M) = 4.354e-04
+
+--- Normy macierzowe ---
+||M||_1     = 2.061568069432e+01
+||M||_2     = 1.645829204697e+01
+||M||_inf   = 2.052299975952e+01
+||M||_{S,4} (Schatten, z SVD) = 1.648237762890e+01
+
+--- Wspolczynniki uwarunkowania ---
+cond(M,1)   = 2.296702329974e+03  (def.: ||M||_1||M^{-1}||_1 = 2.296702329974e+03)
+cond(M,2)   = 9.052937522092e+02  (def.: ||M||_2||M^{-1}||_2 = 9.052937522092e+02)
+cond(M,inf) = 2.205519795513e+03  (def.: ||M||_inf||M^{-1}||_inf = 2.205519795513e+03)
+kappa_{S,4} = ||M||_{S,4}||M^{-1}||_{S,4} = 9.069104746008e+02
+
+--- SVD: M = U*S*V' ---
+wymiary U: 32 x 32, S: 32 x 32, V: 32 x 32
+sigma_min = 1.818006e-02, sigma_max = 1.645829e+01
+||M - U*S*V'||_F = 5.533e-14
+
+--- Wartosci i wektory wlasne (eig) ---
+wymiary V (wektory w kolumnach): 32 x 32
+min Re(lambda) = -1.595223e+00, max Re(lambda) = 1.626199e+01
+max |Im(lambda)| = 1.448719e+00
+||M*V - V*D||_F = 3.626e-14 (residuum spektralne)
+
+Zapisano fragment tabeli: ../LaTeX/wyniki_auto.tex
+Zapisano norms_bar.txt, cond_samples.txt (250 prob)
