@@ -10,6 +10,10 @@ Szablon: plot_template.py
     python plot_template.py
   Powstanie m.in. LaTeX/figures/szablon_flopy.pdf (modelowy wykres n vs. n^3).
 
+Program 4: plot_prog4.py (po uruchomieniu ../src/solution.m), z katalogu prog_4/:
+    python analysis/plot_prog4.py
+  Zapisuje heatmapy i sigma_compare.pdf do LaTeX/figures/.
+
 Oddawany kod i figury mają wyglądać jak praca własna (spójnie z raportem i Octave),
 bez oczywistych śladów po generatorach — patrz sekcja w SZABLON_CZYTAJ.txt.
 

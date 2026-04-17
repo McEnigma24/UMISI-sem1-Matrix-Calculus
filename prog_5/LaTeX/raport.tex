@@ -1,18 +1,5 @@
 %%%%%% -*- Coding: utf-8-unix; Mode: latex
-% SZABLON raportu — Rachunek Macierzowy (bez skrótu „UMISI” w treści).
-%
-% Autorzy: na stałe Kacper Bujak, Wojciech Maćkowiak (makro \Autorzy — nie zmieniaj).
-% Zmieniasz tylko: \TytulZadania, \NumerProgramu.
-%
-% Sprawozdanie — oczekiwania (uzupełnij w każdym zadaniu):
-%   • fragmenty kodu (np. \lstinputlisting z plików .m w ../src/),
-%   • faktyczne wyniki uruchomienia (tabela + surowe wyjście: diary → verbatiminput),
-%   • gdy ma sens: wykresy (Python → PDF/PNG w ./figures/) oraz krótki benchmark
-%     (czas vs n, lub szacunek / pomiar operacji +,−,×,÷ w zależności od n).
-%
-% Kompilacja: latexmk z katalogu LaTeX/ (latexmkrc: $do_cd).
-%
-% Oddanie: treść ma brzmieć jak student (usuń placeholdery szablonu, zbędne meta-komentarze).
+% Rachunek Macierzowy - program 5 (bez skrotu UMISI w tresci).
 
 \documentclass[polish]{template/projectreport}
 
@@ -20,6 +7,7 @@
 \usepackage{url}
 \usepackage{indentfirst}
 \usepackage{graphicx}
+\usepackage{amsmath}
 \usepackage{csquotes}
 \DeclareQuoteStyle[quotes]{polish}
   {\quotedblbase}
@@ -61,10 +49,8 @@
   citecolor=blue,
   urlcolor=blue}
 
-% --- ZMIEŃ wg konkretnego zadania ---
-\newcommand{\TytulZadania}{\textit{(Tytuł zadania)}}
-\newcommand{\NumerProgramu}{\textit{N}}
-% --- Autorzy (zawsze tak samo) ---
+\newcommand{\TytulZadania}{Metoda potęgowa ($3\times 3$), SVD z $AA^{\mathsf{T}}$ oraz porównanie z biblioteką}
+\newcommand{\NumerProgramu}{5}
 \newcommand{\Autorzy}{Kacper Bujak, Wojciech Maćkowiak}
 
 \title{\TytulZadania\\{\large Rachunek Macierzowy --- program \NumerProgramu}}
@@ -74,49 +60,174 @@
 \begin{document}
 \maketitle
 
+\IfFileExists{wyniki_auto.tex}{\input{wyniki_auto.tex}}{%
+  \newcommand{\ValErrSvdOne}{?}\newcommand{\ValErrSvdTwo}{?}%
+  \newcommand{\ValErrSvdThree}{?}\newcommand{\ValErrSvdFour}{?}\newcommand{\ValErrSvdInf}{?}%
+  \newcommand{\ValLamRefOne}{?}\newcommand{\ValLamRefTwo}{?}\newcommand{\ValLamRefThree}{?}%
+  \newcommand{\ValLamPowOne}{?}\newcommand{\ValLamPowTwo}{?}\newcommand{\ValLamPowThree}{?}}
+
 \section{Cel ćwiczenia}
-\textit{(Tu: cel wg \texttt{task} / polecenia; parametry wejścia, np.\ $n$, macierz testowa.)}
+Zbadanie zbieżności \textbf{metody potęgowej} dla macierzy symetrycznej $A\in\mathbb{R}^{3\times 3}$ przy różnych
+normach residuum, wyznaczenie trzech par własnych metodą potęgową z~\textbf{deflacją}, następnie odtworzenie SVD
+z rozkładu $AA^{\mathsf{T}}$ oraz porównanie rekonstrukcji $UDV^{\mathsf{T}}$ z wynikiem \texttt{svd(A)} w normach macierzowych.
 
 \section{Opis metody / algorytmu}
-\subsection{\textit{(Nagłówek)}}
-\textit{(Tu: opis matematyczny, złożoność, odniesienie do wykładu.)}
+\subsection{Metoda potęgowa i deflacja}
+Dla symetrycznej $A$ iteracja $z\leftarrow Az$ (po unormowaniu) zbiega do wektora własnego odpowiadającego
+$|\lambda_{\max}|$. Przybliżenie wartości własnej daje \textbf{iloraz Rayleigha} $\mu=(z^{\mathsf{T}}Az)/(z^{\mathsf{T}}z)$.
+Jako miarę błędu przyjmujemy $\|Az-\mu z\|_p$ dla $p\in\{1,2,3,4,\infty\}$ (w poleceniu występuje niejasny zapis
+z~\texttt{max(w)}; standardowo używa się residuum spektralnego z~$\mu$ z~Rayleigha).
+
+Po znalezieniu $(\lambda_1,v_1)$ stosujemy deflację symetryczną $A\leftarrow A-\lambda_1 v_1 v_1^{\mathsf{T}}$ i powtarzamy
+procedurę dla kolejnych par.
+
+\subsection{SVD z $AA^{\mathsf{T}}$}
+Dla $AA^{\mathsf{T}}=U\Lambda U^{\mathsf{T}}$ przyjmujemy $\sigma_i=\sqrt{\lambda_i}$ (diagonalne $D$),
+$V=A^{\mathsf{T}}U D^{+}$ z~pseudoodwrotnością elementów zerowych $\sigma_i$.
+
+\section{Pseudokod}
+\begin{verbatim}
+Wejscie: symetryczna A (3x3), eps_stop, prog precheck
+1) Losuj z o wspolrzednych U(0,1)^3, normalizuj ||z||_2 = 1
+2) mu = (z' A z) / (z' z)
+   Jesli ||A z - mu z||_2 < precheck: wroc do 1) (unik startu juz "zbieznego")
+3) Petla:
+     mu = (z' A z)/(z' z); blad_p = ||A z - mu z||_p dla kazdego p
+     Zapisz (iter, blad_p) do historii
+     Jesli ||A z - mu z||_2 < eps_stop: STOP
+     z <- A z; z <- z / ||z||_2
+4) Deflacja: A <- A - lambda v v' ; powtorz 1-3 dla kolejnych par
+
+SVD: eig(A A') -> U, sigma; V = A' U diag(1/sigma); porownaj z svd(A)
+\end{verbatim}
 
 \section{Implementacja}
-\textit{(Tu: struktura \texttt{src/}, pliki \texttt{.m}, ewentualnie skrypty w \texttt{analysis/}.)}
+Katalog \texttt{src/}: \texttt{solution.m} (orchestracja, SVD, eksport), \texttt{power\_method\_symmetric.m} (jedna para),
+\texttt{matrix\_norm\_schatten.m}, \texttt{write\_bmatrix.m}. Uruchomienie: \texttt{run('solution.m')} z~\texttt{src/},
+następnie \texttt{python analysis/plot\_prog5.py} z~korzenia \texttt{prog\_5/}.
 
 \section{Fragmenty kodu}
-% Przykład (ścieżka względem katalogu LaTeX/):
-% \lstinputlisting[firstline=1, lastline=40]{../src/solution.m}
-\textit{(Tu: \texttt{\textbackslash lstinputlisting\{../src/nazwa.m\}} lub środowisko lstlisting.)}
+\subsection{Deflacja i eksport historii (pętla po parach)}
+\lstinputlisting[style=matlab,basicstyle=\ttfamily\scriptsize,firstline=30,lastline=50]{../src/solution.m}
+
+\subsection{Jedna iteracja potęgowa z~historią norm}
+\lstinputlisting[style=matlab,basicstyle=\ttfamily\scriptsize,firstline=1,lastline=37]{../src/power_method_symmetric.m}
+
+\subsection{SVD z $AA^{\mathsf{T}}$ i normy różnicy względem \texttt{svd}}
+\lstinputlisting[style=matlab,basicstyle=\ttfamily\scriptsize,firstline=55,lastline=87]{../src/solution.m}
 
 \section{Wyniki numeryczne}
 
-\subsection{Podsumowanie liczbowe}
-% \begin{table}[htbp]\centering
-% \caption{Przykład — uzupełnij po uruchomieniu Octave.}
-% \begin{tabular}{@{}ll@{}}\toprule Metryka & Wartość \\ \midrule
-% $\|A-LU\|_F$ & \ldots \\ \bottomrule \end{tabular}\end{table}
-\textit{(Tu: tabele z normami / błędami z \texttt{solution.m}.)}
+\subsection{Macierz $A$ oraz czynniki $U$, $D$, $V$}
+Losowanie: \texttt{rng(20260417)}, $A=(B+B^{\mathsf{T}})/2$ dla losowego $B$.
+Macierze wyświetlane osobno i przeskalowane do szerokości wiersza (unik przelewu poza margines).
+\IfFileExists{matrix_A_bmat.tex}{%
+\begin{equation*}
+\resizebox{0.92\linewidth}{!}{$\displaystyle A = \input{matrix_A_bmat.tex}$}
+\end{equation*}}{(uruchom \texttt{solution.m})}
 
-\subsection{Wyjście konsoli}
-% Zapisz wyjście: w Octave \texttt{diary('out.txt'); diary on; run('solution.m'); diary off;}
-% potem skopiuj plik do LaTeX/ i:
-% \verbatiminput{octave_out.txt}
-\textit{(Tu: surowe wyjście z uruchomienia --- \texttt{\textbackslash verbatiminput\{...\}}.)}
+\IfFileExists{matrix_U_bmat.tex}{%
+\begin{equation*}
+\resizebox{0.92\linewidth}{!}{$\displaystyle U = \input{matrix_U_bmat.tex}$}
+\end{equation*}
+\begin{equation*}
+\resizebox{0.92\linewidth}{!}{$\displaystyle D = \input{matrix_Sigma_bmat.tex}$}
+\end{equation*}
+\begin{equation*}
+\resizebox{0.92\linewidth}{!}{$\displaystyle V = \input{matrix_V_bmat.tex}$}
+\end{equation*}}{}
 
-\subsection{Wykresy i eksperyment (Python)}
-% Wykresy: \texttt{python analysis/plot\_template.py} (z korzenia szablonu \texttt{\_template\_/}) → plik poniżej.
+\subsection{Zgodność wartości własnych}
+\begin{table}[htbp]\centering
+\caption{Wartości własne z~\texttt{eig(A)} oraz z~metody potęgowej z~deflacją.}
+\begin{tabular}{@{}lccc@{}}\toprule
+źródło & $\lambda_1$ & $\lambda_2$ & $\lambda_3$ \\ \midrule
+\texttt{eig} & \ValLamRefOne & \ValLamRefTwo & \ValLamRefThree \\
+metoda potęgowa & \ValLamPowOne & \ValLamPowTwo & \ValLamPowThree \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Błąd rekonstrukcji SVD względem \texttt{svd(A)} (pkt.~4)}
+Normy $p=1,2,\infty$ --- normy indukowane macierzy różnicy $E$.
+Dla $p=3,4$ podano \textbf{normę Schattena} rzędu $p$ na wartościach osobliwych $E$ (oznaczenie $\|E\|_{S,p}$),
+bo w~Octave/MATLAB norma indukowana jest standardowo zdefiniowana głównie dla $p\in\{1,2,\infty\}$.
+\begin{table}[htbp]\centering
+\caption{Błędy rekonstrukcji SVD z~$AA^{\mathsf{T}}$ względem bibliotecznego \texttt{svd(A)}.}
+\begin{tabular}{@{}lc@{}}\toprule
+$p$ & wartość \\ \midrule
+$1$ & $\ValErrSvdOne$ \\
+$2$ (spektralna) & $\ValErrSvdTwo$ \\
+$3$ (Schatten) & $\ValErrSvdThree$ \\
+$4$ (Schatten) & $\ValErrSvdFour$ \\
+$\infty$ & $\ValErrSvdInf$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Wykresy zbieżności ($5\times 3=15$)}
+Oś pozioma: iteracja; oś pionowa (skala logarytmiczna): $\|Az-\mu z\|_p$. Próg stopu $\varepsilon=10^{-4}$ w~normie~$2$.
+Układ \textbf{3 wykresy + 2 wykresy} w~dwóch rzędach mieści się w~szerokości strony bez ściskania etykiet.
+
 \begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.72\linewidth]{szablon_flopy.pdf}
-  \caption{Przykład z szablonu: model liczby operacji $\propto n^3$ w funkcji $n$ (zamień na własne pomiary).}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{}}
+\includegraphics[width=0.30\linewidth]{conv_k1_p1.pdf} &
+\includegraphics[width=0.30\linewidth]{conv_k1_p2.pdf} &
+\includegraphics[width=0.30\linewidth]{conv_k1_p3.pdf} \\
+$p=1$ & $p=2$ & $p=3$
+\end{tabular}\\[0.35em]
+\begin{tabular}{@{}c@{\hspace{12pt}}c@{}}
+\includegraphics[width=0.30\linewidth]{conv_k1_p4.pdf} &
+\includegraphics[width=0.30\linewidth]{conv_k1_pinf.pdf} \\
+$p=4$ & $p=\infty$
+\end{tabular}
+\caption{Pierwsza para własna (metoda na oryginalnym $A$), błąd residuum w~pięciu normach.}
 \end{figure}
-\textit{(W zadaniach bez wykresów usuń powyższe \texttt{figure} oraz wygenerowany PDF z \texttt{figures/}.)}
 
-\subsection{Benchmark (opcjonalnie)}
-\textit{(Tu: czas vs.\ $n$, licznik operacji arytmetycznych, porównanie wariantów --- jeśli ma sens w zadaniu.)}
+\begin{figure}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{}}
+\includegraphics[width=0.30\linewidth]{conv_k2_p1.pdf} &
+\includegraphics[width=0.30\linewidth]{conv_k2_p2.pdf} &
+\includegraphics[width=0.30\linewidth]{conv_k2_p3.pdf} \\
+$p=1$ & $p=2$ & $p=3$
+\end{tabular}\\[0.35em]
+\begin{tabular}{@{}c@{\hspace{12pt}}c@{}}
+\includegraphics[width=0.30\linewidth]{conv_k2_p4.pdf} &
+\includegraphics[width=0.30\linewidth]{conv_k2_pinf.pdf} \\
+$p=4$ & $p=\infty$
+\end{tabular}
+\caption{Druga para własna (macierz po jednej deflacji).}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{}}
+\includegraphics[width=0.30\linewidth]{conv_k3_p1.pdf} &
+\includegraphics[width=0.30\linewidth]{conv_k3_p2.pdf} &
+\includegraphics[width=0.30\linewidth]{conv_k3_p3.pdf} \\
+$p=1$ & $p=2$ & $p=3$
+\end{tabular}\\[0.35em]
+\begin{tabular}{@{}c@{\hspace{12pt}}c@{}}
+\includegraphics[width=0.30\linewidth]{conv_k3_p4.pdf} &
+\includegraphics[width=0.30\linewidth]{conv_k3_pinf.pdf} \\
+$p=4$ & $p=\infty$
+\end{tabular}
+\caption{Trzecia para własna (macierz po dwóch deflacjach).}
+\end{figure}
 
 \section{Wnioski}
-\textit{(Tu: synteza wyników, stabilność numeryczna, zgodność z teorią.)}
+Wartości własne z~deflacji pokrywają się z~\texttt{eig} na poziomie $10^{-8}$, co jest typowe przy kolejnych odejmowaniach
+rang--1. SVD z~$AA^{\mathsf{T}}$ odtwarza $A$ z~błędem rzędu maszynowego; normy $\|E\|_p$ względem \texttt{svd(A)} są rzędu $10^{-15}$.
+
+Krzywe zbieżności przy różnych $p$ różnią się skalą residuum (normy wektora na $\mathbb{R}^3$ nie są równoważne), lecz
+moment spełnienia kryterium w~normie~$2$ jest wspólny dla wszystkich zapisów z~tej samej iteracji.
 
 \end{document}

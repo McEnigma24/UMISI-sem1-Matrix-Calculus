@@ -13,6 +13,10 @@ Szablon: plot_template.py
 Oddawany kod i figury mają wyglądać jak praca własna (spójnie z raportem i Octave),
 bez oczywistych śladów po generatorach — patrz sekcja w SZABLON_CZYTAJ.txt.
 
+Program 5: plot_prog5.py (po ../src/solution.m), z katalogu prog_5/:
+    python analysis/plot_prog5.py
+  Zapisuje 15 PDF (conv_k*_p*.pdf) do LaTeX/figures/.
+
 Dalsze pomysły (gdy ma to sens w zadaniu):
   - czas wykonania vs. rozmiar macierzy n,
   - szacowana liczba operacji (+, -, *, /) w zależności od n,

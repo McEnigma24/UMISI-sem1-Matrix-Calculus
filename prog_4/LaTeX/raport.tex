@@ -33,7 +33,6 @@
 
 \usepackage{xcolor}
 \usepackage{listings}
-\usepackage{verbatim}
 \usepackage{booktabs}
 
 \definecolor{codegreen}{rgb}{0,0.5,0}
@@ -62,8 +61,8 @@
   urlcolor=blue}
 
 % --- ZMIEŃ wg konkretnego zadania ---
-\newcommand{\TytulZadania}{\textit{(Tytuł zadania)}}
-\newcommand{\NumerProgramu}{\textit{N}}
+\newcommand{\TytulZadania}{Rozkład osobliwy macierzy prostokątnej: ścieżka przez $AA^{\mathsf{T}}$ oraz $A^{\mathsf{T}}A$}
+\newcommand{\NumerProgramu}{4}
 % --- Autorzy (zawsze tak samo) ---
 \newcommand{\Autorzy}{Kacper Bujak, Wojciech Maćkowiak}
 
@@ -74,49 +73,135 @@
 \begin{document}
 \maketitle
 
+\IfFileExists{wyniki_auto.tex}{\input{wyniki_auto.tex}}{%
+  \newcommand{\ValN}{?}\newcommand{\ValM}{?}\newcommand{\ValRank}{?}%
+  \newcommand{\ValDimRange}{?}\newcommand{\ValDimNull}{?}%
+  \newcommand{\ValResAA}{?}\newcommand{\ValResATA}{?}\newcommand{\ValResSVD}{?}%
+  \newcommand{\ValErrSigAA}{?}\newcommand{\ValErrSigATA}{?}}
+
 \section{Cel ćwiczenia}
-\textit{(Tu: cel wg \texttt{task} / polecenia; parametry wejścia, np.\ $n$, macierz testowa.)}
+Celem jest przejście krok po kroku przez konstrukcję rozkładu osobliwego (SVD) macierzy prostokątnej
+$A\in\mathbb{R}^{n\times m}$ na dwa sposoby: z macierzy $AA^{\mathsf{T}}$ (wektory lewe $U$ i wartości osobliwe)
+oraz z $A^{\mathsf{T}}A$ (wektory prawe $V$), a następnie porównanie wyników z procedurą \texttt{svd} z Octave
+oraz wyznaczenie wymiarów obrazu i jądra operatora liniowego $x\mapsto Ax$ (przy interpretacji
+$A:\mathbb{R}^{m}\to\mathbb{R}^{n}$).
 
 \section{Opis metody / algorytmu}
-\subsection{\textit{(Nagłówek)}}
-\textit{(Tu: opis matematyczny, złożoność, odniesienie do wykładu.)}
+\subsection{Ścieżka przez $AA^{\mathsf{T}}$}
+Macierz $AA^{\mathsf{T}}$ jest symetryczna i nieujemnie określona, ma więc rzeczywiste wartości własne
+$\lambda_i\ge 0$ oraz ortonormalną bazę wektorów własnych w kolumnach $U$.
+Przyjmujemy $\sigma_i=\sqrt{\lambda_i}$ (malejąco) i diagonalne $\Sigma$.
+Wtedy $V=A^{\mathsf{T}}U\Sigma^{+}$, gdzie $\Sigma^{+}$ to pseudoodwrotność Moorea--Penrose’ego macierzy diagonalnej
+(odwrotność na dodatnich $\sigma_i$, zero gdy $\sigma_i\approx 0$). Rekonstrukcja ma postać $A\approx U\Sigma V^{\mathsf{T}}$.
+
+\subsection{Ścieżka przez $A^{\mathsf{T}}A$}
+Analogicznie z $A^{\mathsf{T}}A$ otrzymujemy $V$ oraz $\Sigma$, a następnie $U=AV\Sigma^{+}$.
+W obu przypadkach zestaw dodatnich $\sigma_i$ (rząd $r$) powinien zgadzać się z wartościami osobliwymi zwróconymi przez \texttt{svd}.
+
+\subsection{Obraz i jądro}
+$\dim R(A)=\mathrm{rank}(A)=r$, natomiast $\dim N(A)=m-r$ dla $A:\mathbb{R}^{m}\to\mathbb{R}^{n}$.
 
 \section{Implementacja}
-\textit{(Tu: struktura \texttt{src/}, pliki \texttt{.m}, ewentualnie skrypty w \texttt{analysis/}.)}
+\begin{sloppypar}
+Skrypt \texttt{../src/solution.m} generuje macierz testową $A$ o rozmiarze $\ValN\times\ValM$, zapisuje dziennik
+\texttt{octave\_out.txt} oraz pliki \texttt{prog4\_*.txt} (macierze i wektory $\sigma$) w katalogu \texttt{LaTeX/}.
+Rysunki PDF tworzy skrypt \texttt{python analysis/plot\_prog4.py} uruchamiany z katalogu głównego zadania po Octave
+(omija brak interfejsu graficznego przy \texttt{print} w trybie wsadowym).
+\end{sloppypar}
 
 \section{Fragmenty kodu}
-% Przykład (ścieżka względem katalogu LaTeX/):
-% \lstinputlisting[firstline=1, lastline=40]{../src/solution.m}
-\textit{(Tu: \texttt{\textbackslash lstinputlisting\{../src/nazwa.m\}} lub środowisko lstlisting.)}
+Pełny skrypt \texttt{solution.m} (inicjalizacja, zapis \texttt{dlmwrite}, \texttt{diary}, eksport pod wykresy)
+nie jest wklejany do sprawozdania --- poniżej tylko fragmenty odpowiadające dwóm ścieżkom SVD oraz porównaniu z~\texttt{svd}.
+
+\subsection{Ścieżka $AA^{\mathsf{T}}$: wartości osobliwe i $V$}
+Rozkład spektralny $AA^{\mathsf{T}}=U\mathrm{diag}(\lambda)U^{\mathsf{T}}$ w Octave daje \texttt{eig}; sortujemy malejąco $\lambda$,
+$\sigma_i=\sqrt{\max(0,\lambda_i)}$, budujemy diagonalną $\Sigma^{+}$ (zerując odwrotność przy $\sigma_i$ poniżej progu).
+Następnie $V=A^{\mathsf{T}}U\Sigma^{+}$ (wymiary $m\times n$ przy pełnym $U$).
+\lstinputlisting[style=matlab,basicstyle=\ttfamily\scriptsize,firstline=41,lastline=54]{../src/solution.m}
+\lstinputlisting[style=matlab,basicstyle=\ttfamily\scriptsize,firstline=67,lastline=75]{../src/solution.m}
+
+\subsection{Ścieżka $A^{\mathsf{T}}A$ oraz $U$}
+Analogicznie z $A^{\mathsf{T}}A$ otrzymujemy $V$ i $\Sigma$, potem $U=AV\Sigma^{+}$ (tu $U$ ma rozmiar $n\times m$).
+\lstinputlisting[style=matlab,basicstyle=\ttfamily\scriptsize,firstline=85,lastline=97]{../src/solution.m}
+\lstinputlisting[style=matlab,basicstyle=\ttfamily\scriptsize,firstline=113,lastline=120]{../src/solution.m}
+
+\subsection{Odniesienie: \texttt{svd}}
+\lstinputlisting[style=matlab,basicstyle=\ttfamily\scriptsize,firstline=123,lastline=128]{../src/solution.m}
 
 \section{Wyniki numeryczne}
 
 \subsection{Podsumowanie liczbowe}
-% \begin{table}[htbp]\centering
-% \caption{Przykład — uzupełnij po uruchomieniu Octave.}
-% \begin{tabular}{@{}ll@{}}\toprule Metryka & Wartość \\ \midrule
-% $\|A-LU\|_F$ & \ldots \\ \bottomrule \end{tabular}\end{table}
-\textit{(Tu: tabele z normami / błędami z \texttt{solution.m}.)}
+\begin{table}[htbp]\centering
+\caption{Parametry testu i jakość rekonstrukcji (wartości z \texttt{wyniki\_auto.tex}).}
+\begin{tabular}{@{}ll@{}}\toprule
+Wielkość & Wartość \\ \midrule
+$n$, $m$ & $\ValN$, $\ValM$ \\
+$\mathrm{rank}(A)$ & $\ValRank$ \\
+$\|A-U\Sigma V^{\mathsf{T}}\|_F$ dla ścieżki $AA^{\mathsf{T}}$ & $\ValResAA$ \\
+$\|A-U\Sigma V^{\mathsf{T}}\|_F$ dla ścieżki $A^{\mathsf{T}}A$ & $\ValResATA$ \\
+$\|A-U_{\mathrm{svd}}S_{\mathrm{svd}}V_{\mathrm{svd}}^{\mathsf{T}}\|_F$ (\texttt{svd}) & $\ValResSVD$ \\
+$\max|\sigma_i-\sigma_{i,\mathrm{svd}}|$, ścieżka $AA^{\mathsf{T}}$ & $\ValErrSigAA$ \\
+$\max|\sigma_i-\sigma_{i,\mathrm{svd}}|$, ścieżka $A^{\mathsf{T}}A$ & $\ValErrSigATA$ \\
+$\dim R(A)$ & $\ValDimRange$ \\
+$\dim N(A)$ & $\ValDimNull$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsection{Wyjście konsoli}
-% Zapisz wyjście: w Octave \texttt{diary('out.txt'); diary on; run('solution.m'); diary off;}
-% potem skopiuj plik do LaTeX/ i:
-% \verbatiminput{octave_out.txt}
-\textit{(Tu: surowe wyjście z uruchomienia --- \texttt{\textbackslash verbatiminput\{...\}}.)}
-
-\subsection{Wykresy i eksperyment (Python)}
-% Wykresy: \texttt{python analysis/plot\_template.py} (z korzenia szablonu \texttt{\_template\_/}) → plik poniżej.
+\subsection{Wykresy}
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.72\linewidth]{szablon_flopy.pdf}
-  \caption{Przykład z szablonu: model liczby operacji $\propto n^3$ w funkcji $n$ (zamień na własne pomiary).}
+  \includegraphics[width=0.92\linewidth]{fig_A_intro.pdf}
+  \caption{Macierz testowa $A$ ($\ValN\times\ValM$): moduły $|A_{ij}|$ oraz wartości $A_{ij}$ z mapą dwubiegunową
+  (oś $j$ --- kolumny, $i$ --- wiersze, indeksy od 1). Dla macierzy gęstej wykres \texttt{spy} byłby pełną siatką punktów
+  i mało czytelny, stąd wizualizacja przez \texttt{imshow}.}
 \end{figure}
-\textit{(W zadaniach bez wykresów usuń powyższe \texttt{figure} oraz wygenerowany PDF z \texttt{figures/}.)}
 
-\subsection{Benchmark (opcjonalnie)}
-\textit{(Tu: czas vs.\ $n$, licznik operacji arytmetycznych, porównanie wariantów --- jeśli ma sens w zadaniu.)}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.45\linewidth]{imagesc_AAT.pdf}\hfill
+  \includegraphics[width=0.45\linewidth]{imagesc_ATA.pdf}
+  \caption{Macierze $AA^{\mathsf{T}}$ oraz $A^{\mathsf{T}}A$.}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.45\linewidth]{imagesc_V1T.pdf}\hfill
+  \includegraphics[width=0.45\linewidth]{imagesc_V2T.pdf}
+  \caption{$V^{\mathsf{T}}$ z obu ścieżek (wiersze odpowiadają kolumnom $V_i$).}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.55\linewidth]{imagesc_U2.pdf}
+  \caption{Macierz $U$ otrzymana ze ścieżki $A^{\mathsf{T}}A$ (wymiar $n\times m$).}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.72\linewidth]{sigma_compare.pdf}
+  \caption{Porównanie pierwszych wartości osobliwych z obu ścieżek oraz z \texttt{svd(A)}.}
+\end{figure}
 
 \section{Wnioski}
-\textit{(Tu: synteza wyników, stabilność numeryczna, zgodność z teorią.)}
+Wyniki liczbowe (tabela) potwierdzają teorię: obie ścieżki ($AA^{\mathsf{T}}$ oraz $A^{\mathsf{T}}A$) prowadzą do tego samego
+zestawu wartości osobliwych co \texttt{svd}, a rekonstrukcja $U\Sigma V^{\mathsf{T}}$ ma residuum rzędu błędu zaokrągleń
+zmiennoprzecinkowych --- tak jak dla bibliotecznego SVD. To spodziewane: niezerowe $\sigma_i$ są pierwiastkami wspólnych
+wartości własnych obu gramianów, a wzory na brakujący czynnik ($V$ albo $U$) odtwarzają dokładnie związek między lewymi
+a prawymi wektorami osobliwymi.
+
+W praktyce numerycznej istotny jest wybór progu dla $\Sigma^{+}$: zbyt mała tolerancja pozostawia ``sztuczne'' małe $\sigma$
+z błędów rozkładu własnego $AA^{\mathsf{T}}$ przy $n>m$ (nadmiarowe zera spektralne), zbyt duża --- obcina prawdziwy rząd.
+W skrypcie użyliśmy progu typu \texttt{max(n,m)*eps*max(sigma)} (skala względna względem największej wartości osobliwej),
+a do interpretacji
+geometrycznej $\dim R(A)$ i $\dim N(A)$ bezpieczniej jest oprzeć się na \texttt{rank(A)}.
+
+Ścieżka przez $AA^{\mathsf{T}}$ jest kosztowniejsza, gdy $n\gg m$ (macierz $n\times n$), a przez $A^{\mathsf{T}}A$ --- gdy $m\gg n$.
+W obu wariantach stabilność zależy od separacji wartości osobliwych i od tego, czy używamy pełnego czy ekonomicznego SVD;
+tutaj pokazano wariant pełny (np.\ $U$ z pierwszej ścieżki jest $n\times n$), co ułatwia porównanie z definicją z wykładu,
+ale w aplikacjach częściej stosuje się \texttt{svd(A,'econ')}.
+
+Podsumowując: ćwiczenie ilustruje równoważność algebraicznych konstrukcji SVD; różnią się one kosztem i szczegółami implementacji,
+nie zaś wynikiem przy poprawnym sortowaniu $\lambda$ i pseudoinwersji zerowych $\sigma$.
 
 \end{document}

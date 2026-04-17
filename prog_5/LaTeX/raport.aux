@@ -8,14 +8,26 @@
 \babel@aux{polish}{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Cel ćwiczenia}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Opis metody / algorytmu}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}\textit  {(Nagłówek)}}{1}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Implementacja}{1}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Fragmenty kodu}{1}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Wyniki numeryczne}{1}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Podsumowanie liczbowe}{1}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Wyjście konsoli}{1}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Wykresy i eksperyment (Python)}{1}{subsection.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Przykład z szablonu: model liczby operacji $\propto n^3$ w funkcji $n$ (zamień na własne pomiary).}}{2}{figure.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Benchmark (opcjonalnie)}{2}{subsection.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Wnioski}{2}{section.6}\protected@file@percent }
-\gdef \@abspage@last{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Metoda potęgowa i deflacja}{1}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}SVD z $AA^{\mathsf  {T}}$}{1}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Pseudokod}{1}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Implementacja}{2}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Fragmenty kodu}{2}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Deflacja i eksport historii (pętla po parach)}{2}{subsection.5.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{2}{lstlisting.-1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Jedna iteracja potęgowa z~historią norm}{2}{subsection.5.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/power\textunderscore method\textunderscore symmetric.m}{2}{lstlisting.-2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}SVD z $AA^{\mathsf  {T}}$ i normy różnicy względem \texttt  {svd}}{3}{subsection.5.3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{3}{lstlisting.-3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Wyniki numeryczne}{4}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Macierz $A$ oraz czynniki $U$, $D$, $V$}{4}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Zgodność wartości własnych}{4}{subsection.6.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Wartości własne z~\texttt  {eig(A)} oraz z~metody potęgowej z~deflacją.}}{4}{table.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Błąd rekonstrukcji SVD względem \texttt  {svd(A)} (pkt.~4)}{4}{subsection.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Błędy rekonstrukcji SVD z~$AA^{\mathsf  {T}}$ względem bibliotecznego \texttt  {svd(A)}.}}{5}{table.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Wykresy zbieżności ($5\times 3=15$)}{5}{subsection.6.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Pierwsza para własna (metoda na oryginalnym $A$), błąd residuum w~pięciu normach.}}{5}{figure.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Wnioski}{5}{section.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Druga para własna (macierz po jednej deflacji).}}{6}{figure.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Trzecia para własna (macierz po dwóch deflacjach).}}{6}{figure.3}\protected@file@percent }
+\gdef \@abspage@last{6}
