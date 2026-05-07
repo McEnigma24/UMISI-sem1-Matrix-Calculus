@@ -15,15 +15,15 @@ endif
 diary(diary_file);
 diary on;
 
-%% Macierz testowa (prostokatna: n > m)
+%% Macierz testowa prostokatna (n wierszy, m kolumn): tutaj n=4, m=6
 rng(7);
-n = 6;
-m = 4;
+n = 4;
+m = 6;
 A = randn(n, m);
 
 fprintf('Rachunek Macierzowy, prog. 4: A ma rozmiar %d x %d (n wierszy, m kolumn)\n', n, m);
 
-% Eksport liczb do wykresow (Python, headless) - ten sam katalog co diary
+% Eksport liczb do LaTeX/Python — ten sam katalog co diary
 data_pfx = fullfile(latex_dir, 'prog4_');
 
 %% --- 1) Macierz A (spy / wizualizacja) ---
@@ -178,5 +178,7 @@ else
   fclose(fid);
 endif
 
+write_matrix_tables(latex_dir, A, AAT, ATA, V1', V2', U2, n, m);
+
 diary off;
-fprintf('\nZapisano: %s oraz prog4_*.txt (PDF: python analysis/plot_prog4.py z katalogu prog_4)\n', diary_file);
+fprintf('\nZapisano: %s, wyniki_auto.tex, matrix_tables_auto.tex oraz prog4_*.txt\n', diary_file);

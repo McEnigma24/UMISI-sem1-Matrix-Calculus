@@ -1,0 +1,13 @@
+% auto-generated przez benchmark_svd.m
+\begin{table}[htbp]\centering\small
+\caption{Sredni czas pojedynczego przebiegu (piec powtorzen; losowa macierz $\mathcal{N}(0,1)$ na rozmiarze $n\times m$). Sciezki jak w \texttt{solution.m}; \texttt{svd(A)} wywoluje biblioteke numeryczna (LAPACK).}
+\label{tab:benchmark}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Rozmiar & $AA^{\mathsf T}$ [ms] & $A^{\mathsf T}A$ [ms] & \texttt{svd(A)} [ms] \\
+\midrule
+$4\times 6$ & 3.395 & 0.537 & 0.119 \\
+$40\times 60$ & 2.839 & 3.167 & 1.988 \\
+$400\times 600$ & 400.538 & 774.063 & 974.696 \\
+\bottomrule
+\end{tabular}
+\end{table}

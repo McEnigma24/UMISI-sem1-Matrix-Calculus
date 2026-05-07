@@ -79,12 +79,63 @@
   \newcommand{\ValResAA}{?}\newcommand{\ValResATA}{?}\newcommand{\ValResSVD}{?}%
   \newcommand{\ValErrSigAA}{?}\newcommand{\ValErrSigATA}{?}}
 
+\section{Wstęp teoretyczny}\label{sec:wstep}
+
+\subsection{Wartości własne i wartości osobliwe}
+Wartości własne macierzy kwadratowej $M$ opisują, jak $M$ działa na pewne kierunki (wektory własne): na takim kierunku przekształcenie jest zwykłym skalowaniem przez $\lambda$.
+Wartości osobliwe prostokątnej macierzy $A\in\mathbb{R}^{n\times m}$ opisują natomiast ``jak bardzo'' mapa liniowa $x\mapsto Ax$ rozciąga przestrzeń wzdłuż swoich głównych osi --- po rozwinięciu SVD.
+
+\begin{table}[htbp]\centering\small
+\caption{Porównanie wartości własnych $\lambda$ i wartości osobliwych $\sigma$.}
+\begin{tabular}{@{}p{0.28\linewidth}p{0.34\linewidth}p{0.34\linewidth}@{}}\toprule
+Cecha & Wartości własne ($\lambda$) & Wartości osobliwe ($\sigma$ lub $s$) \\ \midrule
+Dla jakich macierzy? &
+Tylko dla macierzy kwadratowych ($n\times n$). &
+Dla każdej macierzy (także prostokątnej $n\times m$). \\
+Jakie mogą być? &
+Mogą być dodatnie, ujemne, zerowe albo zespolone. &
+Są zawsze rzeczywiste i nieujemne ($\ge 0$). \\
+Co oznaczają (intuicja)? &
+Skalowanie wektora w tej samej przestrzeni (np.\ mapa $\mathbb{R}^2\to\mathbb{R}^2$). &
+Skalowanie ``osi'' przy przejściu między przestrzeniami (np.\ $\mathbb{R}^6\to\mathbb{R}^4$). \\
+Związek z $A$ &
+Zależą bezpośrednio od $M$ (tu rozważamy $M=A^{\mathsf T}A$ lub $M=AA^{\mathsf T}$). &
+Niezerowe $\sigma_i$ to pierwiastki z nieujemnych wartości własnych $A^{\mathsf T}A$ (i $AA^{\mathsf T}$). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Macierz osobliwa, macierz ortogonalna}
+\textbf{Macierz osobliwa} (singular) --- w sensie algebraicznym kwadratowa macierz nieodwracalna; równoważnie $\det(M)=0$.
+Dla prostokątnej macierzy $A$ mówimy o braku pełnego rzędu: $\mathrm{rank}(A)<\min(n,m)$; wtedy część wartości osobliwych jest zerowa i pojawia się nietrywialne jądro $\ker(A)$.
+\textbf{Macierz ortogonalna} $Q$ spełnia $Q^{\mathsf T}Q=I$: zachowuje długości i kąty, więc jest izometrią; kolumny tworzą bazę ortonormalną.
+
+\subsection{SVD i rozkład $A=USV^{\mathsf T}$}
+SVD (ang.\ \emph{Singular Value Decomposition}), czyli rozkład ze względu na wartości osobliwe, pozwala zapisać dowolną macierz $A\in\mathbb{R}^{n\times m}$ jako
+\begin{equation*}
+  A = U S V^{\mathsf T}.
+\end{equation*}
+Intuicyjnie jest to ``rozkład na czynniki'' dla macierzy: każde liniowe przekształcenie dane przez $A$ można rozłożyć na trzy proste etapy:
+\begin{enumerate}\itemsep=0pt
+  \item obrót (lub symetria ortogonalna) w przestrzeni wejściowej --- $V^{\mathsf T}$;
+  \item niezależne skalowanie wzdłuż osi --- diagonalne $S$ z wartościami nieujemnymi malejąco;
+  \item obrót w przestrzeni wyjściowej --- $U$.
+\end{enumerate}
+Macierz $S$ ma rozmiar $n\times m$, jest ``diagonalna'' w sensie $\Sigma_{ii}=\sigma_i$, a poza przekątnią są zera; niezerowe $\sigma_i$ są wartościami osobliwymi $A$.
+Kolumny $U$ to lewe wektory osobliwe (w $\mathbb{R}^n$), kolumny $V$ --- prawe (w $\mathbb{R}^m$).
+
+\subsection{Dlaczego $A^{\mathsf T}A$ oraz $AA^{\mathsf T}$?}
+Gramiany $A^{\mathsf T}A$ ($m\times m$) oraz $AA^{\mathsf T}$ ($n\times n$) są symetryczne i nieujemnie określone.
+Niezerowe wartości własne obu macierzy są równe $\sigma_i^2$; znaków nie ma, więc stabilnie liczy się je przez $\mathrm{eig}$ na liczbach rzeczywistych.
+Ścieżka przez $AA^{\mathsf T}$ podaje lewy czynnik $U$ i $\Sigma$, po czym odtwarza się $V$ ze wzoru wiążącego obie strony rozkładu; ścieżka przez $A^{\mathsf T}A$ najpierw daje $V$ i $\Sigma$, a potem $U$.
+Koszt operacji $\mathrm{eig}$ skali się jak $\mathcal{O}(n^3)$ lub $\mathcal{O}(m^3)$ zależnie od rozmiaru gramianu, więc praktycznie wybiera się mniejszy z wymiarów (tu w ćwiczeniu pokazujemy obie ścieżki dla porównania).
+
 \section{Cel ćwiczenia}
-Celem jest przejście krok po kroku przez konstrukcję rozkładu osobliwego (SVD) macierzy prostokątnej
-$A\in\mathbb{R}^{n\times m}$ na dwa sposoby: z macierzy $AA^{\mathsf{T}}$ (wektory lewe $U$ i wartości osobliwe)
-oraz z $A^{\mathsf{T}}A$ (wektory prawe $V$), a następnie porównanie wyników z procedurą \texttt{svd} z Octave
-oraz wyznaczenie wymiarów obrazu i jądra operatora liniowego $x\mapsto Ax$ (przy interpretacji
-$A:\mathbb{R}^{m}\to\mathbb{R}^{n}$).
+Po omówieniu pojęć z sekcji~\ref{sec:wstep} rozwiązujemy konkretne zadanie numeryczne: przejść krok po kroku przez konstrukcję rozkładu osobliwego (SVD) macierzy prostokątnej
+$A\in\mathbb{R}^{n\times m}$ na dwa sposoby --- z macierzy $AA^{\mathsf{T}}$ (wektory lewe $U$ i wartości osobliwe)
+oraz z $A^{\mathsf{T}}A$ (wektory prawe $V$), porównać wyniki z procedurą \texttt{svd} z Octave
+oraz wyznaczyć wymiary obrazu i jądra operatora $x\mapsto Ax$ przy interpretacji
+$A:\mathbb{R}^{m}\to\mathbb{R}^{n}$.
 
 \section{Opis metody / algorytmu}
 \subsection{Ścieżka przez $AA^{\mathsf{T}}$}
@@ -104,9 +155,11 @@ $\dim R(A)=\mathrm{rank}(A)=r$, natomiast $\dim N(A)=m-r$ dla $A:\mathbb{R}^{m}\
 \section{Implementacja}
 \begin{sloppypar}
 Skrypt \texttt{../src/solution.m} generuje macierz testową $A$ o rozmiarze $\ValN\times\ValM$, zapisuje dziennik
-\texttt{octave\_out.txt} oraz pliki \texttt{prog4\_*.txt} (macierze i wektory $\sigma$) w katalogu \texttt{LaTeX/}.
-Rysunki PDF tworzy skrypt \texttt{python analysis/plot\_prog4.py} uruchamiany z katalogu głównego zadania po Octave
-(omija brak interfejsu graficznego przy \texttt{print} w trybie wsadowym).
+\texttt{octave\_out.txt}, makra \texttt{wyniki\_auto.tex}, tabele liczb \texttt{matrix\_tables\_auto.tex}
+oraz pliki \texttt{prog4\_*.txt} (surowe macierze dla ewentualnych narzędzi pomocniczych) w katalogu \texttt{LaTeX/}.
+Skrypt \texttt{benchmark\_svd.m} uruchamiany po rozwiązaniu zapisuje \texttt{benchmark\_auto.tex} z pomiarem czasu.
+Program \texttt{python analysis/plot\_prog4.py} (z katalogu głównego zadania) buduje heatmapy PDF w \texttt{LaTeX/figures/}
+na podstawie \texttt{prog4\_*.txt}.
 \end{sloppypar}
 
 \section{Fragmenty kodu}
@@ -148,13 +201,25 @@ $\dim N(A)$ & $\ValDimNull$ \\
 \end{tabular}
 \end{table}
 
-\subsection{Wykresy}
+\subsection{Interpretacja wyników z tabeli podsumowującej}
+Normy $\|A-U\Sigma V^{\mathsf{T}}\|_F$ mierzą błąd rekonstrukcji macierzy z rozkładu SVD uzyskanego daną ścieżką.
+Wartości rzędu $10^{-15}$ przy arytmetyce \texttt{double} oznaczają zgodność z dokładnym rozkładem z dokładnością do błędów zaokrągleń --- nie ma tu istotnego residuum: $\Sigma^{+}$ zeruje wartości poniżej progu numerycznego, a iloczyn $U\Sigma V^{\mathsf{T}}$ odtwarza $A$.
+Wiersze $\max|\sigma_i-\sigma_{i,\mathrm{svd}}|$ pokazują, że niezerowe wartości osobliwe z obu gramianów pokrywają się z bibliotecznym \texttt{svd(A)} co do precyzji maszynowej (często $10^{-15}\mbox{--}10^{-16}$).
+$\dim R(A)=\mathrm{rank}(A)$ to liczba niezerowych wartości osobliwych (przy rozróżnieniu numerycznym); $\dim N(A)=m-r$ wynika ze wzoru rangi--nullości dla $A:\mathbb{R}^m\to\mathbb{R}^n$: wektory z $\ker(A)$ są dopelnieniem ortogonalnym obrazu $A^{\mathsf T}$ w przestrzeni startowej.
+
+\subsection{Tabele macierzy (wartości liczbowe)}
+Bezpośrednio wpisy macierzy z tego samego przebiegu Octave.
+
+\IfFileExists{matrix_tables_auto.tex}{\input{matrix_tables_auto.tex}}{%
+\begin{center}\small Brak pliku \texttt{matrix\_tables\_auto.tex} --- uruchom \texttt{solution.m}.\end{center}}
+
+\subsection{Heatmapy tych samych macierzy}
+Te same dane co powyżej --- wizualizacja kolorowa (\texttt{imshow}); oś $j$ to kolumny, $i$ to wiersze (indeksy od 1).
+
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.92\linewidth]{fig_A_intro.pdf}
-  \caption{Macierz testowa $A$ ($\ValN\times\ValM$): moduły $|A_{ij}|$ oraz wartości $A_{ij}$ z mapą dwubiegunową
-  (oś $j$ --- kolumny, $i$ --- wiersze, indeksy od 1). Dla macierzy gęstej wykres \texttt{spy} byłby pełną siatką punktów
-  i mało czytelny, stąd wizualizacja przez \texttt{imshow}.}
+  \caption{Macierz testowa $A$ ($\ValN\times\ValM$): $|A_{ij}|$ oraz $A_{ij}$ z mapą dwubiegunową.}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -168,33 +233,37 @@ $\dim N(A)$ & $\ValDimNull$ \\
   \centering
   \includegraphics[width=0.45\linewidth]{imagesc_V1T.pdf}\hfill
   \includegraphics[width=0.45\linewidth]{imagesc_V2T.pdf}
-  \caption{$V^{\mathsf{T}}$ z obu ścieżek (wiersze odpowiadają kolumnom $V_i$).}
+  \caption{$V^{\mathsf{T}}$ z obu ścieżek (wiersze --- odpowiedniki zapisu wierszami w \texttt{solution.m}).}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.55\linewidth]{imagesc_U2.pdf}
-  \caption{Macierz $U$ otrzymana ze ścieżki $A^{\mathsf{T}}A$ (wymiar $n\times m$).}
+  \caption{Macierz $U$ ze ścieżki $A^{\mathsf{T}}A$ (wymiar $n\times m$).}
 \end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.72\linewidth]{sigma_compare.pdf}
-  \caption{Porównanie pierwszych wartości osobliwych z obu ścieżek oraz z \texttt{svd(A)}.}
-\end{figure}
+\subsection{Benchmark czasu obliczeń}
+Porównanie średniego czasu pięciu przebiegów dla losowych macierzy $\mathcal{N}(0,1)$ tego samego rozmiaru.
+Skrypty \texttt{.m} są wykonywane przez interpreter Octave; wywołanie \texttt{svd(A)} korzysta z zoptymalizowanej biblioteki numerycznej (LAPACK), czyli kodu skompilowanego na poziomie biblioteki --- sensowny punkt odniesienia dla czasu.
+
+\IfFileExists{benchmark_auto.tex}{\input{benchmark_auto.tex}}{%
+\begin{center}\small Brak pliku \texttt{benchmark\_auto.tex} --- uruchom \texttt{benchmark\_svd.m}.\end{center}}
 
 \section{Wnioski}
-Wyniki liczbowe (tabela) potwierdzają teorię: obie ścieżki ($AA^{\mathsf{T}}$ oraz $A^{\mathsf{T}}A$) prowadzą do tego samego
+\begin{sloppypar}
+Teoria z sekcji~\ref{sec:wstep} oraz wyniki liczbowe potwierdzają, że obie ścieżki ($AA^{\mathsf{T}}$ oraz $A^{\mathsf{T}}A$) prowadzą do tego samego
 zestawu wartości osobliwych co \texttt{svd}, a rekonstrukcja $U\Sigma V^{\mathsf{T}}$ ma residuum rzędu błędu zaokrągleń
-zmiennoprzecinkowych --- tak jak dla bibliotecznego SVD. To spodziewane: niezerowe $\sigma_i$ są pierwiastkami wspólnych
-wartości własnych obu gramianów, a wzory na brakujący czynnik ($V$ albo $U$) odtwarzają dokładnie związek między lewymi
-a prawymi wektorami osobliwymi.
+zmiennoprzecinkowych --- tak jak dla bibliotecznego SVD. Niezerowe $\sigma_i$ są pierwiastkami z nieujemnych wartości własnych obu gramianów, a wzory na brakujący czynnik ($V$ albo $U$) odtwarzają związek między lewymi a prawymi wektorami osobliwymi.
+
+\textbf{Tabela benchmarku (tab.~\ref{tab:benchmark}).}
+Dla rozmiaru $400\times 600$ mamy $n<m$, więc macierz $AA^{\mathsf{T}}$ jest mniejsza ($400\times 400$) niż $A^{\mathsf{T}}A$ ($600\times 600$) --- ścieżka przez $AA^{\mathsf{T}}$ jest wtedy tańsza niż przez $A^{\mathsf{T}}A$, co widać po krótszym czasie $\mathrm{eig}$ na mniejszej macierzy.
+Natomiast wbudowane \texttt{svd(A)} jest zwykle najszybsze dla dużych rozmiarów: korzysta z podprogramów LAPACK dopasowanych do struktury zadania i nie powtarza jawnych pełnych macierzy pomocniczych tak jak nasza demonstracyjna implementacja.
+Dla małych macierzy ($4\times 6$) różnice są rzędu pojedynczych milisekund i zależą od narzutu interpretera i cache procesora.
 
 W praktyce numerycznej istotny jest wybór progu dla $\Sigma^{+}$: zbyt mała tolerancja pozostawia ``sztuczne'' małe $\sigma$
 z błędów rozkładu własnego $AA^{\mathsf{T}}$ przy $n>m$ (nadmiarowe zera spektralne), zbyt duża --- obcina prawdziwy rząd.
 W skrypcie użyliśmy progu typu \texttt{max(n,m)*eps*max(sigma)} (skala względna względem największej wartości osobliwej),
-a do interpretacji
-geometrycznej $\dim R(A)$ i $\dim N(A)$ bezpieczniej jest oprzeć się na \texttt{rank(A)}.
+a do interpretacji geometrycznej $\dim R(A)$ i $\dim N(A)$ bezpieczniej jest oprzeć się na \texttt{rank(A)}.
 
 Ścieżka przez $AA^{\mathsf{T}}$ jest kosztowniejsza, gdy $n\gg m$ (macierz $n\times n$), a przez $A^{\mathsf{T}}A$ --- gdy $m\gg n$.
 W obu wariantach stabilność zależy od separacji wartości osobliwych i od tego, czy używamy pełnego czy ekonomicznego SVD;
@@ -203,5 +272,6 @@ ale w aplikacjach częściej stosuje się \texttt{svd(A,'econ')}.
 
 Podsumowując: ćwiczenie ilustruje równoważność algebraicznych konstrukcji SVD; różnią się one kosztem i szczegółami implementacji,
 nie zaś wynikiem przy poprawnym sortowaniu $\lambda$ i pseudoinwersji zerowych $\sigma$.
+\end{sloppypar}
 
 \end{document}

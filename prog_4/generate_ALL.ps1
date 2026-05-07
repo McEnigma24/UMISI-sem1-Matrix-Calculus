@@ -8,9 +8,9 @@ $src = Join-Path $Root "src"
 $latex = Join-Path $Root "LaTeX"
 $plotPy = Join-Path $Root "analysis\plot_prog4.py"
 
-Write-Host "== Octave: solution.m ==" -ForegroundColor Cyan
+Write-Host "== Octave: solution.m + benchmark_svd.m ==" -ForegroundColor Cyan
 Set-Location $src
-& octave-cli --eval "run('solution.m');"
+& octave-cli --eval "run('solution.m'); benchmark_svd();"
 if ($LASTEXITCODE -ne 0) { Write-Error "Octave zakonczyl sie kodem $LASTEXITCODE"; exit $LASTEXITCODE }
 
 if (Test-Path $plotPy) {

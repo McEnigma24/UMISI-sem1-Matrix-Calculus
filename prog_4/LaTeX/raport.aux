@@ -6,29 +6,52 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \babel@aux{polish}{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Cel ćwiczenia}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Opis metody / algorytmu}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Ścieżka przez $AA^{\mathsf  {T}}$}{1}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Ścieżka przez $A^{\mathsf  {T}}A$}{1}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Obraz i jądro}{1}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Implementacja}{1}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Fragmenty kodu}{2}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Ścieżka $AA^{\mathsf  {T}}$: wartości osobliwe i $V$}{2}{subsection.4.1}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{2}{lstlisting.-1}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{2}{lstlisting.-2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Ścieżka $A^{\mathsf  {T}}A$ oraz $U$}{2}{subsection.4.2}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{2}{lstlisting.-3}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{2}{lstlisting.-4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Odniesienie: \texttt  {svd}}{3}{subsection.4.3}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{3}{lstlisting.-5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Wyniki numeryczne}{3}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Podsumowanie liczbowe}{3}{subsection.5.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Parametry testu i jakość rekonstrukcji (wartości z \texttt  {wyniki\_auto.tex}).}}{3}{table.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Wykresy}{3}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Wnioski}{3}{section.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Macierz testowa $A$ ($6\times 4$): moduły $|A_{ij}|$ oraz wartości $A_{ij}$ z mapą dwubiegunową (oś $j$ --- kolumny, $i$ --- wiersze, indeksy od 1). Dla macierzy gęstej wykres \texttt  {spy} byłby pełną siatką punktów i mało czytelny, stąd wizualizacja przez \texttt  {imshow}.}}{4}{figure.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Macierze $AA^{\mathsf  {T}}$ oraz $A^{\mathsf  {T}}A$.}}{4}{figure.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces $V^{\mathsf  {T}}$ z obu ścieżek (wiersze odpowiadają kolumnom $V_i$).}}{5}{figure.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Macierz $U$ otrzymana ze ścieżki $A^{\mathsf  {T}}A$ (wymiar $n\times m$).}}{5}{figure.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Porównanie pierwszych wartości osobliwych z obu ścieżek oraz z \texttt  {svd(A)}.}}{5}{figure.5}\protected@file@percent }
-\gdef \@abspage@last{6}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Wstęp teoretyczny}{1}{section.1}\protected@file@percent }
+\newlabel{sec:wstep}{{1}{1}{Wstęp teoretyczny}{section.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Wartości własne i wartości osobliwe}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Porównanie wartości własnych $\lambda $ i wartości osobliwych $\sigma $.}}{1}{table.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Macierz osobliwa, macierz ortogonalna}{1}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}SVD i rozkład $A=USV^{\mathsf  T}$}{2}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Dlaczego $A^{\mathsf  T}A$ oraz $AA^{\mathsf  T}$?}{2}{subsection.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Cel ćwiczenia}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Opis metody / algorytmu}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Ścieżka przez $AA^{\mathsf  {T}}$}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Ścieżka przez $A^{\mathsf  {T}}A$}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Obraz i jądro}{3}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Implementacja}{3}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Fragmenty kodu}{3}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Ścieżka $AA^{\mathsf  {T}}$: wartości osobliwe i $V$}{3}{subsection.5.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{3}{lstlisting.-1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{3}{lstlisting.-2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Ścieżka $A^{\mathsf  {T}}A$ oraz $U$}{4}{subsection.5.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{4}{lstlisting.-3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{4}{lstlisting.-4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Odniesienie: \texttt  {svd}}{4}{subsection.5.3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{../src/solution.m}{4}{lstlisting.-5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Wyniki numeryczne}{4}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Podsumowanie liczbowe}{4}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Interpretacja wyników z tabeli podsumowującej}{4}{subsection.6.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Parametry testu i jakość rekonstrukcji (wartości z \texttt  {wyniki\_auto.tex}).}}{5}{table.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Tabele macierzy (wartości liczbowe)}{5}{subsection.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Macierz testowa $A$ ($4\times 6$)}}{5}{table.3}\protected@file@percent }
+\newlabel{tab:matrixA}{{3}{5}{Macierz testowa $A$ ($4\times 6$)}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces $AA^{\mathsf  T}$ ($4\times 4$)}}{5}{table.4}\protected@file@percent }
+\newlabel{tab:matrixAAT}{{4}{5}{$AA^{\mathsf T}$ ($4\times 4$)}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Heatmapy tych samych macierzy}{5}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Benchmark czasu obliczeń}{5}{subsection.6.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces $A^{\mathsf  T}A$ ($6\times 6$)}}{6}{table.5}\protected@file@percent }
+\newlabel{tab:matrixATA}{{5}{6}{$A^{\mathsf T}A$ ($6\times 6$)}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces $V^{\mathsf  T}$ ze ścieżki $AA^{\mathsf  T}$}}{6}{table.6}\protected@file@percent }
+\newlabel{tab:matrixV1T}{{6}{6}{$V^{\mathsf T}$ ze ścieżki $AA^{\mathsf T}$}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces $V^{\mathsf  T}$ ze ścieżki $A^{\mathsf  T}A$}}{6}{table.7}\protected@file@percent }
+\newlabel{tab:matrixV2T}{{7}{6}{$V^{\mathsf T}$ ze ścieżki $A^{\mathsf T}A$}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces $U$ ze ścieżki $A^{\mathsf  T}A$ ($4\times 6$)}}{6}{table.8}\protected@file@percent }
+\newlabel{tab:matrixU2}{{8}{6}{$U$ ze ścieżki $A^{\mathsf T}A$ ($4\times 6$)}{table.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Macierz testowa $A$ ($4\times 6$): $|A_{ij}|$ oraz $A_{ij}$ z mapą dwubiegunową.}}{7}{figure.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Macierze $AA^{\mathsf  {T}}$ oraz $A^{\mathsf  {T}}A$.}}{7}{figure.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces $V^{\mathsf  {T}}$ z obu ścieżek (wiersze --- odpowiedniki zapisu wierszami w \texttt  {solution.m}).}}{7}{figure.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Macierz $U$ ze ścieżki $A^{\mathsf  {T}}A$ (wymiar $n\times m$).}}{8}{figure.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Sredni czas pojedynczego przebiegu (piec powtorzen; losowa macierz $\mathcal  {N}(0,1)$ na rozmiarze $n\times m$). Sciezki jak w \texttt  {solution.m}; \texttt  {svd(A)} wywoluje biblioteke numeryczna (LAPACK).}}{8}{table.9}\protected@file@percent }
+\newlabel{tab:benchmark}{{9}{8}{Sredni czas pojedynczego przebiegu (piec powtorzen; losowa macierz $\mathcal {N}(0,1)$ na rozmiarze $n\times m$). Sciezki jak w \texttt {solution.m}; \texttt {svd(A)} wywoluje biblioteke numeryczna (LAPACK)}{table.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Wnioski}{8}{section.7}\protected@file@percent }
+\gdef \@abspage@last{9}
