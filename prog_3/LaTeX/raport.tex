@@ -62,7 +62,7 @@
 \maketitle
 
 \section{Cel ćwiczenia}
-Dla kwadratowej macierzy rzeczywistej $M$ obliczyć normy macierzowe $\|M\|_1$, $\|M\|_2$, $\|M\|_\infty$, normę z~klasy norm Schattena dla ustalonego rzędu~$p$ (wartości osobliwe z~SVD), odpowiadające współczynniki uwarunkowania, pełny rozkład SVD oraz wartości i~wektory własne przy użyciu procedur numerycznych Octave (\texttt{norm}, \texttt{cond}, \texttt{svd}, \texttt{eig}).
+Dla kwadratowej macierzy rzeczywistej $M$ obliczyć normy macierzowe $\|M\|_1$, $\|M\|_2$, $\|M\|_\infty$, normę z~klasy norm Schattena dla ustalonego rzędu~$p$ (wartości osobliwe z~SVD), odpowiadające współczynniki uwarunkowania, pełny rozkład SVD oraz wartości i~wektory własne przy użyciu procedur numerycznych Octave (\texttt{svd}, \texttt{eig}); normy indukowane i~\texttt{cond} zaimplementowano samodzielnie i~zweryfikowano względem wbudowanych \texttt{norm} i~\texttt{cond}.
 
 Macierz testowa: losowa $n\times n$ przy $n = 8 + 24 = 32$ (jak w~programie~2), ziarno generatora \texttt{rng(11)}, odrzucenie macierzy z~$\texttt{rcond}(M)$ zbyt małym.
 
@@ -84,15 +84,43 @@ Dla norm indukowanych $1$, $2$, $\infty$: $\kappa(M) = \|M\|\,\|M^{-1}\|$. Octav
 Rozkład $M = U \Sigma V^{\mathsf T}$ z~$\Sigma$ diagonalną nieujemną. Rozkład spektralny (wartości własne, wektory w~kolumnach macierzy $V$) daje \texttt{eig(M)} dla macierzy rzeczywistej (wartości własne mogą być zespolone).
 
 \section{Implementacja}
-W~katalogu \texttt{src/}: skrypt \texttt{solution.m} ustala $M$, wywołuje \texttt{norm}, \texttt{cond}, \texttt{inv} do weryfikacji definicji, \texttt{svd}, \texttt{eig}, oraz funkcję \texttt{schatten\_norm\_cond.m} liczącą normę Schattena i~$\kappa_{S,p}$ z~wektora~$\sigma$. Wyniki liczbowe do tabel zapisuje się do \texttt{wyniki\_auto.tex}; do wykresów w~Pythonie: \texttt{singular\_values.txt}, \texttt{norms\_bar.txt}, \texttt{cond\_samples.txt} (ostatni z~proby $250$ losowych macierzy $n\times n$ o~rozsądnym \texttt{rcond}). Skrypt \texttt{analysis/plot\_template.py} generuje kilka plików PDF w~\texttt{LaTeX/figures/}.
+W~katalogu \texttt{src/}: skrypt \texttt{solution.m} ustala $M$, liczy normy i~uwarunkowanie własnymi funkcjami, \textbf{porównuje} wyniki z~wbudowanymi \texttt{norm}/\texttt{cond} (oraz \texttt{norm} na wektorze~$\sigma$ dla Schattena), wywołuje \texttt{inv} do weryfikacji definicji $\|M\|\,\|M^{-1}\|$, \texttt{svd}, \texttt{eig}, oraz \texttt{schatten\_norm\_cond.m}. Wyniki liczbowe do tabel zapisuje się do \texttt{wyniki\_auto.tex}; do wykresów w~Pythonie: \texttt{singular\_values.txt}, \texttt{norms\_bar.txt}, \texttt{cond\_samples.txt} (ostatni z~proby $250$ losowych macierzy $n\times n$ o~rozsądnym \texttt{rcond}). Skrypt \texttt{analysis/plot\_template.py} generuje kilka plików PDF w~\texttt{LaTeX/figures/}.
 
 \section{Fragmenty kodu}
 
-\subsection{Norma Schattena i~$\kappa_{S,p}$ z~wartości osobliwych}
+\subsection{Norma wektorowa \texttt{l\_p} (\texttt{vector\_norm\_p.m})}
+\lstinputlisting{../src/vector_norm_p.m}
+
+\noindent\texttt{x(:)} --- wektor w~jednej kolumnie.\\
+\texttt{isinf(p)\&\&p>0}: norma $\|x\|_\infty=\max_i|x_i|$.\\
+\texttt{else}: $\|x\|_p=\bigl(\sum_i|x_i|^p\bigr)^{1/p}$.\\
+
+\subsection{Normy macierzowe indukowane $1$, $2$, $\infty$ (\texttt{matrix\_norm\_induced.m})}
+\lstinputlisting{../src/matrix_norm_induced.m}
+
+\noindent $p=1$: $\|M\|_1=\max_j\sum_i|M_{ij}|$ --- największa suma modułów po kolumnach (\texttt{sum(...,1)} i~\texttt{max}).\\
+$p=\infty$ (test \texttt{isinf(p)}): $\|M\|_\infty=\max_i\sum_j|M_{ij}|$ --- po wierszach (\texttt{sum(...,2)})\\
+$p=2$: spektralna norma $\|M\|_2=\sigma_{\max}(M)$ jako \texttt{max(svd(M))}.\\
+
+\subsection{Norma Frobeniusa (\texttt{matrix\_norm\_fro.m})}
+\lstinputlisting{../src/matrix_norm_fro.m}
+
+\noindent $\|M\|_F=\bigl(\sum_{i,j}|m_{ij}|^2\bigr)^{1/2}$
+
+\subsection{Uwarunkowanie w~normach indukowanych (\texttt{matrix\_cond\_induced.m})}
+\lstinputlisting{../src/matrix_cond_induced.m}
+
+\noindent $\kappa_p(M)=\|M\|_p\,\|M^{-1}\|_p$ w~normie indukowanej (pełny rząd).\\
+
+\subsection{Norma Schattena i~$\kappa_{S,p}$ (\texttt{schatten\_norm\_cond.m})}
 \lstinputlisting{../src/schatten_norm_cond.m}
 
-\subsection{Główny skrypt: normy, \texttt{cond}, przygotowanie danych}
-\lstinputlisting[firstline=1, lastline=42]{../src/solution.m}
+\noindent Argument \texttt{s} to wektor wartości osobliwych (wynik \texttt{svd(M)}).\\
+\texttt{nrm} to $\|s\|_p$, czyli norma Schattena $\|M\|_{S,p}$.\\
+Gdy któreś $s\le 0$: $\kappa=\infty$ (brak odwrotności w~pełnym sensie).\\
+Inaczej $\kappa=\|s\|_p\,\|v\|_p$ przy $v_i=\sigma_i^{-1}$ (w~kodzie odwrotności element po elemencie).\\
+Norma na wektorze liczy \texttt{vector\_norm\_p}.
+
 
 \section{Wyniki numeryczne}
 
@@ -120,24 +148,27 @@ W~katalogu \texttt{src/}: skrypt \texttt{solution.m} ustala $M$, wywołuje \text
   \end{tabular}
 \end{table}
 
-Wiersze z~definicją $\|M\|\,\|M^{-1}\|$ pokrywają się z~wyjściem \texttt{cond} --- zgodnie z~teorią dla norm indukowanych.
-
-\subsection{SVD i~spektrum}
 \begin{table}[htbp]
   \centering
-  \caption{Podsumowanie SVD i~ diagnostyka.}
-  \begin{tabular}{@{}l r@{}}
+  \footnotesize
+  \caption{Porównanie własnej implementacji z~wbudowanymi \texttt{norm} / \texttt{cond} w~Octave (ta sama macierz $M$). Dla $\|M\|_{S,4}$ i~$\kappa_{S,4}$ w~kolumnie ,,Octave'' podano odpowiednio \texttt{norm(s(:),4)} oraz iloczyn \texttt{norm(s(:),4)*norm(1./s(:),4)} na wektorze wartości osobliwych \texttt{s = svd(M)} (brak macierzowego \texttt{cond} dla normy Schattena). Kolumna ,,wzgl.'' to $|\Delta|/\max(|\text{Octave}|,\varepsilon)$.}
+  \begin{tabular}{@{}l r r r r@{}}
     \toprule
-    Wielkość & Wartość \\
+    Wielkość & własna & Octave & $|\Delta|$ & wzgl. \\
     \midrule
-    $\sigma_{\min}$ & \ValSigmaMin \\
-    $\sigma_{\max}$ & \ValSigmaMax \\
-    $\|M - U \Sigma V^{\mathsf T}\|_F$ & \ValSVDRes \\
-    $\texttt{rcond}(M)$ & \ValRcond \\
-    $\|M V_{\mathrm{eig}} - V_{\mathrm{eig}} D\|_F$ & \ValEigRes \\
+    $\|M\|_1$ & \ValNOne & \ValBuiltinNOne & \ValAbsDiffNOne & \ValRelDiffNOne \\
+    $\|M\|_2$ & \ValNTwo & \ValBuiltinNTwo & \ValAbsDiffNTwo & \ValRelDiffNTwo \\
+    $\|M\|_\infty$ & \ValNInf & \ValBuiltinNInf & \ValAbsDiffNInf & \ValRelDiffNInf \\
+    $\texttt{cond}(M,1)$ & \ValCOne & \ValBuiltinCOne & \ValAbsDiffCOne & \ValRelDiffCOne \\
+    $\texttt{cond}(M,2)$ & \ValCTwo & \ValBuiltinCTwo & \ValAbsDiffCTwo & \ValRelDiffCTwo \\
+    $\texttt{cond}(M,\infty)$ & \ValCInf & \ValBuiltinCInf & \ValAbsDiffCInf & \ValRelDiffCInf \\
+    $\|M\|_{S,4}$ & \ValNSchat & \ValBuiltinNSchat & \ValAbsDiffNSchat & \ValRelDiffNSchat \\
+    $\kappa_{S,4}$ & \ValCSchat & \ValBuiltinKSchat & \ValAbsDiffKSchat & \ValRelDiffKSchat \\
     \bottomrule
   \end{tabular}
 \end{table}
+
+Wiersze z~definicją $\|M\|\,\|M^{-1}\|$ pokrywają się z~wyjściem \texttt{cond} --- zgodnie z~teorią dla norm indukowanych.
 
 Małe residuum rozkładu SVD oraz residuum $M V = V D$ potwierdzają poprawność obliczeń bibliotecznych.
 
@@ -180,7 +211,7 @@ Rysunek~\ref{fig:cond} przedstawia empiryczny rozkład $\texttt{cond}(A,2)$ dla 
 \section{Wnioski}
 
 \begin{itemize}
-  \item \textbf{Zgodność definicji.} Wartości \texttt{cond} w~normach $1$, $2$ i~$\infty$ pokrywają się z~iloczynem $\|M\|\,\|M^{-1}\|$ w~tej samej normie, co potwierdza poprawne użycie biblioteki i~spójność definicji współczynnika uwarunkowania.
+  \item \textbf{Zgodność z~Octave i~definicją.} Własne funkcje dają te same wartości co wbudowane \texttt{norm} i~\texttt{cond} dla norm indukowanych $1$, $2$, $\infty$ (różnice na poziomie zera maszynowego); norma Schattena i~$\kappa_{S,4}$ zgadzają się z~\texttt{norm} na wektorze~$\sigma$ z~dokładnością rzędu $10^{-15}$--$10^{-13}$. Jednocześnie $\texttt{cond}(M,\cdot)$ pokrywa się z~iloczynem $\|M\|\,\|M^{-1}\|$ w~tej samej normie.
   \item \textbf{Różne normy, różna geometria.} Normy indukowane mierzą maksymalne wzmocnienie wektora w~innych normach wektorowych; norma Schattena $S{,}4$ zależy od całego spektrum singularnego i~dla $p\neq 2$ nie pokrywa się z~$\|M\|_2$. W~raporcie przyjęto $p=4$ świadomie, by powiązać punkt ``$\|M\|_p$'' z~SVD i~uniknąć niejednoznaczności ogólnej normy indukowanej $\|\cdot\|_p$ dla macierzy.
   \item \textbf{SVD a stabilność.} Bardzo małe residuum $\|M-U\Sigma V^{\mathsf T}\|_F$ pokazuje, że numeryczny SVD jest stabilny dla naszej macierzy; stosunek $\sigma_{\max}/\sigma_{\min}$ kontroluje $\texttt{cond}(M,2)$ i~wrażliwość na błędy zaokrągleń przy rozwiązywaniu układów z~$M$.
   \item \textbf{Wartości własne vs osobliwe.} Dla macierzy niesymetrycznej moduły wartości własnych nie muszą pokrywać się z~$\sigma_i$; widoczna zespoloność $\lambda$ przy rzeczywistym $M$ jest normalna. Małe residuum spektralne $\|MV-VD\|_F$ świadczy o~poprawnym zestawieniu par własnych z~\texttt{eig}.

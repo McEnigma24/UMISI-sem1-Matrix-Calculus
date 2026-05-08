@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.9)  17 APR 2026 16:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.9)  8 MAY 2026 09:04
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **./raport.tex
 (raport.tex
@@ -28,43 +29,31 @@ File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.st
-y
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.st
-y
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
  (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphic
-s.cfg
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.
-def
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen149
 \Gin@req@width=\dimen150
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.st
-y
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
  (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
 \Gm@cnth=\count283
@@ -79,13 +68,8 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen157
 \Gm@layoutvoffset=\dimen158
 \Gm@dimlist=\toks18
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cf
-g))
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.st
-y
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
-
 \f@nch@headwidth=\skip51
 \f@nch@offset@elh=\skip52
 \f@nch@offset@erh=\skip53
@@ -101,12 +85,9 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip63
 \f@nch@widthR=\skip64
 \@temptokenb=\toks19
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.st
-y
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks20
 \symAMSa=\mathgroup4
@@ -114,30 +95,19 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2026/03/24 v26.5 The multilingual framework for LuaLaTeX, pdfLaT
-eX and XeLaTeX
+)) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2026/03/24 v26.5 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
 \babel@savecnt=\count286
-LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
-ne 2078.
-LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
-ne 2080.
-LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
-e 2082.
-LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
-e 2083.
-LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
-on input line 2084.
-LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
-on input line 2086.
-LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
-on input line 2111.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2078.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2080.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2082.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line 2083.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2084.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2086.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2111.
 \U@D=\dimen159
 \l@unhyphenated=\language79
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def
-)
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count287
 Package babel Info: Configuration files are deprecated, as
@@ -148,33 +118,25 @@ Package babel Info: Configuration files are deprecated, as
 * Local config file bblopts.cfg used
 *
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
-File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
- babel
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/pl\ba
-bel-polish.tex)
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/pl\babel-polish.tex)
 Package babel Info: Importing font and identification data for polish
 (babel)             from babel-pl.ini. Reported on input line 4330.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/babel-polish\polish.
-ldf
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/babel-polish\polish.ldf
 Language: polish 2022/03/12 1.3 Babel support for Polish
 Package babel Info: Making " an active character on input line 101.
-))
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+)) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
 \@mathmargin=\skip65
 
 For additional information on amsmath, use the `?' option.
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks21
 \ex@=\dimen160
-)) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.st
-y
+)) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen161
 ) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
@@ -227,8 +189,7 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks25
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\mathptmx.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\mathptmx.sty
 Package: mathptmx 2020/03/25 PSNFSS-v9.3 Times w/ Math, improved (SPQR, WaS) 
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -270,17 +231,11 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 ) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.st
-y
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.st
-y
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
 Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.st
-y
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count300
 )
@@ -291,32 +246,23 @@ Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \csq@maxlvl=\count305
 \csq@tshold=\count306
 \csq@ltx@everypar=\toks28
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.de
-f
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def
 File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cf
-g
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cfg
 File: csquotes.cfg 
 ))
 Package csquotes Info: Redefining quotation style 'polish/quotes'.
 Package csquotes Info: Redefining alias 'polish' -> 'polish/quotes'.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.c
-fg
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.l
-tx)
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -326,9 +272,7 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.st
-y
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
 \lst@mode=\count307
 \lst@gtempboxa=\box55
 \lst@token=\toks29
@@ -341,19 +285,14 @@ y
 \lst@newlines=\count311
 \lst@lineno=\count312
 \lst@maxwidth=\dimen172
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.st
-y
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 \c@lstnumber=\count313
 \lst@skipnumbers=\count314
 \lst@framebox=\box56
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cf
-g
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2025/11/14 1.11b listings configuration
 ))
 Package: listings 2025/11/14 1.11b (Carsten Heinz)
@@ -364,9 +303,7 @@ Package: listings 2025/11/14 1.11b (Carsten Heinz)
     but found:
         2025/11/14 1.11b (Carsten Heinz)
     so I'm assuming it got fixed.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.st
-y
+(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen173
 \lightrulewidth=\dimen174
@@ -385,85 +322,53 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count317
 \@lastruleclass=\count318
 \@thisrulewidth=\dimen185
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.st
-y
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.st
-y
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.
-sty
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdef
-inekeys.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescap
-e.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.st
-y
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexc
-mds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarer
-r.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-))
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+)) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.st
-y
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\get
-titlestring.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.
-sty
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count319
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringen
-c.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
-)
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen186
 \Hy@linkcounter=\count320
 \Hy@pagecounter=\count321
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.st
-y
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count322
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -479,14 +384,10 @@ Package hyperref Info: Bookmarks OFF on input line 4474.
 \c@Hy@tempcnt=\count323
 LaTeX Info: Redefining \url on input line 4807.
 \XeTeXLinkMargin=\dimen187
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintc
-alc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
-)
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count324
 \Field@Width=\dimen188
@@ -503,22 +404,16 @@ Package hyperref Info: PDF/A mode OFF on input line 6114.
 \c@Hfootnote=\count327
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2026-01-29 v7.01p Hyperref driver for pdfTeX
 \Fld@listcount=\count328
 \c@bookmark@seq@number=\count329
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerun
-filecheck.sty
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniq
-uecounter.sty
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-84.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
 \Hy@SectionHShift=\skip68
 )
@@ -527,14 +422,10 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'polish'.
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 59
-.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 59.
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-
-pdftex.def
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count330
 ) (raport.aux
@@ -561,9 +452,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf
-.mkii
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count331
 \scratchdimen=\dimen190
@@ -576,15 +465,10 @@ LaTeX Font Info:    ... okay on input line 59.
 \MPnumerator=\count335
 \makeMPintoPDFobject=\count336
 \everyMPtoPDFconversion=\toks31
-)
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopd
-f-base.sty
+) (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sy
-s.cfg
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 *geometry* driver: auto-detecting
@@ -625,34 +509,24 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 \c@lstlisting=\count337
 Package hyperref Info: Link coloring ON on input line 59.
 (wyniki_auto.tex)
-LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 63.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ztmcm.fd
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 63.
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 63.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlztmcm.fd
+LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 63.
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 63.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsztmcm.fd
+LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 63.
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 63.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxztmcm.fd
+LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 63.
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 6
-3.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 63.
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
@@ -669,102 +543,107 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 
 Overfull \hbox (1.5029pt too wide) in paragraph at lines 65--66
-[]\T1/ptm/m/n/12 Dla kwa-dra-to-wej ma-cie-rzy rze-czy-wi-stej $\OML/ztmcm/m/it
-/12 M$ \T1/ptm/m/n/12 ob-li-czy¢ normy ma-cie-rzowe $\OMS/ztmcm/m/n/12 k\OML/zt
-mcm/m/it/12 M\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 , $\OMS/ztmcm/m/n/12 k\OML/zt
-mcm/m/it/12 M\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 , $\OMS/ztmcm/m/n/12 k\OML/zt
-mcm/m/it/12 M\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 ,
+[]\T1/ptm/m/n/12 Dla kwa-dra-to-wej ma-cie-rzy rze-czy-wi-stej $\OML/ztmcm/m/it/12 M$ \T1/ptm/m/n/12 ob-li-czy¢ normy ma-cie-rzowe $\OMS/ztmcm/m/n/12 k\OML/ztmcm/m/it/12 M\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 , $\OMS/ztmcm/m/n/12 k\OML/ztmcm/m/it/12 M\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 , $\OMS/ztmcm/m/n/12 k\OML/ztmcm/m/it/12 M\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 ,
  []
 
 
 Overfull \hbox (50.76166pt too wide) in paragraph at lines 81--82
-\T1/cmtt/m/n/12 cond(M) \T1/ptm/m/n/12 (dla $\OT1/ztmcm/m/n/12 2$\T1/ptm/m/n/12
- ), \T1/cmtt/m/n/12 cond(M,inf)\T1/ptm/m/n/12 . Dla normy Schat-tena przyj-mu-j
-emy ana-lo-gicz-nie $\OML/ztmcm/m/it/12 ^^T[] \OT1/ztmcm/m/n/12 = \OMS/ztmcm/m/
-n/12 k\OML/ztmcm/m/it/12 M\OMS/ztmcm/m/n/12 k[] k\OML/ztmcm/m/it/12 M[]\OMS/ztm
-cm/m/n/12 k[]$\T1/ptm/m/n/12 ;
+\T1/cmtt/m/n/12 cond(M) \T1/ptm/m/n/12 (dla $\OT1/ztmcm/m/n/12 2$\T1/ptm/m/n/12 ), \T1/cmtt/m/n/12 cond(M,inf)\T1/ptm/m/n/12 . Dla normy Schat-tena przyj-mu-jemy ana-lo-gicz-nie $\OML/ztmcm/m/it/12 ^^T[] \OT1/ztmcm/m/n/12 = \OMS/ztmcm/m/n/12 k\OML/ztmcm/m/it/12 M\OMS/ztmcm/m/n/12 k[] k\OML/ztmcm/m/it/12 M[]\OMS/ztmcm/m/n/12 k[]$\T1/ptm/m/n/12 ;
  []
 
 [1
 
-{C:/Users/womackow/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/w
-omackow/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 92.
+{C:/Users/womackow/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+Overfull \hbox (17.0381pt too wide) in paragraph at lines 87--88
+\T1/ptm/m/n/12 tena), wy-wo-ªuje \T1/cmtt/m/n/12 inv \T1/ptm/m/n/12 do we-ry-fi-ka-cji de-fi-ni-cji $\OMS/ztmcm/m/n/12 k\OML/ztmcm/m/it/12 M\OMS/ztmcm/m/n/12 k k\OML/ztmcm/m/it/12 M[]\OMS/ztmcm/m/n/12 k$\T1/ptm/m/n/12 , \T1/cmtt/m/n/12 svd\T1/ptm/m/n/12 , \T1/cmtt/m/n/12 eig\T1/ptm/m/n/12 , oraz \T1/cmtt/m/n/12 schatten_norm_cond.m\T1/ptm/m/n/12 .
+ []
 
-(../src/schatten_norm_cond.m
+
+Overfull \hbox (82.47145pt too wide) in paragraph at lines 87--88
+\T1/ptm/m/n/12 Wy-niki licz-bowe do ta-bel za-pi-suje si¦ do \T1/cmtt/m/n/12 wyniki_auto.tex\T1/ptm/m/n/12 ; do wy-kre-sów w Py-tho-nie: \T1/cmtt/m/n/12 singular_values.txt\T1/ptm/m/n/12 ,
+ []
+
+
+Overfull \hbox (29.39185pt too wide) in paragraph at lines 87--88
+\T1/ptm/m/n/12 nym \T1/cmtt/m/n/12 rcond\T1/ptm/m/n/12 ). Skrypt \T1/cmtt/m/n/12 analysis/plot_template.py \T1/ptm/m/n/12 ge-ne-ruje kilka pli-ków PDF w \T1/cmtt/m/n/12 LaTeX/figures/\T1/ptm/m/n/12 . 
+ []
+
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 91.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 92.
+(../src/vector_norm_p.m
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1.
 )
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 94.
- (../src/solution.m [2]) [3]
-<figures/wartosci_osobliwe.pdf, id=101, 367.98662pt x 235.42328pt>
+Underfull \hbox (badness 10000) in paragraph at lines 94--97
+
+ []
+
+(../src/matrix_norm_induced.m) [2]
+Underfull \hbox (badness 10000) in paragraph at lines 101--104
+
+ []
+
+(../src/matrix_norm_fro.m)
+Overfull \hbox (8.07428pt too wide) in paragraph at lines 110--110
+[]\T1/ptm/b/n/14.4 Uwarunkowanie w nor-mach in-du-ko-wa-nych (\T1/cmtt/m/n/14.4 matrix_cond_induced.m\T1/ptm/b/n/14.4 ) 
+ []
+
+(../src/matrix_cond_induced.m)
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+
+ []
+
+(../src/schatten_norm_cond.m) [3]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 155.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 155.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 155.
+ [4]
+<figures/wartosci_osobliwe.pdf, id=117, 367.98662pt x 235.42328pt>
 File: figures/wartosci_osobliwe.pdf Graphic file (type pdf)
 <use figures/wartosci_osobliwe.pdf>
-Package pdftex.def Info: figures/wartosci_osobliwe.pdf  used on input line 150.
-
+Package pdftex.def Info: figures/wartosci_osobliwe.pdf  used on input line 181.
 (pdftex.def)             Requested size: 327.77632pt x 209.70566pt.
-<figures/energia_frobeniusa_skumulowana.pdf, id=102, 367.78848pt x 235.15541pt>
-
+<figures/energia_frobeniusa_skumulowana.pdf, id=118, 367.78848pt x 235.15541pt>
 File: figures/energia_frobeniusa_skumulowana.pdf Graphic file (type pdf)
 <use figures/energia_frobeniusa_skumulowana.pdf>
-Package pdftex.def Info: figures/energia_frobeniusa_skumulowana.pdf  used on in
-put line 157.
+Package pdftex.def Info: figures/energia_frobeniusa_skumulowana.pdf  used on input line 188.
 (pdftex.def)             Requested size: 327.77632pt x 209.57469pt.
-<figures/normy_porownanie.pdf, id=104, 353.83943pt x 242.22496pt>
+<figures/normy_porownanie.pdf, id=120, 353.83943pt x 242.22496pt>
 File: figures/normy_porownanie.pdf Graphic file (type pdf)
 <use figures/normy_porownanie.pdf>
-Package pdftex.def Info: figures/normy_porownanie.pdf  used on input line 166.
+Package pdftex.def Info: figures/normy_porownanie.pdf  used on input line 197.
 (pdftex.def)             Requested size: 295.9059pt x 202.5805pt.
-<figures/rozklad_cond2_losowe.pdf, id=106, 381.82619pt x 234.0824pt>
+<figures/rozklad_cond2_losowe.pdf, id=122, 381.82619pt x 234.0824pt>
 File: figures/rozklad_cond2_losowe.pdf Graphic file (type pdf)
 <use figures/rozklad_cond2_losowe.pdf>
-Package pdftex.def Info: figures/rozklad_cond2_losowe.pdf  used on input line 1
-75.
+Package pdftex.def Info: figures/rozklad_cond2_losowe.pdf  used on input line 206.
 (pdftex.def)             Requested size: 327.77632pt x 200.94975pt.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-83.
-
-(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+ [5 <./figures/wartosci_osobliwe.pdf> <./figures/energia_frobeniusa_skumulowana.pdf>]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 214.
+ (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-[4 <./figures/wartosci_osobliwe.pdf>] [5 <./figures/energia_frobeniusa_skumulow
-ana.pdf> <./figures/normy_porownanie.pdf>] [6 <./figures/rozklad_cond2_losowe.p
-df>] (raport.aux)
+) [6 <./figures/normy_porownanie.pdf> <./figures/rozklad_cond2_losowe.pdf>] [7] (raport.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15648 strings out of 467867
- 240452 string characters out of 5416883
- 964329 words of memory out of 5000000
- 44197 multiletter control sequences out of 15000+600000
- 691047 words of font info for 152 fonts, out of 8000000 for 9000
+ 15738 strings out of 467867
+ 242242 string characters out of 5416883
+ 1012329 words of memory out of 5000000
+ 44253 multiletter control sequences out of 15000+600000
+ 710335 words of font info for 194 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,681b,2075s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\e
-ctt1440.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ectt1000.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jk
-nappen/ec/dpi450\ecss0800.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/womackow/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/womackow/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/womacko
-w/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
-ers/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9
-.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/symbols/msbm10.pfb><C:/Users/womackow/AppData/Local/Programs/MiK
-TeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/womackow/AppData/Local/Programs/M
-iKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/womackow/AppData/Local/Programs
-/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/womackow/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/womackow/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on raport.pdf (6 pages, 237057 bytes).
+ 75i,12n,79p,774b,1727s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi450\ecss0800.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1440.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/womackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on raport.pdf (7 pages, 251864 bytes).
 PDF statistics:
- 502 PDF objects out of 1000 (max. 8388607)
- 83 named destinations out of 1000 (max. 500000)
+ 538 PDF objects out of 1000 (max. 8388607)
+ 94 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

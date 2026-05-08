@@ -20,25 +20,56 @@ if rc < 1e-14
   error('macierz zle uwarunkowana - zmien ziarno RNG');
 endif
 
-%% Normy indukowane (subordynowane) 1, 2, inf - Octave norm(M, p)
-n1 = norm(M, 1);
-n2 = norm(M, 2);
-ninf = norm(M, Inf);
+%% Normy indukowane (subordynowane) 1, 2, inf - implementacja (nie norm())
+n1 = matrix_norm_induced(M, 1);
+n2 = matrix_norm_induced(M, 2);
+ninf = matrix_norm_induced(M, Inf);
 
-%% Wspolczynniki uwarunkowania w normach 1, 2, inf - Octave cond
-c1 = cond(M, 1);
-c2 = cond(M, 2);
-cinf = cond(M, Inf);
+%% Wspolczynniki uwarunkowania w normach 1, 2, inf - implementacja (nie cond())
+c1 = matrix_cond_induced(M, 1);
+c2 = matrix_cond_induced(M, 2);
+cinf = matrix_cond_induced(M, Inf);
 
 %% Porownanie: ||M||*||M^{-1}|| (te same normy)
 Minv = inv(M);
-c1_def = n1 * norm(Minv, 1);
-c2_def = n2 * norm(Minv, 2);
-cinf_def = ninf * norm(Minv, Inf);
+c1_def = n1 * matrix_norm_induced(Minv, 1);
+c2_def = n2 * matrix_norm_induced(Minv, 2);
+cinf_def = ninf * matrix_norm_induced(Minv, Inf);
 
 %% Norma Schattena rzedu p na wartosciach osobliwych (dla punktu ||M||_p w poleceniu)
 s = svd(M);
 [n_schat, k_schat] = schatten_norm_cond(s, p_schat);
+
+%% Porownanie z wbudowanymi norm / cond (Octave) oraz norm(s(:),p) dla Schattena
+n1b = norm(M, 1);
+n2b = norm(M, 2);
+ninfb = norm(M, Inf);
+c1b = cond(M, 1);
+c2b = cond(M, 2);
+cinfb = cond(M, Inf);
+n_sch_b = norm(s(:), p_schat);
+k_sch_b = norm(s(:), p_schat) * norm(1 ./ s(:), p_schat);
+rel_denom = @(a) max(abs(a), eps);
+ad_n1 = abs(n1 - n1b);
+ad_n2 = abs(n2 - n2b);
+ad_ninf = abs(ninf - ninfb);
+ad_c1 = abs(c1 - c1b);
+ad_c2 = abs(c2 - c2b);
+ad_cinf = abs(cinf - cinfb);
+ad_ns = abs(n_schat - n_sch_b);
+ad_ks = abs(k_schat - k_sch_b);
+
+fprintf('\n--- Porownanie: wlasna implementacja vs norm/cond Octave ---\n');
+fprintf('||M||_1:     abs roznica = %.3e, wzgledna = %.3e\n', ad_n1, ad_n1 / rel_denom(n1b));
+fprintf('||M||_2:     abs roznica = %.3e, wzgledna = %.3e\n', ad_n2, ad_n2 / rel_denom(n2b));
+fprintf('||M||_inf:   abs roznica = %.3e, wzgledna = %.3e\n', ad_ninf, ad_ninf / rel_denom(ninfb));
+fprintf('cond(M,1):   abs roznica = %.3e, wzgledna = %.3e\n', ad_c1, ad_c1 / rel_denom(c1b));
+fprintf('cond(M,2):   abs roznica = %.3e, wzgledna = %.3e\n', ad_c2, ad_c2 / rel_denom(c2b));
+fprintf('cond(M,inf): abs roznica = %.3e, wzgledna = %.3e\n', ad_cinf, ad_cinf / rel_denom(cinfb));
+fprintf('||M||_{S,%d} (wektor sigma): abs roznica = %.3e, wzgledna = %.3e\n', ...
+        p_schat, ad_ns, ad_ns / rel_denom(n_sch_b));
+fprintf('kappa_{S,%d} (iloczyn norm Octave na sigma): abs roznica = %.3e, wzgledna = %.3e\n', ...
+        p_schat, ad_ks, ad_ks / rel_denom(k_sch_b));
 
 fprintf('\n--- Normy macierzowe ---\n');
 fprintf('||M||_1     = %.12e\n', n1);
@@ -55,7 +86,7 @@ fprintf('kappa_{S,%d} = ||M||_{S,%d}||M^{-1}||_{S,%d} = %.12e\n', p_schat, p_sch
 fprintf('\n--- SVD: M = U*S*V'' ---\n');
 [U, Sdiag, V] = svd(M);
 dlmwrite('../LaTeX/singular_values.txt', diag(Sdiag), 'precision', 12);
-res_svd = norm(M - U * Sdiag * V', 'fro');
+res_svd = matrix_norm_fro(M - U * Sdiag * V');
 fprintf('wymiary U: %d x %d, S: %d x %d, V: %d x %d\n', ...
         rows(U), columns(U), rows(Sdiag), columns(Sdiag), rows(V), columns(V));
 fprintf('sigma_min = %.6e, sigma_max = %.6e\n', min(diag(Sdiag)), max(diag(Sdiag)));
@@ -67,7 +98,7 @@ lam = diag(D);
 fprintf('wymiary V (wektory w kolumnach): %d x %d\n', rows(Vw), columns(Vw));
 fprintf('min Re(lambda) = %.6e, max Re(lambda) = %.6e\n', min(real(lam)), max(real(lam)));
 fprintf('max |Im(lambda)| = %.6e\n', max(abs(imag(lam))));
-r_eig = norm(M * Vw - Vw * D, 'fro');
+r_eig = matrix_norm_fro(M * Vw - Vw * D);
 fprintf('||M*V - V*D||_F = %.3e (residuum spektralne)\n', r_eig);
 
 %% Zapis liczb do LaTeX (wiersze tabeli)
@@ -93,6 +124,31 @@ else
   fprintf(fid, '\\newcommand{\\ValCOneDef}{%.6e}\n', c1_def);
   fprintf(fid, '\\newcommand{\\ValCTwoDef}{%.6e}\n', c2_def);
   fprintf(fid, '\\newcommand{\\ValCInfDef}{%.6e}\n', cinf_def);
+  % Porownanie z wbudowanymi (tabelka w raporcie LaTeX)
+  fprintf(fid, '\\newcommand{\\ValBuiltinNOne}{%.6e}\n', n1b);
+  fprintf(fid, '\\newcommand{\\ValBuiltinNTwo}{%.6e}\n', n2b);
+  fprintf(fid, '\\newcommand{\\ValBuiltinNInf}{%.6e}\n', ninfb);
+  fprintf(fid, '\\newcommand{\\ValBuiltinCOne}{%.6e}\n', c1b);
+  fprintf(fid, '\\newcommand{\\ValBuiltinCTwo}{%.6e}\n', c2b);
+  fprintf(fid, '\\newcommand{\\ValBuiltinCInf}{%.6e}\n', cinfb);
+  fprintf(fid, '\\newcommand{\\ValBuiltinNSchat}{%.6e}\n', n_sch_b);
+  fprintf(fid, '\\newcommand{\\ValBuiltinKSchat}{%.6e}\n', k_sch_b);
+  fprintf(fid, '\\newcommand{\\ValAbsDiffNOne}{%.6e}\n', ad_n1);
+  fprintf(fid, '\\newcommand{\\ValAbsDiffNTwo}{%.6e}\n', ad_n2);
+  fprintf(fid, '\\newcommand{\\ValAbsDiffNInf}{%.6e}\n', ad_ninf);
+  fprintf(fid, '\\newcommand{\\ValAbsDiffCOne}{%.6e}\n', ad_c1);
+  fprintf(fid, '\\newcommand{\\ValAbsDiffCTwo}{%.6e}\n', ad_c2);
+  fprintf(fid, '\\newcommand{\\ValAbsDiffCInf}{%.6e}\n', ad_cinf);
+  fprintf(fid, '\\newcommand{\\ValAbsDiffNSchat}{%.6e}\n', ad_ns);
+  fprintf(fid, '\\newcommand{\\ValAbsDiffKSchat}{%.6e}\n', ad_ks);
+  fprintf(fid, '\\newcommand{\\ValRelDiffNOne}{%.6e}\n', ad_n1 / rel_denom(n1b));
+  fprintf(fid, '\\newcommand{\\ValRelDiffNTwo}{%.6e}\n', ad_n2 / rel_denom(n2b));
+  fprintf(fid, '\\newcommand{\\ValRelDiffNInf}{%.6e}\n', ad_ninf / rel_denom(ninfb));
+  fprintf(fid, '\\newcommand{\\ValRelDiffCOne}{%.6e}\n', ad_c1 / rel_denom(c1b));
+  fprintf(fid, '\\newcommand{\\ValRelDiffCTwo}{%.6e}\n', ad_c2 / rel_denom(c2b));
+  fprintf(fid, '\\newcommand{\\ValRelDiffCInf}{%.6e}\n', ad_cinf / rel_denom(cinfb));
+  fprintf(fid, '\\newcommand{\\ValRelDiffNSchat}{%.6e}\n', ad_ns / rel_denom(n_sch_b));
+  fprintf(fid, '\\newcommand{\\ValRelDiffKSchat}{%.6e}\n', ad_ks / rel_denom(k_sch_b));
   fclose(fid);
   fprintf('\nZapisano fragment tabeli: %s\n', out_tex);
 endif
@@ -105,7 +161,7 @@ for kk = 1:ns
   rng(1000 + kk);
   Atry = rand(n, n);
   if rcond(Atry) >= 1e-14
-    c2samp(kk) = cond(Atry, 2);
+    c2samp(kk) = matrix_cond_induced(Atry, 2);
   else
     c2samp(kk) = NaN;
   endif
