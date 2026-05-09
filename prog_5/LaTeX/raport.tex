@@ -23,6 +23,7 @@
 \usepackage{listings}
 \usepackage{verbatim}
 \usepackage{booktabs}
+\usepackage{placeins}
 
 \definecolor{codegreen}{rgb}{0,0.5,0}
 \lstdefinestyle{matlab}{
@@ -65,6 +66,30 @@
   \newcommand{\ValErrSvdThree}{?}\newcommand{\ValErrSvdFour}{?}\newcommand{\ValErrSvdInf}{?}%
   \newcommand{\ValLamRefOne}{?}\newcommand{\ValLamRefTwo}{?}\newcommand{\ValLamRefThree}{?}%
   \newcommand{\ValLamPowOne}{?}\newcommand{\ValLamPowTwo}{?}\newcommand{\ValLamPowThree}{?}}
+
+\section{Wstęp teoretyczny}
+\textbf{Rozkład wartości osobliwych (SVD).} Dla macierzy prostokątnej $A\in\mathbb{R}^{m\times n}$ istnieje rozkład
+\[
+  A = U D V^{\mathsf{T}},
+\]
+gdzie $U\in\mathbb{R}^{m\times m}$ oraz $V\in\mathbb{R}^{n\times n}$ są \emph{ortogonalne} ($U^{\mathsf{T}}U=I$,
+$V^{\mathsf{T}}V=I$), a $D\in\mathbb{R}^{m\times n}$ ma nieujemne wartości na przekątnej
+$\sigma_1\ge\sigma_2\ge\cdots\ge 0$ (wartości osobliwe). Kolumny $U$ i $V$ to odpowiednio lewe i prawe wektory osobliwe;
+diagonalne $D$ opisuje ``rozciągnięcie'' $A$ wzdłuż tych kierunków. SVD jest podstawowym narzędziem: kompresji danych,
+szacowania rzędu i stabilnego rozwiązywania układów (np.\ przez pseudoodwrotność Moore'a--Penrose'a), a w praktyce
+numerycznej często służy jako referencyjny rozkład do porównań.
+
+W ćwiczeniu konstruujemy SVD małej macierzy $3\times 3$ z symetrii $AA^{\mathsf{T}}$: wartości własne $AA^{\mathsf{T}}$
+wiążą się z kwadratami $\sigma_i^2$, a macierz $V$ odtwarzamy ze wzoru na $A^{\mathsf{T}}U$ i odwrotność diagonalną
+(na poziomie implementacji z tolerancją dla zerowych $\sigma_i$). Dzięki temu widać powiązanie SVD z diagonalizacją
+macierzy symetrycznej dodatniej półokreślonej oraz można \emph{niezależnie} sprawdzić zgodność z gotową procedurą
+\texttt{svd(A)} z biblioteki.
+
+\textbf{Metoda potęgowa.} Dla macierzy symetrycznej dominująca para własna $(\lambda,v)$ opisuje kierunek największej
+względnej ``aktywności'' $A$ na sferze jednostkowej; iteracja $z\mapsto Az$ (z normalizacją) to najprostszy sposób
+numerycznego przybliżenia tej pary. Deflacja odejmuje znaleziony składnik rangi~1, aby kolejno uzyskać kolejne wartości
+własne --- co w rozmiarze $3\times 3$ daje pełny zestaw trzech par potrzebnych m.in.\ do interpretacji spektrum $A$
+i do kontekstu całego zadania obok SVD.
 
 \section{Cel ćwiczenia}
 Zbadanie zbieżności \textbf{metody potęgowej} dla macierzy symetrycznej $A\in\mathbb{R}^{3\times 3}$ przy różnych
@@ -183,8 +208,10 @@ $p=1$ & $p=2$ & $p=3$
 \includegraphics[width=0.30\linewidth]{conv_k1_p4.pdf} &
 \includegraphics[width=0.30\linewidth]{conv_k1_pinf.pdf} \\
 $p=4$ & $p=\infty$
-\end{tabular}
-\caption{Pierwsza para własna (metoda na oryginalnym $A$), błąd residuum w~pięciu normach.}
+\end{tabular}\\[0.5em]
+\includegraphics[width=0.82\linewidth]{conv_k1_all_p.pdf}
+\caption{Pierwsza para własna (metoda na oryginalnym $A$), błąd residuum w~pięciu normach;
+poniżej wszystkie krzywe na jednym wykresie (inne kolory dla $p=1,2,3,4,\infty$).}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -201,8 +228,9 @@ $p=1$ & $p=2$ & $p=3$
 \includegraphics[width=0.30\linewidth]{conv_k2_p4.pdf} &
 \includegraphics[width=0.30\linewidth]{conv_k2_pinf.pdf} \\
 $p=4$ & $p=\infty$
-\end{tabular}
-\caption{Druga para własna (macierz po jednej deflacji).}
+\end{tabular}\\[0.5em]
+\includegraphics[width=0.82\linewidth]{conv_k2_all_p.pdf}
+\caption{Druga para własna (macierz po jednej deflacji); na dolnym wykresie wszystkie normy $p$ razem.}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -219,9 +247,11 @@ $p=1$ & $p=2$ & $p=3$
 \includegraphics[width=0.30\linewidth]{conv_k3_p4.pdf} &
 \includegraphics[width=0.30\linewidth]{conv_k3_pinf.pdf} \\
 $p=4$ & $p=\infty$
-\end{tabular}
-\caption{Trzecia para własna (macierz po dwóch deflacjach).}
+\end{tabular}\\[0.5em]
+\includegraphics[width=0.82\linewidth]{conv_k3_all_p.pdf}
+\caption{Trzecia para własna (macierz po dwóch deflacjach); na dolnym wykresie wszystkie normy $p$ razem.}
 \end{figure}
+\FloatBarrier
 
 \section{Wnioski}
 Wartości własne z~deflacji pokrywają się z~\texttt{eig} na poziomie $10^{-8}$, co jest typowe przy kolejnych odejmowaniach

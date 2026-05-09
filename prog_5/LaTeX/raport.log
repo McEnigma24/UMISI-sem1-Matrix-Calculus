@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.9)  17 APR 2026 17:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.9)  9 MAY 2026 19:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -391,6 +391,10 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count318
 \@thisrulewidth=\dimen185
 )
+(C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.st
+y
+Package: placeins 2005/04/18  v 2.2
+)
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.st
 y
 File: lstlang1.sty 2025/11/14 1.11b listings language file
@@ -527,12 +531,12 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip68
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 50.
+Package hyperref Info: Option `colorlinks' set `true' on input line 51.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'polish'.
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 60
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 61
 .
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
@@ -548,24 +552,24 @@ Package babel Info: 'polish' activates 'polish' shorthands.
 )
 \openout1 = `raport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf
 .mkii
@@ -628,78 +632,79 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count337
-Package hyperref Info: Link coloring ON on input line 60.
+Package hyperref Info: Link coloring ON on input line 61.
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 62.
+ 63.
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 62.
+ 63.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 62.
+ 63.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 62.
+ 63.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 6
-2.
+3.
 
 (C:\Users\womackow\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 62.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 62.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 62.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 62.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 62.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 63.
 
 (wyniki_auto.tex)
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+ [1
 
-Overfull \hbox (26.28828pt too wide) in paragraph at lines 93--93
+{C:/Users/womackow/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/w
+omackow/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+Overfull \hbox (26.28828pt too wide) in paragraph at lines 118--118
 []   \T1/cmtt/m/n/12 Jesli ||A z - mu z||_2 < precheck: wroc do 1) (unik startu
  juz "zbieznego")[] 
  []
 
-[1
 
-{C:/Users/womackow/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/w
-omackow/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-Overfull \hbox (25.1552pt too wide) in paragraph at lines 105--108
+Overfull \hbox (25.1552pt too wide) in paragraph at lines 130--133
 \T1/ptm/m/n/12 (jedna para), \T1/cmtt/m/n/12 matrix_norm_schatten.m\T1/ptm/m/n/
 12 , \T1/cmtt/m/n/12 write_bmatrix.m\T1/ptm/m/n/12 . Uru-cho-mie-nie: \T1/cmtt/
 m/n/12 run('solution.m')
  []
 
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 111.
+nput line 136.
 (../src/solution.m
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <8> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 35.
-) (../src/power_method_symmetric.m [2])
+ [2]) (../src/power_method_symmetric.m)
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 116.
- (../src/solution.m)
-Overfull \hbox (4.03561pt too wide) in paragraph at lines 122--127
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 141.
+ (../src/solution.m
+[3])
+Overfull \hbox (4.03561pt too wide) in paragraph at lines 147--152
 []\T1/ptm/m/n/12 Losowanie: \T1/cmtt/m/n/12 rng(20260417)\T1/ptm/m/n/12 , $\OML
 /ztmcm/m/it/12 A \OT1/ztmcm/m/n/12 = (\OML/ztmcm/m/it/12 B \OT1/ztmcm/m/n/12 + 
 \OML/ztmcm/m/it/12 B[]\OT1/ztmcm/m/n/12 )\OML/ztmcm/m/it/12 =\OT1/ztmcm/m/n/12 
@@ -707,111 +712,125 @@ Overfull \hbox (4.03561pt too wide) in paragraph at lines 122--127
 rze wy-±wie-tlane osobno
  []
 
-(matrix_A_bmat.tex)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-(matrix_U_bmat.tex) (matrix_Sigma_bmat.tex) (matrix_V_bmat.tex) [4]
+(matrix_A_bmat.tex) (matrix_U_bmat.tex) (matrix_Sigma_bmat.tex)
+(matrix_V_bmat.tex) [4]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 176.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 201.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 176.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 201.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 176.
-<figures/conv_k1_p1.pdf, id=146, 279.76814pt x 193.3511pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 201.
+<figures/conv_k1_p1.pdf, id=144, 279.76814pt x 193.3511pt>
 File: figures/conv_k1_p1.pdf Graphic file (type pdf)
 <use figures/conv_k1_p1.pdf>
-Package pdftex.def Info: figures/conv_k1_p1.pdf  used on input line 177.
+Package pdftex.def Info: figures/conv_k1_p1.pdf  used on input line 202.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
-<figures/conv_k1_p2.pdf, id=147, 279.76814pt x 193.3511pt>
+<figures/conv_k1_p2.pdf, id=145, 279.76814pt x 193.3511pt>
 File: figures/conv_k1_p2.pdf Graphic file (type pdf)
 <use figures/conv_k1_p2.pdf>
-Package pdftex.def Info: figures/conv_k1_p2.pdf  used on input line 178.
+Package pdftex.def Info: figures/conv_k1_p2.pdf  used on input line 203.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
-<figures/conv_k1_p3.pdf, id=148, 279.76814pt x 193.3511pt>
+<figures/conv_k1_p3.pdf, id=146, 279.76814pt x 193.3511pt>
 File: figures/conv_k1_p3.pdf Graphic file (type pdf)
 <use figures/conv_k1_p3.pdf>
-Package pdftex.def Info: figures/conv_k1_p3.pdf  used on input line 179.
+Package pdftex.def Info: figures/conv_k1_p3.pdf  used on input line 204.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
-<figures/conv_k1_p4.pdf, id=149, 279.76814pt x 193.3511pt>
+<figures/conv_k1_p4.pdf, id=147, 279.76814pt x 193.3511pt>
 File: figures/conv_k1_p4.pdf Graphic file (type pdf)
 <use figures/conv_k1_p4.pdf>
-Package pdftex.def Info: figures/conv_k1_p4.pdf  used on input line 183.
+Package pdftex.def Info: figures/conv_k1_p4.pdf  used on input line 208.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
-<figures/conv_k1_pinf.pdf, id=150, 280.006pt x 193.3511pt>
+<figures/conv_k1_pinf.pdf, id=148, 280.006pt x 193.3511pt>
 File: figures/conv_k1_pinf.pdf Graphic file (type pdf)
 <use figures/conv_k1_pinf.pdf>
-Package pdftex.def Info: figures/conv_k1_pinf.pdf  used on input line 184.
+Package pdftex.def Info: figures/conv_k1_pinf.pdf  used on input line 209.
 (pdftex.def)             Requested size: 136.57462pt x 94.30916pt.
-<figures/conv_k2_p1.pdf, id=151, 279.76814pt x 193.3511pt>
+<figures/conv_k1_all_p.pdf, id=149, 395.46439pt x 236.14598pt>
+File: figures/conv_k1_all_p.pdf Graphic file (type pdf)
+<use figures/conv_k1_all_p.pdf>
+Package pdftex.def Info: figures/conv_k1_all_p.pdf  used on input line 212.
+(pdftex.def)             Requested size: 373.30351pt x 222.92491pt.
+<figures/conv_k2_p1.pdf, id=150, 279.76814pt x 193.3511pt>
 File: figures/conv_k2_p1.pdf Graphic file (type pdf)
 <use figures/conv_k2_p1.pdf>
-Package pdftex.def Info: figures/conv_k2_p1.pdf  used on input line 195.
+Package pdftex.def Info: figures/conv_k2_p1.pdf  used on input line 222.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
-<figures/conv_k2_p2.pdf, id=152, 279.76814pt x 193.3511pt>
+<figures/conv_k2_p2.pdf, id=151, 279.76814pt x 193.3511pt>
 File: figures/conv_k2_p2.pdf Graphic file (type pdf)
 <use figures/conv_k2_p2.pdf>
-Package pdftex.def Info: figures/conv_k2_p2.pdf  used on input line 196.
+Package pdftex.def Info: figures/conv_k2_p2.pdf  used on input line 223.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
-<figures/conv_k2_p3.pdf, id=153, 279.76814pt x 193.3511pt>
+<figures/conv_k2_p3.pdf, id=152, 279.76814pt x 193.3511pt>
 File: figures/conv_k2_p3.pdf Graphic file (type pdf)
 <use figures/conv_k2_p3.pdf>
-Package pdftex.def Info: figures/conv_k2_p3.pdf  used on input line 197.
+Package pdftex.def Info: figures/conv_k2_p3.pdf  used on input line 224.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
-<figures/conv_k2_p4.pdf, id=154, 279.76814pt x 193.3511pt>
+<figures/conv_k2_p4.pdf, id=153, 279.76814pt x 193.3511pt>
 File: figures/conv_k2_p4.pdf Graphic file (type pdf)
 <use figures/conv_k2_p4.pdf>
-Package pdftex.def Info: figures/conv_k2_p4.pdf  used on input line 201.
+Package pdftex.def Info: figures/conv_k2_p4.pdf  used on input line 228.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
-<figures/conv_k2_pinf.pdf, id=155, 280.006pt x 193.3511pt>
+<figures/conv_k2_pinf.pdf, id=154, 280.006pt x 193.3511pt>
 File: figures/conv_k2_pinf.pdf Graphic file (type pdf)
 <use figures/conv_k2_pinf.pdf>
-Package pdftex.def Info: figures/conv_k2_pinf.pdf  used on input line 202.
+Package pdftex.def Info: figures/conv_k2_pinf.pdf  used on input line 229.
 (pdftex.def)             Requested size: 136.57462pt x 94.30916pt.
+<figures/conv_k2_all_p.pdf, id=155, 395.46439pt x 236.14598pt>
+File: figures/conv_k2_all_p.pdf Graphic file (type pdf)
+<use figures/conv_k2_all_p.pdf>
+Package pdftex.def Info: figures/conv_k2_all_p.pdf  used on input line 232.
+(pdftex.def)             Requested size: 373.30351pt x 222.92491pt.
 <figures/conv_k3_p1.pdf, id=156, 279.76814pt x 193.3511pt>
 File: figures/conv_k3_p1.pdf Graphic file (type pdf)
 <use figures/conv_k3_p1.pdf>
-Package pdftex.def Info: figures/conv_k3_p1.pdf  used on input line 213.
+Package pdftex.def Info: figures/conv_k3_p1.pdf  used on input line 241.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
 <figures/conv_k3_p2.pdf, id=157, 279.76814pt x 193.3511pt>
 File: figures/conv_k3_p2.pdf Graphic file (type pdf)
 <use figures/conv_k3_p2.pdf>
-Package pdftex.def Info: figures/conv_k3_p2.pdf  used on input line 214.
+Package pdftex.def Info: figures/conv_k3_p2.pdf  used on input line 242.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
 <figures/conv_k3_p3.pdf, id=158, 279.76814pt x 193.3511pt>
 File: figures/conv_k3_p3.pdf Graphic file (type pdf)
 <use figures/conv_k3_p3.pdf>
-Package pdftex.def Info: figures/conv_k3_p3.pdf  used on input line 215.
+Package pdftex.def Info: figures/conv_k3_p3.pdf  used on input line 243.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
 <figures/conv_k3_p4.pdf, id=159, 279.76814pt x 193.3511pt>
 File: figures/conv_k3_p4.pdf Graphic file (type pdf)
 <use figures/conv_k3_p4.pdf>
-Package pdftex.def Info: figures/conv_k3_p4.pdf  used on input line 219.
+Package pdftex.def Info: figures/conv_k3_p4.pdf  used on input line 247.
 (pdftex.def)             Requested size: 136.57462pt x 94.38882pt.
 <figures/conv_k3_pinf.pdf, id=160, 280.006pt x 193.3511pt>
 File: figures/conv_k3_pinf.pdf Graphic file (type pdf)
 <use figures/conv_k3_pinf.pdf>
-Package pdftex.def Info: figures/conv_k3_pinf.pdf  used on input line 220.
+Package pdftex.def Info: figures/conv_k3_pinf.pdf  used on input line 248.
 (pdftex.def)             Requested size: 136.57462pt x 94.30916pt.
- [5 <./figures/conv_k1_p1.pdf> <./figures/conv_k1_p2.pdf> <./figures/conv_k1_p3
-.pdf> <./figures/conv_k1_p4.pdf> <./figures/conv_k1_pinf.pdf>] [6 <./figures/co
-nv_k2_p1.pdf> <./figures/conv_k2_p2.pdf> <./figures/conv_k2_p3.pdf> <./figures/
-conv_k2_p4.pdf> <./figures/conv_k2_pinf.pdf> <./figures/conv_k3_p1.pdf> <./figu
-res/conv_k3_p2.pdf> <./figures/conv_k3_p3.pdf> <./figures/conv_k3_p4.pdf> <./fi
-gures/conv_k3_pinf.pdf>] (raport.aux)
+<figures/conv_k3_all_p.pdf, id=161, 395.46439pt x 236.14598pt>
+File: figures/conv_k3_all_p.pdf Graphic file (type pdf)
+<use figures/conv_k3_all_p.pdf>
+Package pdftex.def Info: figures/conv_k3_all_p.pdf  used on input line 251.
+(pdftex.def)             Requested size: 373.30351pt x 222.92491pt.
+ [5] [6 <./figures/conv_k1_p1.pdf> <./figures/conv_k1_p2.pdf> <./figures/conv_k
+1_p3.pdf> <./figures/conv_k1_p4.pdf> <./figures/conv_k1_pinf.pdf> <./figures/co
+nv_k1_all_p.pdf>] [7 <./figures/conv_k2_p1.pdf> <./figures/conv_k2_p2.pdf> <./f
+igures/conv_k2_p3.pdf> <./figures/conv_k2_p4.pdf> <./figures/conv_k2_pinf.pdf> 
+<./figures/conv_k2_all_p.pdf>] [8 <./figures/conv_k3_p1.pdf> <./figures/conv_k3
+_p2.pdf> <./figures/conv_k3_p3.pdf> <./figures/conv_k3_p4.pdf> <./figures/conv_
+k3_pinf.pdf> <./figures/conv_k3_all_p.pdf>] [9]
+(raport.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15883 strings out of 467867
- 245946 string characters out of 5416883
- 1201032 words of memory out of 5000000
- 44377 multiletter control sequences out of 15000+600000
- 704146 words of font info for 188 fonts, out of 8000000 for 9000
+ 15944 strings out of 467867
+ 247592 string characters out of 5416883
+ 1247235 words of memory out of 5000000
+ 44429 multiletter control sequences out of 15000+600000
+ 705858 words of font info for 189 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,373b,2183s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,373b,2730s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\e
 ctt1440.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
 /dpi600\ectt0800.pk> <C:\Users\womackow\AppData\Local\MiKTeX\fonts/pk/ljfour/jk
@@ -831,9 +850,9 @@ AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/womacko
 w/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/woma
 ckow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/w
 omackow/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on raport.pdf (6 pages, 457227 bytes).
+Output written on raport.pdf (9 pages, 524617 bytes).
 PDF statistics:
- 1135 PDF objects out of 1200 (max. 8388607)
- 122 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1307 PDF objects out of 1440 (max. 8388607)
+ 126 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
