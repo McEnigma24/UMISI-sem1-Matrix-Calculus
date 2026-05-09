@@ -203,6 +203,13 @@ błąd zaokrągleń nie „wybuchuje'' gwałtownie przy rozsądnym $n$, tylko os
   \label{fig:blad}
 \end{figure}
 
+Krzywe na rysunku~\ref{fig:blad} nie muszą przebiegać blisko siebie, bo to \emph{inne} miary: $\|Q^{\mathsf{T}}Q-I\|_F$
+sprawdza wyłącznie, czy kolumny $Q$ są prawie ortonormalne, podczas gdy $\|A-QR\|_F$ patrzy na cały iloczyn ---
+uwzględnia więc także błędy w $R$ oraz błąd powstały przy mnożeniu już zaokrąglonych $Q$ i $R$. Nawet przy dość
+„ładnym'' $Q$ rekonstrukcja $A$ może mieć większe residuum, jeśli narastają nieścisłości w eliminacji do $R$.
+Przy większym $n$ rośnie liczba rotacji i elementów macierzy wchodzących do norm Frobeniusa, więc obie krzywe mogą
+łagodnie rosnąć, ale niekoniecznie równolegle --- sumują się bowiem różne składniki błędu.
+
 \section{Wnioski}
 \begin{itemize}
   \item Złożenie rotacji Givensa daje poprawny rozkład $QR$ w sensie numerycznym: $QR$ odtwarza losową macierz testową
