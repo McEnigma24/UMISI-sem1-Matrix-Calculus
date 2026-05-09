@@ -1,0 +1,7 @@
+prog_6 — skrót
+--------------
+PDF: z tego folderu uruchom `.\generate_ALL.ps1` (Octave → Python → latexmk).
+
+Rozmiar macierzy: `miesiac` i `dzien` w `src/solution.m`, potem znowu generate_ALL.
+
+W PATH musi być octave-cli (GNU Octave).

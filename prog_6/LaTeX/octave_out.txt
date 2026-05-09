@@ -1,0 +1,28 @@
+Rachunek Macierzowy, prog. 6: QR (Givens), macierz 14 x 14
+||A - Q R||_F (nasza metoda):     3.043e-15
+||Q' Q - I||_F:                  1.989e-15
+||tril(R,-1)||_F (R górnotr.):   2.598e-16
+||A - Q_lib R_lib||_F (qr):       2.829e-15
+
+Zapisano: C:\Users\womackow\Zbiorczy\_WIN_AI_AGH_\WIN_sem_1\UMISI-sem1-Matrix-Calculus\prog_6\src\..\LaTeX\wyniki_auto.tex, C:\Users\womackow\Zbiorczy\_WIN_AI_AGH_\WIN_sem_1\UMISI-sem1-Matrix-Calculus\prog_6\src\..\LaTeX\prog6_czas_vs_n.csv
+Rachunek Macierzowy, prog. 6: QR (Givens), macierz 14 x 14
+||A - Q R||_F (nasza metoda):     3.043e-15
+||Q' Q - I||_F:                  1.989e-15
+||tril(R,-1)||_F (R górnotr.):   2.598e-16
+||A - Q_lib R_lib||_F (qr):       2.829e-15
+
+Zapisano: C:\Users\womackow\Zbiorczy\_WIN_AI_AGH_\WIN_sem_1\UMISI-sem1-Matrix-Calculus\prog_6\src\..\LaTeX\wyniki_auto.tex, C:\Users\womackow\Zbiorczy\_WIN_AI_AGH_\WIN_sem_1\UMISI-sem1-Matrix-Calculus\prog_6\src\..\LaTeX\prog6_czas_vs_n.csv
+prog. 6: QR Givens, n=14
+||A-QR||_F (Givens): 3.043e-15
+||Q'Q-I||_F:        1.989e-15
+||tril(R,-1)||_F:    2.598e-16
+||A-QR||_F (qr):     2.829e-15
+
+Zapisano: C:\Users\womackow\Zbiorczy\_WIN_AI_AGH_\WIN_sem_1\UMISI-sem1-Matrix-Calculus\prog_6\src\..\LaTeX\wyniki_auto.tex, C:\Users\womackow\Zbiorczy\_WIN_AI_AGH_\WIN_sem_1\UMISI-sem1-Matrix-Calculus\prog_6\src\..\LaTeX\prog6_czas_vs_n.csv
+prog. 6: QR Givens, n=14
+||A-QR||_F (Givens): 3.043e-15
+||Q'Q-I||_F:        1.989e-15
+||tril(R,-1)||_F:    2.598e-16
+||A-QR||_F (qr):     2.829e-15
+
+Zapisano: C:\Users\womackow\Zbiorczy\_WIN_AI_AGH_\WIN_sem_1\UMISI-sem1-Matrix-Calculus\prog_6\src\..\LaTeX\wyniki_auto.tex, C:\Users\womackow\Zbiorczy\_WIN_AI_AGH_\WIN_sem_1\UMISI-sem1-Matrix-Calculus\prog_6\src\..\LaTeX\prog6_czas_vs_n.csv, C:\Users\womackow\Zbiorczy\_WIN_AI_AGH_\WIN_sem_1\UMISI-sem1-Matrix-Calculus\prog_6\src\..\LaTeX\prog6_blad_vs_n.csv

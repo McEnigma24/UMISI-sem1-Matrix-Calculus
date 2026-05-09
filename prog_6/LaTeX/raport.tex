@@ -1,0 +1,218 @@
+%%%%%% -*- coding: utf-8 -*-
+\documentclass[polish]{template/projectreport}
+
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{csquotes}
+\DeclareQuoteStyle[quotes]{polish}
+  {\quotedblbase}
+  {\textquotedblright}
+  [0.05em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteright}
+\DeclareQuoteAlias[quotes]{polish}{polish}
+
+\graphicspath{{figures/}}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{booktabs}
+
+\definecolor{codegreen}{rgb}{0,0.5,0}
+\lstdefinestyle{matlab}{
+  language=Matlab,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\sffamily,
+  tabsize=2,
+  showstringspaces=false
+}
+\lstset{style=matlab}
+\AtBeginDocument{%
+  \shorthandoff{"}%
+  \addto\captionspolish{\renewcommand{\lstlistingname}{Fragment kodu}}%
+}
+
+\usepackage[bookmarks=false]{hyperref}
+\hypersetup{colorlinks,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue}
+
+\newcommand{\TytulZadania}{Faktoryzacja QR z rotacji Givensa}
+\newcommand{\NumerProgramu}{6}
+\newcommand{\Autorzy}{Kacper Bujak, Wojciech Maćkowiak}
+
+\title{\TytulZadania\\{\large Rachunek Macierzowy --- program \NumerProgramu}}
+\author{\Autorzy}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\IfFileExists{wyniki_auto.tex}{\input{wyniki_auto.tex}}{%
+  \newcommand{\ValN}{?}\newcommand{\ValMiesiac}{?}\newcommand{\ValDzien}{?}%
+  \newcommand{\ValErrRecon}{?}\newcommand{\ValErrOrth}{?}%
+  \newcommand{\ValErrUpper}{?}\newcommand{\ValErrLib}{?}}
+
+\section{Cel}
+Zaimplementować rozkład $QR$ macierzy kwadratowej przy pomocy rotacji Givensa i porównać wyniki z funkcją
+\texttt{qr} z Octave/MATLAB. Rozmiar macierzy wynika z polecenia: $n$ jest sumą miesiąca i dnia urodzenia;
+w skrypcie \texttt{solution.m} ustawia się \texttt{miesiac} oraz \texttt{dzien} (w raporcie aktualnie $n=\ValN$).
+
+\section{Wstęp teoretyczny}
+
+\subsection{Rozkład $QR$}
+Dla macierzy prostokątnej $A\in\mathbb{R}^{m\times n}$ o pełnym rzędzie kolumnowym istnieje rozkład
+\begin{equation}
+  A = QR,
+\end{equation}
+gdzie $Q\in\mathbb{R}^{m\times m}$ jest ortogonalna ($Q^{\mathsf{T}}Q=I$), a $R\in\mathbb{R}^{m\times n}$
+jest górnotrójkątna (z pojęciem „górnotrójkątnej'' dla prostokątnych macierzy --- zera pod główną przekątną).
+W przypadku kwadratowym $m=n$ macierz $R$ jest klasyczną górnotrójkątną.
+
+Rozkład $QR$ jest podstawą stabilnego rozwiązywania układów z nadokreśleniem (np.\ problem najmniejszych kwadratów),
+ortogonalizacji baz oraz wielu algorytmów numerycznych (wartości własne, SVD jako etapy pośrednie). Sam $Q$
+przechowuje informację o „obrocie układu współrzędnych'', a $R$ --- o kombinacji kolumn po tej zmianie bazy.
+
+\subsection{Niejednoznaczność znaku}
+Jeżeli $A=QR$, to dla pewnych macierzy diagonalnych $D$ ze znakami $\pm 1$ na przekątnej nadal
+$A=(QD)(D^{-1}R)$ i iloczyn pozostaje poprawnym rozkładem $QR$. W praktyce procedury biblioteczne mogą więc
+zwracać inne znaki kolumn $Q$ lub wierszy $R$ niż „nasza'' procedura, choć rekonstrukcja $QR$ powinna zgadzać się
+z $A$ z dokładnością do błędu zaokrągleń.
+
+\subsection{Rotacje Givensa}
+Rotacja Givensa w $\mathbb{R}^m$ to macierz ortogonalna różniąca się od $I$ tylko na czterech pozycjach
+$(p,p)$, $(p,q)$, $(q,p)$, $(q,q)$ --- odpowiada obrotowi w płaszczyźnie rozciągniętej przez wektory bazowe $e_p$, $e_q$.
+Zastosowanie takiej macierzy z lewej strony do $A$ miesza ze sobą dwa wiersze macierzy.
+
+Chcemy dobrać obrót tak, by wyzerować wybrany element w jednym z wierszy przy niezerowej „gałęzi'' drugiego wiersza.
+Dla dwuwymiarowego wektora $(a,b)^{\mathsf{T}}$ istnieją $c,s$ ($c^2+s^2=1$), że
+$\bigl[\begin{smallmatrix}c&s\\-s&c\end{smallmatrix}\bigr](a,b)^{\mathsf{T}}=(r,0)^{\mathsf{T}}$.
+To jest dokładnie krok konstrukcji $R$ w eliminacji podprzekątnej.
+
+\subsection{Budowa $QR$ jako iloczyn rotacji}
+Jeśli kolejno od lewej mnożymy $A$ przez rotacje zamiatające podprzekątną część kolejnych kolumn, otrzymujemy
+macierz górnotrójkątną:
+\[
+  G_k \cdots G_2 G_1\, A = R.
+\]
+Iloczyn $G_1^{\mathsf{T}}G_2^{\mathsf{T}}\cdots G_k^{\mathsf{T}}$ (przy zapisie naszej implementacji odpowiada to
+składaniu czynników na macierz $Q$) jest ortogonalny jako iloczyn macierzy ortogonalnych. W ćwiczeniu interesuje nas
+wariant z zerowaniem od dołu w obrębie każdej kolumny --- klasyczny schemat dla QR metodą Givensa na macierzu gęstej.
+
+\subsection{Złożoność (rzędu)}
+Dla gęstej macierzy $n\times n$ jest $O(n^2)$ potencjalnych rotacji (pętle po kolumnach i wierszach), a każda rotacja
+kosztuje $O(n)$ aktualizacji wierszy/kolumn --- łącznie koszt rzędu $O(n^3)$ operacji zmiennoprzecinkowych (porównywalnie
+z eliminacją Gaussa lub QR Householderem). Przy macierzach rzadkich można pomijać wiele rotacji --- wtedy Givens bywa
+korzystniejszy strukturalnie; tutaj skupiamy się na gęstym przypadku testowym.
+
+\section{Opis metody}
+\subsection{Współczynniki obrotu}
+Niech $a=R(j,j)$ i $b=R(i,j)$ będą elementami pivotu oraz wiersza niżej w tej samej kolumnie ($i>j$). Przyjmujemy
+$r=\sqrt{a^2+b^2}$, $c=a/r$, $s=b/r$ (w kodzie \texttt{hypot}\,$(a,b)$). Lewe mnożenie przez obrót w płaszczyźnie
+$(j,i)$ aktualizuje dwa wiersze $R$ oraz (przy naszej konwencji akumulacji) odpowiednio miesza dwie kolumny macierzy $Q$.
+
+\subsection{Eliminacja}
+Start: $R:=A$, $Q:=I$. Dla $j=1,\ldots,\min(m,n)$ i $i=m,m-1,\ldots,j+1$ stosujemy powyższy obrót, dopóki część
+ściśle podprzekątna w kolumnie $j$ nie zniknie (numerycznie: gdy $a=b=0$, obrót pomijamy).
+
+\section{Pseudokod}
+\begin{verbatim}
+Wejscie: A (m x n)
+R := A;  Q := I_m
+dla j = 1 : min(m,n)
+  dla i = m, m-1, ..., j+1
+    a := R(j,j);  b := R(i,j)
+    jesli sqrt(a^2+b^2)=0: koniec obrotu dla tego i
+    r := hypot(a,b);  c := a/r;  s := b/r
+    R(j,:) :=  c*R(j,:) + s*R(i,:)
+    R(i,:) := -s*R(j,:) + c*R(i,:)
+    Q(:,j) :=  c*Q(:,j) + s*Q(:,i)
+    Q(:,i) := -s*Q(:,j) + c*Q(:,i)
+\end{verbatim}
+
+\section{Pliki}
+Funkcja \texttt{qr\_givens.m}, skrypt \texttt{solution.m} (parametry $n$, losowanie, normy). Wyniki liczbowe lądują
+w katalogu \texttt{LaTeX/} jako makra oraz dwa pliki CSV z danymi pod wykresy; Python w \texttt{analysis/} zapisuje
+PDF-y do \texttt{LaTeX/figures/}.
+
+\section{Fragmenty kodu}
+\lstinputlisting[firstline=1, lastline=27]{../src/qr_givens.m}
+
+\begin{lstlisting}[caption={solution.m (fragment)}]
+[Qg, Rg] = qr_givens(A);
+err_recon = norm(A - Qg * Rg, 'fro');
+err_orth  = norm(Qg' * Qg - eye(n), 'fro');
+[Ql, Rl] = qr(A);
+err_lib   = norm(A - Ql * Rl, 'fro');
+\end{lstlisting}
+
+\section{Wyniki}
+
+\subsection{Przykład numeryczny dla $n=\ValN$}
+Macierz $A$ losowa, ziarno generatora w \texttt{solution.m}. Dla takiego jednego przypadku mierzymy rekonstrukcję,
+ortogonalność $Q$ oraz to, czy $R$ jest faktycznie górnotrójkątna; dodatkowo ten sam błąd rekonstrukcji dla
+\texttt{qr(A)}.
+
+\begin{table}[htbp]\centering
+\caption{Normy Frobeniusa wybranych residuów (jedna losowa macierz $n\times n$).}
+\begin{tabular}{@{}lr@{}}\toprule
+wielkość & wartość \\ \midrule
+$\|A-QR\|_F$ (Givens) & \ValErrRecon \\
+$\|Q^{\mathsf{T}}Q-I\|_F$ & \ValErrOrth \\
+$\|\operatorname{tril}(R,-1)\|_F$ & \ValErrUpper \\
+$\|A-QR\|_F$ (\texttt{qr}) & \ValErrLib \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Wszystkie trzy pierwsze wiersze są rzędu $10^{-15}$--$10^{-16}$, czyli okolicy błędu maszynowego przy arytmetyce
+\texttt{double}. Czwarty wiersz pokazuje, że biblioteczny \texttt{qr} zachowuje się tak samo co do rekonstrukcji $A$
+(z dokładnością do tej samej skali numerycznej).
+
+\subsection{Czas obliczeń w funkcji $n$}
+Na rysunku~\ref{fig:czas} widać czas pojedynczego wywołania \texttt{qr\_givens} dla losowej macierzy $n\times n$.
+Krzywa nie jest gładka (pojedynczy pomiar, narzut systemowy), ale trend rośnie wyraźnie szybciej niż liniowo --- zgodnie
+z oczekiwaniem kosztu rzędu $O(n^3)$ dla gęstych macierzy.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.78\linewidth]{prog6_czas_vs_n.pdf}
+  \caption{Czas jednego wywołania \texttt{qr\_givens} vs.\ $n$.}
+  \label{fig:czas}
+\end{figure}
+
+\subsection{Błędy numeryczne vs.\ $n$}
+Drugie doświadczenie (rysunek~\ref{fig:blad}) pokazuje średnią z pięciu losowych macierzy dla każdego $n$:
+$\|A-QR\|_F$ oraz $\|Q^{\mathsf{T}}Q-I\|_F$. Na osi pionowej jest skala logarytmiczna. Punkty układają się w okolicy
+tej samej rzędu wielkości niezależnie od $n$ w badanym zakresie --- typowe zachowanie dla stabilnej procedury:
+błąd zaokrągleń nie „wybuchuje'' gwałtownie przy rozsądnym $n$, tylko oscyluje w granicach precyzji.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.78\linewidth]{prog6_blad_vs_n.pdf}
+  \caption{Średnie błędy (5 losowań na każde $n$): rekonstrukcja $A$ i ortogonalność $Q$. Skala log na osi $y$.}
+  \label{fig:blad}
+\end{figure}
+
+\section{Wnioski}
+\begin{itemize}
+  \item Złożenie rotacji Givensa daje poprawny rozkład $QR$ w sensie numerycznym: $QR$ odtwarza losową macierz testową
+    z błędem na poziomie maszynowym, a $Q$ pozostaje prawie ortogonalna ($\|Q^{\mathsf{T}}Q-I\|_F$ jest mikroskopijny).
+  \item Wyniki funkcji \texttt{qr} są porównywalne co do $\|A-QR\|_F$; różnice w samych macierzach $Q$ i $R$ mogą wynikać
+    z niejednoznaczności znaków, nie z błędu metody.
+  \item Pomiary czasu rosną z $n$ zgodnie z intuicją kosztu sześciennego; pojedyncze fluktuacje to raczej hałas pomiaru
+    niż właściwość samego wzoru na $c,s$.
+  \item Wykres błędów vs.\ $n$ na skali logarytmicznej utwierdza, że procedura nie „psuje się'' gwałtownie przy
+    powiększaniu rozmiaru w rozpatrywanym zakresie --- błąd utrzymuje się około epsilon maszynowego w normie Frobeniusa.
+\end{itemize}
+
+\end{document}
